@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Container, Typography, Button, Grid, Card, CardContent, CardMedia, TextField, MenuItem } from '@mui/material';
+import { Box, Container, Typography, Button, Grid, Card, CardContent, CardMedia, TextField, MenuItem, IconButton, Paper, FormControl, InputLabel, Select } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -7,9 +7,59 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import DownloadIcon from '@mui/icons-material/Download';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useSwipeable } from 'react-swipeable';
+
+const properties = [
+  {
+    name: 'Apanema Villas',
+    location: 'Kapparis / Protaras',
+    price: 'от €474 000 + VAT',
+    details: '3–4 спальни',
+    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Apanema+Villas'
+  },
+  {
+    name: 'Premiere Pearl B',
+    location: 'Pernera / Protaras',
+    price: 'от €595 000',
+    details: '3 спальни',
+    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Premiere+Pearl'
+  },
+  {
+    name: 'Angelico Apartments',
+    location: 'Kapparis / Protaras',
+    price: 'от €153 000 + VAT',
+    details: 'ROI 6–8%',
+    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Angelico'
+  },
+  {
+    name: 'Blue View Lifestyle',
+    location: 'Kapparis / Protaras',
+    price: 'от €255 000 + VAT',
+    details: '2–3 спальни',
+    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Blue+View'
+  },
+  {
+    name: 'Sabai Beachfront',
+    location: 'у пляжа',
+    price: 'от €300 000+',
+    details: '2–3 спальни',
+    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Sabai'
+  },
+  {
+    name: 'Alma Villas',
+    location: '350 м до пляжа',
+    price: 'от €399 000 + VAT',
+    details: 'сдача 2025',
+    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Alma'
+  }
+];
 
 const LandingPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleMenuOpen = () => setMobileMenuOpen(true);
   const handleMenuClose = () => setMobileMenuOpen(false);
@@ -20,6 +70,13 @@ const LandingPage = () => {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => setCurrentSlide(prev => (prev < properties.length - 1 ? prev + 1 : 0)),
+    onSwipedRight: () => setCurrentSlide(prev => (prev > 0 ? prev - 1 : properties.length - 1)),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: false
+  });
 
   return (
     <Box>
@@ -39,7 +96,7 @@ const LandingPage = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: 'url("/images/hero.jpg")',
+            backgroundImage: 'url("https://placehold.co/1920x1080/09252E/FFFFFF?text=Hero+Image")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: 0,
@@ -157,32 +214,78 @@ const LandingPage = () => {
               На основе 100+ собственных сделок
             </Typography>
             <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '2.1rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
-              Exclusive real estate in Cyprus<br />with full support
+              Эксклюзивная недвижимость на Кипре — под ваш запрос и с полным сопровождением
             </Typography>
             <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
-              Villas, apartments and investments in Protaras and Ayia Napa
+              Виллы, апартаменты и инвестиционные проекты в Протарасе и Айя-Напе. Без переплат и потерь времени. Все этапы беру на себя.
             </Typography>
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{
-                color: 'white',
-                borderColor: 'white',
-                fontWeight: 600,
-                px: 4,
-                py: 1.5,
-                fontSize: '1.1rem',
-                borderRadius: 2,
-                backdropFilter: 'blur(2px)',
-                boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
-                '&:hover': {
-                  background: 'rgba(255,255,255,0.08)',
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+              <Button
+                variant="outlined"
+                size="large"
+                sx={{
+                  color: 'white',
                   borderColor: 'white',
-                },
-              }}
-            >
-              Get an offer
-            </Button>
+                  fontWeight: 600,
+                  px: 4,
+                  py: 1.5,
+                  fontSize: '1.1rem',
+                  borderRadius: 2,
+                  backdropFilter: 'blur(2px)',
+                  boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                  '&:hover': {
+                    background: 'rgba(255,255,255,0.08)',
+                    borderColor: 'white',
+                  },
+                }}
+              >
+                Получить персональный подбор
+              </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                startIcon={<WhatsAppIcon />}
+                sx={{
+                  color: 'white',
+                  borderColor: 'white',
+                  fontWeight: 600,
+                  px: 4,
+                  py: 1.5,
+                  fontSize: '1.1rem',
+                  borderRadius: 2,
+                  backdropFilter: 'blur(2px)',
+                  boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                  '&:hover': {
+                    background: 'rgba(255,255,255,0.08)',
+                    borderColor: 'white',
+                  },
+                }}
+              >
+                Связаться в WhatsApp
+              </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                startIcon={<DownloadIcon />}
+                sx={{
+                  color: 'white',
+                  borderColor: 'white',
+                  fontWeight: 600,
+                  px: 4,
+                  py: 1.5,
+                  fontSize: '1.1rem',
+                  borderRadius: 2,
+                  backdropFilter: 'blur(2px)',
+                  boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                  '&:hover': {
+                    background: 'rgba(255,255,255,0.08)',
+                    borderColor: 'white',
+                  },
+                }}
+              >
+                Скачать гид
+              </Button>
+            </Box>
             {/* Flags row */}
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mt: 6 }}>
               <Typography variant="body2" sx={{ color: 'white', opacity: 0.8, fontWeight: 500, fontSize: 15 }}>
@@ -214,7 +317,7 @@ const LandingPage = () => {
             <Grid item xs={12} md={4}>
               <Box
                 component="img"
-                src="/expert-photo.jpg"
+                src="https://placehold.co/400x600/09252E/FFFFFF?text=Inessa"
                 alt="Inessa"
                 sx={{
                   width: '100%',
@@ -225,17 +328,72 @@ const LandingPage = () => {
             </Grid>
             <Grid item xs={12} md={8}>
               <Typography variant="h2" gutterBottom>
-                About Me
+                Кто я
               </Typography>
               <Typography variant="h5" color="primary" gutterBottom>
-                Inessa
+                Инесса
               </Typography>
               <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-                Business Development Manager at Giovani Homes
+                Эксперт в инвестиционной недвижимости на Кипре<br />
+                Руководитель по развитию Giovani Homes
               </Typography>
-              <Typography variant="body1" paragraph>
-                With over 5 years of experience in the Cyprus real estate market, I specialize in working with clients from the EU, CIS, and Middle East. My focus is on building trust, providing comprehensive support, and delivering exceptional results for each client.
+              <Box sx={{ mt: 4 }}>
+                {[
+                  'Более 6 лет опыта в недвижимости',
+                  'Сотни успешных сделок и довольных клиентов',
+                  'Работаю напрямую с крупнейшим застройщиком региона',
+                  'Доступ к эксклюзивным, закрытым предложениям'
+                ].map((point, index) => (
+                  <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                    <Box sx={{ color: 'primary.main', fontSize: 24 }}>✔</Box>
+                    <Typography variant="body1">{point}</Typography>
+                  </Box>
+                ))}
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Pain Points and Solutions Section */}
+      <Box sx={{ py: 8, bgcolor: 'background.default' }}>
+        <Container maxWidth="lg">
+          <Grid container spacing={6}>
+            <Grid item xs={12} md={6}>
+              <Typography variant="h3" gutterBottom>
+                Типовое состояние клиента
               </Typography>
+              <Box sx={{ mt: 4 }}>
+                {[
+                  'Сложно разобраться в рынке',
+                  'Страх потерь, недоверие к посредникам',
+                  'Не знаете, с чего начать',
+                  'Нет времени на поездки и оформление'
+                ].map((point, index) => (
+                  <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                    <Box sx={{ color: 'error.main', fontSize: 24 }}>❌</Box>
+                    <Typography variant="h6">{point}</Typography>
+                  </Box>
+                ))}
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography variant="h3" gutterBottom>
+                Решение от меня
+              </Typography>
+              <Box sx={{ mt: 4 }}>
+                {[
+                  'Я беру на себя весь процесс — от подбора до ключей',
+                  'Только проверенные объекты и честные условия',
+                  'Видеотуры, консультации, сделки удалённо',
+                  'Безопасно, прозрачно, официально'
+                ].map((point, index) => (
+                  <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                    <Box sx={{ color: 'success.main', fontSize: 24 }}>✅</Box>
+                    <Typography variant="h6">{point}</Typography>
+                  </Box>
+                ))}
+              </Box>
             </Grid>
           </Grid>
         </Container>
@@ -245,36 +403,112 @@ const LandingPage = () => {
       <Box sx={{ py: 8, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
           <Typography variant="h2" align="center" gutterBottom>
-            Featured Properties
+            Топ-объекты от застройщика
           </Typography>
-          <Grid container spacing={4} sx={{ mt: 4 }}>
-            {['Villa', 'Apartment', 'Investment'].map((type) => (
-              <Grid item xs={12} md={4} key={type}>
-                <Card sx={{ height: '100%' }}>
+          <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
+            Giovani Homes
+          </Typography>
+          
+          {/* Desktop Grid View */}
+          <Grid container spacing={4} sx={{ mt: 4, display: { xs: 'none', md: 'flex' } }}>
+            {properties.map((property) => (
+              <Grid item xs={12} sm={6} md={4} key={property.name}>
+                <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <CardMedia
                     component="img"
-                    height="200"
-                    image={`/property-${type.toLowerCase()}.jpg`}
-                    alt={type}
+                    height="300"
+                    image={property.image}
+                    alt={property.name}
                   />
-                  <CardContent>
+                  <CardContent sx={{ flexGrow: 1 }}>
                     <Typography variant="h5" gutterBottom>
-                      {type}
+                      {property.name}
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                      {property.location}
+                    </Typography>
+                    <Typography variant="h6" color="primary" gutterBottom>
+                      {property.price}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Starting from €300,000
-                    </Typography>
-                    <Typography variant="body2" color="primary" sx={{ mt: 1 }}>
-                      ROI up to 8%
+                      {property.details}
                     </Typography>
                   </CardContent>
                 </Card>
               </Grid>
             ))}
           </Grid>
-          <Box sx={{ mt: 4, textAlign: 'center' }}>
-            <Button variant="contained" color="secondary" size="large">
-              Request a selection of objects
+
+          {/* Mobile Slider View */}
+          <Box sx={{ position: 'relative', mt: 4, display: { xs: 'block', md: 'none' } }}>
+            <Box sx={{ overflow: 'hidden', position: 'relative' }}>
+              <Box
+                {...swipeHandlers}
+                sx={{
+                  display: 'flex',
+                  transition: 'transform 0.3s ease-in-out',
+                  transform: `translateX(-${currentSlide * (100 + 16)}%)`,
+                  width: '100%'
+                }}
+              >
+                {properties.map((property) => (
+                  <Box
+                    key={property.name}
+                    sx={{
+                      width: 'calc(100% - 16px)',
+                      flexShrink: 0,
+                      mx: 1
+                    }}
+                  >
+                    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                      <CardMedia
+                        component="img"
+                        height="300"
+                        image={property.image}
+                        alt={property.name}
+                      />
+                      <CardContent sx={{ flexGrow: 1 }}>
+                        <Typography variant="h5" gutterBottom>
+                          {property.name}
+                        </Typography>
+                        <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                          {property.location}
+                        </Typography>
+                        <Typography variant="h6" color="primary" gutterBottom>
+                          {property.price}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {property.details}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+
+            {/* Dots indicator */}
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 4 }}>
+              {properties.map((_, index) => (
+                <Box
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  sx={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: '50%',
+                    bgcolor: currentSlide === index ? 'primary.main' : 'grey.300',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.3s'
+                  }}
+                />
+              ))}
+            </Box>
+          </Box>
+
+          <Box sx={{ mt: 6, textAlign: 'center' }}>
+            <Button variant="contained" color="primary" size="large">
+              Смотреть весь каталог
             </Button>
           </Box>
         </Container>
@@ -325,81 +559,91 @@ const LandingPage = () => {
       <Box sx={{ py: 8, bgcolor: 'background.default' }}>
         <Container maxWidth="md">
           <Typography variant="h2" align="center" gutterBottom>
-            Get a free consultation and selection of properties
+            Получить персональный подбор
           </Typography>
-          <Box component="form" sx={{ mt: 4 }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="First Name Last Name"
-                  variant="outlined"
-                />
+          <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
+            Заполните и получите 3–5 актуальных объектов под ваш запрос
+          </Typography>
+          
+          <Paper 
+            elevation={3} 
+            sx={{ 
+              mt: 4, 
+              p: { xs: 2, sm: 4 },
+              borderRadius: 2
+            }}
+          >
+            <FormControl fullWidth component="form" noValidate autoComplete="off">
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    required
+                    label="Имя Фамилия"
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    required
+                    label="Email / WhatsApp"
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <InputLabel>Цель</InputLabel>
+                  <Select
+                    label="Цель"
+                    defaultValue=""
+                  >
+                    {['Инвестиции', 'Жильё', 'ВНЖ', 'Аренда'].map((option) => (
+                      <MenuItem key={option} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <InputLabel>Бюджет</InputLabel>
+                  <Select
+                    label="Бюджет"
+                    defaultValue=""
+                  >
+                    {['до €300K', '€300–500K', '€500K+', 'другой'].map((option) => (
+                      <MenuItem key={option} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    multiline
+                    rows={4}
+                    label="Комментарий / детали"
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    sx={{ 
+                      py: 1.5,
+                      fontSize: '1.1rem',
+                      fontWeight: 600
+                    }}
+                  >
+                    Получить подбор
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  label="Email"
-                  type="email"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  label="Phone"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  select
-                  label="Investment Purpose"
-                  variant="outlined"
-                >
-                  {['for yourself', 'rent', 'residence permit', 'resale'].map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  select
-                  label="Budget"
-                  variant="outlined"
-                >
-                  {['up to €300K', '€300–500K', '€500K+', 'other'].map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  multiline
-                  rows={4}
-                  label="Comment"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="secondary"
-                  size="large"
-                >
-                  Get a selection / consultation
-                </Button>
-              </Grid>
-            </Grid>
-          </Box>
+            </FormControl>
+          </Paper>
         </Container>
       </Box>
 
@@ -407,9 +651,9 @@ const LandingPage = () => {
       <Box sx={{ py: 4, bgcolor: 'primary.main', color: 'white' }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={6}>
               <Typography variant="h6" gutterBottom>
-                Contact Information
+                Контакты
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                 <WhatsAppIcon />
@@ -421,16 +665,16 @@ const LandingPage = () => {
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <LocationOnIcon />
-                <Typography>Cyprus, Protaras & Ayia Napa</Typography>
+                <Typography>Работаю напрямую с крупнейшим застройщиком юго-восточного Кипра — Giovani Homes</Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={6}>
               <Typography variant="h6" gutterBottom>
-                Follow Us
+                Социальные сети
               </Typography>
               <Box sx={{ display: 'flex', gap: 2 }}>
-                <InstagramIcon sx={{ cursor: 'pointer' }} />
-                <LinkedInIcon sx={{ cursor: 'pointer' }} />
+                <InstagramIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
+                <LinkedInIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
               </Box>
             </Grid>
           </Grid>
