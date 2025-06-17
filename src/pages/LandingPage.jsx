@@ -381,6 +381,124 @@ const LandingPage = () => {
         </Container>
       </Box>
 
+      {/* How I Work Section */}
+      <Box sx={{ py: 8, bgcolor: 'background.paper' }}>
+        <Container maxWidth="lg">
+          <Typography variant="h2" align="center" gutterBottom>
+            Как я работаю
+          </Typography>
+          <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
+            Просто. Прозрачно. Честно.
+          </Typography>
+          
+          <Grid container spacing={4} sx={{ mt: 4 }}>
+            {[
+              {
+                title: 'Первая консультация',
+                description: 'Вы рассказываете о бюджете, целях (жильё, инвестиции, ВНЖ)'
+              },
+              {
+                title: 'Подбор решений',
+                description: 'Высылаю 3–5 конкретных вариантов, соответствующих вам — с ROI, анализом и локацией'
+              },
+              {
+                title: 'Видео‑тур / документы / консультация',
+                description: 'Без перелетов — всё онлайн'
+              },
+              {
+                title: 'Сделка под ключ',
+                description: 'Официальный договор, юр. проверка, помощь с переводами и регистрацией'
+              },
+              {
+                title: 'Пост-сервис',
+                description: 'Меблировка, сдача в аренду, получение ВНЖ / налоговые консультации'
+              }
+            ].map((step, index) => (
+              <Grid item xs={12} key={index}>
+                <Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }}>
+                  <Box
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: '50%',
+                      bgcolor: 'primary.main',
+                      color: 'white',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 'bold',
+                      flexShrink: 0
+                    }}
+                  >
+                    {index + 1}
+                  </Box>
+                  <Box>
+                    <Typography variant="h5" gutterBottom>
+                      {step.title}
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary">
+                      {step.description}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+
+          <Box sx={{ mt: 6, textAlign: 'center' }}>
+            <Typography variant="h6" gutterBottom>
+              💡 Хочешь разобраться сам?
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom>
+              📘 Скачать бесплатный PDF-гид:
+            </Typography>
+            <Typography variant="h6" color="primary" gutterBottom>
+              «Как выбрать недвижимость на Кипре и не переплатить»
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              startIcon={<DownloadIcon />}
+              sx={{ mt: 2 }}
+            >
+              Скачать гид
+            </Button>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* What You Get Section */}
+      <Box sx={{ py: 8, bgcolor: 'background.default' }}>
+        <Container maxWidth="lg">
+          <Typography variant="h2" align="center" gutterBottom>
+            Что вы получаете
+          </Typography>
+          
+          <Grid container spacing={3} sx={{ mt: 4 }}>
+            {[
+              { icon: '💡', text: 'Индивидуальный подход — а не поток клиентов' },
+              { icon: '🧭', text: 'Честность — говорю как есть, без давления' },
+              { icon: '🏗', text: 'Доступ к первичке от застройщика — лучшие цены' },
+              { icon: '🧾', text: 'Прозрачность — каждый шаг понятен' },
+              { icon: '📈', text: 'Инвест‑подход — считаем ROI, выбираем под цели' },
+              { icon: '🏖', text: 'Локация и стиль жизни — только топ-локации' }
+            ].map((item, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Typography variant="h4" sx={{ lineHeight: 1 }}>
+                    {item.icon}
+                  </Typography>
+                  <Typography variant="body1">
+                    {item.text}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
       {/* Properties Section */}
       <Box sx={{ py: 8, bgcolor: 'background.default' }}>
         <Container maxWidth="lg">
@@ -392,13 +510,73 @@ const LandingPage = () => {
           </Typography>
           
           {/* Desktop Grid View */}
-          <Grid container spacing={4} sx={{ mt: 4, display: { xs: 'none', md: 'flex' } }}>
-            {properties.map((property) => (
-              <Grid item xs={12} sm={6} md={4} key={property.name}>
+          <Grid container spacing={4} sx={{ mt: 4, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
+            {[
+              {
+                name: 'Apanema Villas',
+                location: 'Kapparis / Protaras',
+                price: 'от €474 000 + VAT',
+                details: '3–4 спальни',
+                image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Apanema+Villas'
+              },
+              {
+                name: 'Premiere Pearl B',
+                location: 'Pernera / Protaras',
+                price: 'от €595 000',
+                details: '3 спальни',
+                image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Premiere+Pearl'
+              },
+              {
+                name: 'Angelico Apartments',
+                location: 'Kapparis / Protaras',
+                price: 'от €153 000 + VAT',
+                details: 'ROI 6–8%',
+                image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Angelico'
+              },
+              {
+                name: 'Blue View Lifestyle',
+                location: 'Kapparis / Protaras',
+                price: 'от €255 000 + VAT',
+                details: '2–3 спальни',
+                image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Blue+View'
+              },
+              {
+                name: 'Sabai Beachfront',
+                location: 'у пляжа',
+                price: 'от €300 000+',
+                details: '2–3 спальни',
+                image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Sabai'
+              },
+              {
+                name: 'Alma Villas',
+                location: '350 м до пляжа',
+                price: 'от €399 000 + VAT',
+                details: 'сдача 2025',
+                image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Alma'
+              },
+              {
+                name: 'Semeli B Villas',
+                location: 'Пернера',
+                price: 'от €460 000 + VAT',
+                details: '3 спальни',
+                image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Semeli'
+              },
+              {
+                name: 'Euphoria Apartments',
+                location: 'Paralimni',
+                price: 'от €135 000 + VAT',
+                details: '1–2 спальни',
+                image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Euphoria'
+              }
+            ].slice(0, 6).map((property) => (
+              <Grid item xs={12} md={4} key={property.name}>
                 <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <CardMedia
                     component="img"
-                    height="300"
+                    sx={{ 
+                      height: 240,
+                      objectFit: 'cover'
+                    }}
                     image={property.image}
                     alt={property.name}
                   />
@@ -429,7 +607,7 @@ const LandingPage = () => {
                 sx={{
                   display: 'flex',
                   transition: 'transform 0.3s ease-in-out',
-                  transform: `translateX(-${currentSlide * (100 )}%)`,
+                  transform: `translateX(-${currentSlide * (100)}%)`,
                   width: '100%'
                 }}
               >
@@ -489,51 +667,64 @@ const LandingPage = () => {
           </Box>
 
           <Box sx={{ mt: 6, textAlign: 'center' }}>
-            <Button variant="contained" color="primary" size="large">
-              Смотреть весь каталог
-            </Button>
+            <Typography variant="h6" gutterBottom>
+              Смотреть весь каталог и получить подбор под ваш бюджет — ниже:
+            </Typography>
           </Box>
         </Container>
       </Box>
 
-      {/* Advantages Section */}
+      {/* Testimonials Section */}
       <Box sx={{ py: 8, bgcolor: 'background.paper' }}>
         <Container maxWidth="lg">
           <Typography variant="h2" align="center" gutterBottom>
-            Why Choose Me
+            Отзывы клиентов
           </Typography>
+          
           <Grid container spacing={4} sx={{ mt: 4 }}>
-            {[
-              'Direct access to objects from developer',
-              'Investment return analysis (ROI up to 8%)',
-              'Free consultation and selection',
-              'Full transaction support',
-              'Confidentiality and security',
-              'Legal purity',
-              'Consultations on residence permit/permanent residence',
-            ].map((advantage, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Box
-                    sx={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: '50%',
-                      bgcolor: 'secondary.light',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Typography variant="h6" color="primary">
-                      {index + 1}
-                    </Typography>
-                  </Box>
-                  <Typography variant="body1">{advantage}</Typography>
-                </Box>
-              </Grid>
-            ))}
+            <Grid item xs={12} md={6}>
+              <Paper sx={{ p: 4, height: '100%' }}>
+                <Typography variant="body1" gutterBottom>
+                  «Работали с Инессой дистанционно — всё прозрачно, документы чистые, купили апартаменты под аренду с доходом ~7% годовых!»
+                </Typography>
+                <Typography variant="subtitle1" color="primary" sx={{ mt: 2 }}>
+                  Иван, Греция
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Paper sx={{ p: 4, height: '100%' }}>
+                <Typography variant="body1" gutterBottom>
+                  «Инесса помогла нам на всех этапах — от выбора до оформления ВНЖ. Очень довольны!»
+                </Typography>
+                <Typography variant="subtitle1" color="primary" sx={{ mt: 2 }}>
+                  Дима и Тамар, Израиль
+                </Typography>
+              </Paper>
+            </Grid>
           </Grid>
+
+          <Box sx={{ mt: 6 }}>
+            <Typography variant="h4" align="center" gutterBottom>
+              Факты:
+            </Typography>
+            <Grid container spacing={3} sx={{ mt: 2 }}>
+              {[
+                '100+ успешных подборов',
+                '80% клиентов — по рекомендации',
+                '0 юридических споров',
+                '6+ лет практики на Кипре'
+              ].map((fact, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                  <Paper sx={{ p: 3, textAlign: 'center', height: '100%' }}>
+                    <Typography variant="h6">
+                      {fact}
+                    </Typography>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </Container>
       </Box>
 
