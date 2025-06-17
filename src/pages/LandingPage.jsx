@@ -447,7 +447,7 @@ const LandingPage = () => {
                 sx={{
                   display: 'flex',
                   transition: 'transform 0.3s ease-in-out',
-                  transform: `translateX(-${currentSlide * (100 + 16)}%)`,
+                  transform: `translateX(-${currentSlide * (100 )}%)`,
                   width: '100%'
                 }}
               >
@@ -575,7 +575,7 @@ const LandingPage = () => {
           >
             <FormControl fullWidth component="form" noValidate autoComplete="off">
               <Grid container spacing={3}>
-                <Grid item xs={12}>
+                <Grid item>
                   <TextField
                     fullWidth
                     required
