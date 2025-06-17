@@ -555,27 +555,27 @@ const LandingPage = () => {
               borderRadius: 2
             }}
           >
-            <FormControl fullWidth component="form" noValidate autoComplete="off">
-              <Grid container spacing={3}>
-                <Grid item>
-                  <TextField
-                    fullWidth
-                    required
-                    label="Имя Фамилия"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    required
-                    label="Email / WhatsApp"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <InputLabel>Цель</InputLabel>
+            <FormControl fullWidth component="form" noValidate autoComplete="off" sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+              <TextField
+                fullWidth
+                required
+                name="fullName"
+                label="Имя Фамилия"
+                variant="outlined"
+              />
+              <TextField
+                fullWidth
+                required
+                name="contact"
+                label="Email / WhatsApp"
+                variant="outlined"
+              />
+              <Box sx={{ display: 'flex', gap: 3, flexDirection: { xs: 'column', sm: 'row' } }}>
+                <FormControl fullWidth>
+                  <InputLabel id="purpose-label">Цель</InputLabel>
                   <Select
+                    labelId="purpose-label"
+                    name="purpose"
                     label="Цель"
                     defaultValue=""
                   >
@@ -585,10 +585,12 @@ const LandingPage = () => {
                       </MenuItem>
                     ))}
                   </Select>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <InputLabel>Бюджет</InputLabel>
+                </FormControl>
+                <FormControl fullWidth>
+                  <InputLabel id="budget-label">Бюджет</InputLabel>
                   <Select
+                    labelId="budget-label"
+                    name="budget"
                     label="Бюджет"
                     defaultValue=""
                   >
@@ -598,32 +600,31 @@ const LandingPage = () => {
                       </MenuItem>
                     ))}
                   </Select>
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    multiline
-                    rows={4}
-                    label="Комментарий / детали"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    sx={{ 
-                      py: 1.5,
-                      fontSize: '1.1rem',
-                      fontWeight: 600
-                    }}
-                  >
-                    Получить подбор
-                  </Button>
-                </Grid>
-              </Grid>
+                </FormControl>
+              </Box>
+              <TextField
+                fullWidth
+                multiline
+                rows={4}
+                name="comment"
+                label="Комментарий / детали"
+                variant="outlined"
+              />
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                size="large"
+                type="submit"
+                sx={{ 
+                  py: 1.5,
+                  fontSize: '1.1rem',
+                  fontWeight: 600,
+                  mt: 2
+                }}
+              >
+                Получить подбор
+              </Button>
             </FormControl>
           </Paper>
         </Container>
