@@ -445,24 +445,56 @@ const LandingPage = () => {
             ))}
           </Grid>
 
-          <Box sx={{ mt: 6, textAlign: 'center' }}>
-            <Typography variant="h6" gutterBottom>
-              💡 Хочешь разобраться сам?
+          {/* CTA Section */}
+          <Box 
+            sx={{ 
+              mt: 8,
+              mb: 8,
+              py: 6,
+              px: 4,
+              bgcolor: '#00BCD4',
+              borderRadius: 2,
+              textAlign: 'center'
+            }}
+          >
+            <Typography 
+              variant="h4" 
+              sx={{ 
+                color: 'white',
+                fontWeight: 600,
+                mb: 3
+              }}
+            >
+              Получите персональный подбор недвижимости
             </Typography>
-            <Typography variant="subtitle1" gutterBottom>
-              📘 Скачать бесплатный PDF-гид:
-            </Typography>
-            <Typography variant="h6" color="primary" gutterBottom>
-              «Как выбрать недвижимость на Кипре и не переплатить»
+            <Typography 
+              variant="h6" 
+              sx={{ 
+                color: 'white',
+                opacity: 0.9,
+                mb: 4,
+                maxWidth: 600,
+                mx: 'auto'
+              }}
+            >
+              Заполните форму ниже и получите 3–5 актуальных объектов под ваш запрос
             </Typography>
             <Button
               variant="contained"
-              color="primary"
               size="large"
-              startIcon={<DownloadIcon />}
-              sx={{ mt: 2 }}
+              sx={{
+                bgcolor: 'white',
+                color: '#00BCD4',
+                py: 2,
+                px: 4,
+                fontSize: '1.1rem',
+                fontWeight: 600,
+                '&:hover': {
+                  bgcolor: 'rgba(255,255,255,0.9)'
+                }
+              }}
             >
-              Скачать гид
+              Получить подбор
             </Button>
           </Box>
         </Container>
@@ -667,8 +699,21 @@ const LandingPage = () => {
           </Box>
 
           <Box sx={{ mt: 6, textAlign: 'center' }}>
-            <Typography variant="h6" gutterBottom>
-              Смотреть весь каталог и получить подбор под ваш бюджет — ниже:
+            <Typography 
+              variant="h6" 
+              gutterBottom
+              sx={{ 
+                color: 'white',
+                bgcolor: '#00BCD4',
+                py: 3,
+                px: 4,
+                borderRadius: 2,
+                fontWeight: 500,
+                maxWidth: 800,
+                mx: 'auto'
+              }}
+            >
+              Смотреть весь каталог и получить подбор под ваш бюджет — ниже
             </Typography>
           </Box>
         </Container>
