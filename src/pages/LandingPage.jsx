@@ -12,6 +12,8 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 
+import bgWater from '../assets/bg_water.png';
+
 const properties = [
   {
     name: 'Apanema Villas',
@@ -293,8 +295,17 @@ const LandingPage = () => {
       </Box>
 
       {/* About Section */}
-      <Box sx={{ py: 8, bgcolor: 'background.paper' }}>
-        <Container maxWidth="lg">
+      {/*<Box sx={{ py: 8, bgcolor: 'background.paper' }}>*/}
+      <Box
+          sx={{
+            py: 8,
+            backgroundImage: `url(${bgWater})`, // путь к твоему фону
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+      >
+        <Container maxWidth="lg" sx={{py: 8}}>
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={4}>
               <Box
@@ -309,13 +320,13 @@ const LandingPage = () => {
               />
             </Grid>
             <Grid item xs={12} md={8}>
-              <Typography variant="h2" gutterBottom>
+              <Typography variant="h2" gutterBottom sx={{color: 'white'}}>
                 Кто я
               </Typography>
-              <Typography variant="h5" color="primary" gutterBottom>
+              <Typography variant="h5" color="primary" gutterBottom sx={{color: 'white'}}>
                 Инесса
               </Typography>
-              <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+              <Typography variant="subtitle1" color="text.secondary" gutterBottom sx={{color: 'white'}}>
                 Эксперт в инвестиционной недвижимости на Кипре<br />
                 Руководитель по развитию Giovani Homes
               </Typography>
@@ -328,18 +339,18 @@ const LandingPage = () => {
                 ].map((point, index) => (
                   <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                     <Box sx={{ color: 'primary.main', fontSize: 24 }}>✔</Box>
-                    <Typography variant="body1">{point}</Typography>
+                    <Typography variant="body1" sx={{color: 'white'}}>{point}</Typography>
                   </Box>
                 ))}
               </Box>
             </Grid>
           </Grid>
         </Container>
-      </Box>
+      {/*</Box>*/}
 
       {/* Pain Points and Solutions Section */}
-      <Box sx={{ py: 8, bgcolor: 'background.default' }}>
-        <Container maxWidth="lg">
+      {/*<Box sx={{ py: 8, bgcolor: 'background.default' }}>*/}
+        <Container maxWidth="lg" sx={{py: 8}}>
           <Grid container spacing={6}>
             <Grid item xs={12} md={6}>
               <Typography variant="h3" gutterBottom>
@@ -379,6 +390,7 @@ const LandingPage = () => {
             </Grid>
           </Grid>
         </Container>
+      {/*</Box>*/}
       </Box>
 
       {/* How I Work Section */}
