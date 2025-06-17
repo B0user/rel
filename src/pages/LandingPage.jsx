@@ -96,7 +96,7 @@ const LandingPage = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: 'url("https://placehold.co/1920x1080/09252E/FFFFFF?text=Hero+Image")',
+            backgroundImage: 'url("https://placehold.co/1920x1080/000000")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: 0,
@@ -108,7 +108,7 @@ const LandingPage = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'rgba(9, 37, 46, 0.45)',
+            background: 'rgba(0, 0, 0, 1)',
             zIndex: 1,
           },
         }}
@@ -286,28 +286,10 @@ const LandingPage = () => {
                 Скачать гид
               </Button>
             </Box>
-            {/* Flags row */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mt: 6 }}>
-              <Typography variant="body2" sx={{ color: 'white', opacity: 0.8, fontWeight: 500, fontSize: 15 }}>
-                Working in 7 markets
-              </Typography>
-              <Box sx={{ display: 'flex', gap: 1 }}>
-                {/* Emoji flags for now */}
-                {['🇦🇪','🇷🇺','🇬🇪','🇹🇷','🇨🇾','🇬🇧','🇩🇪'].map((flag, i) => (
-                  <Box key={i} sx={{ width: 32, height: 32, borderRadius: '50%', bgcolor: 'rgba(255,255,255,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, border: '2px solid rgba(255,255,255,0.4)' }}>
-                    {flag}
-                  </Box>
-                ))}
-              </Box>
-            </Box>
+            
           </Box>
         </Container>
-        {/* Bottom left indicator */}
-        <Box sx={{ position: 'absolute', left: { xs: 16, md: 48 }, bottom: 16, zIndex: 2 }}>
-          <Typography variant="body2" sx={{ color: 'white', opacity: 0.8, fontSize: 16, fontWeight: 400 }}>
-            01
-          </Typography>
-        </Box>
+        
       </Box>
 
       {/* About Section */}
