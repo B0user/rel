@@ -501,9 +501,9 @@ const LandingPage = () => {
       </Box>
 
       {/* What You Get Section */}
-      <Box sx={{ py: 8, bgcolor: 'background.default' }}>
+      <Box sx={{ py: 8, bgcolor: '#006064' }}>
         <Container maxWidth="lg">
-          <Typography variant="h2" align="center" gutterBottom>
+          <Typography variant="h2" align="center" gutterBottom sx={{ color: 'white' }}>
             Что вы получаете
           </Typography>
           
@@ -517,11 +517,22 @@ const LandingPage = () => {
               { icon: '🏖', text: 'Локация и стиль жизни — только топ-локации' }
             ].map((item, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Typography variant="h4" sx={{ lineHeight: 1 }}>
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: 2,
+                    bgcolor: 'rgba(255,255,255,0.1)',
+                    borderRadius: '50px',
+                    py: 2,
+                    px: 3,
+                    border: '1px solid rgba(255,255,255,0.2)'
+                  }}
+                >
+                  <Typography variant="h5" sx={{ lineHeight: 1 }}>
                     {item.icon}
                   </Typography>
-                  <Typography variant="body1">
+                  <Typography variant="body1" sx={{ color: 'white', fontWeight: 500 }}>
                     {item.text}
                   </Typography>
                 </Box>
