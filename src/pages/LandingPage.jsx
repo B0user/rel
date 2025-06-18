@@ -12,7 +12,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 
-import bgWater from '../assets/bg_water.png';
+import bgWater from '../assets/bg-water.png';
 
 const properties = [
   {
