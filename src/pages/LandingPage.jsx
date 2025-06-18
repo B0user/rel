@@ -219,7 +219,7 @@ const LandingPage = () => {
             <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
               Виллы, апартаменты и инвестиционные проекты в Протарасе и Айя-Напе. Без переплат и потерь времени. Все этапы беру на себя.
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column' }, gap: 2 }}>
               <Button
                 variant="outlined"
                 size="large"
