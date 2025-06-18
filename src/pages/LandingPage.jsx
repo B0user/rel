@@ -12,6 +12,8 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 
+import bgWater from '../assets/bg-water.png';
+
 const properties = [
   {
     name: 'Apanema Villas',
@@ -81,6 +83,103 @@ const LandingPage = () => {
   return (
     <Box>
       {/* Hero Section */}
+        <Box sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            zIndex: 11,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            px: { xs: 2, md: 6 },
+            // pt: { xs: 2.5, md: 3 },
+            pt: {xs: 1.5, md: 1.5},
+            pb: { xs: 1, md: 2 },
+            minHeight: 64,
+            // background: 'transparent',
+            backgroundColor: 'rgba(0,0,0,0.1)',
+            // backdropFilter: 'none',
+            backdropFilter: 'blur(4px)',
+        }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Typography variant="h4" sx={{ color: 'white', fontWeight: 700, letterSpacing: 1, fontFamily: 'Suisse, ui-sans-serif, system-ui, sans-serif' }}>
+                    Inessa
+                </Typography>
+            </Box>
+            <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 3 }}>
+                <Button
+                    href="https://wa.me/35799901101"
+                    target="_blank"
+                    startIcon={<WhatsAppIcon />}
+                    sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 2, py: 0.5, fontWeight: 500, fontSize: 15, minWidth: 0, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
+                >
+                    WhatsApp
+                </Button>
+                <Button
+                    href="tel:+35799901101"
+                    sx={{ color: 'white', fontWeight: 500, fontSize: 15, minWidth: 0 }}
+                >
+                    +357 999 011 01
+                </Button>
+            </Box>
+            {/* Burger menu for mobile */}
+            <MenuIcon sx={{ color: 'white', fontSize: 36, ml: 2, display: { xs: 'block', lg: 'none' }, cursor: 'pointer' }} onClick={handleMenuOpen} />
+        </Box>
+        {/* Mobile Fullscreen Menu Overlay */}
+        {mobileMenuOpen && (
+            <Box
+                sx={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    bgcolor: 'rgba(9, 37, 46, 0.97)',
+                    zIndex: 2000,
+                    display: { xs: 'flex', lg: 'none' },
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    p: 4,
+                }}
+            >
+                <CloseIcon onClick={handleMenuClose} sx={{ color: 'white', fontSize: 40, position: 'absolute', top: 24, right: 24, cursor: 'pointer' }} />
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, alignItems: 'center', mt: 6 }}>
+                    <Button
+                        href="https://wa.me/35799901101"
+                        target="_blank"
+                        startIcon={<WhatsAppIcon />}
+                        sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
+                    >
+                        WhatsApp
+                    </Button>
+                    <Button
+                        href="tel:+35799901101"
+                        sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
+                    >
+                        +357 999 011 01
+                    </Button>
+                    <Box sx={{ height: 24 }} />
+                    {[
+                        { id: 'about', label: 'About' },
+                        { id: 'properties', label: 'Properties' },
+                        { id: 'advantages', label: 'Advantages' },
+                        { id: 'reviews', label: 'Reviews' },
+                        { id: 'faq', label: 'FAQ' },
+                        { id: 'contact', label: 'Contact' },
+                    ].map((item) => (
+                        <Button
+                            key={item.id}
+                            onClick={() => handleNavClick(item.id)}
+                            sx={{ color: 'white', fontSize: 22, fontWeight: 500, background: 'none', boxShadow: 'none', minWidth: 220, justifyContent: 'flex-start', textTransform: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
+                        >
+                            {item.label}
+                        </Button>
+                    ))}
+                </Box>
+            </Box>
+        )}
       <Box
         sx={{
           position: 'relative',
@@ -113,101 +212,101 @@ const LandingPage = () => {
           },
         }}
       >
-        {/* Sticky Header Bar */}
-        <Box sx={{
-          position: 'sticky',
-          top: 0,
-          left: 0,
-          width: '100%',
-          zIndex: 11,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          px: { xs: 2, md: 6 },
-          pt: { xs: 2.5, md: 3 },
-          pb: { xs: 1, md: 2 },
-          minHeight: 64,
-          background: 'transparent',
-          backdropFilter: 'none',
-        }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant="h4" sx={{ color: 'white', fontWeight: 700, letterSpacing: 1, fontFamily: 'Suisse, ui-sans-serif, system-ui, sans-serif' }}>
-              Inessa
-            </Typography>
-          </Box>
-          <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 3 }}>
-            <Button
-              href="https://wa.me/35799901101"
-              target="_blank"
-              startIcon={<WhatsAppIcon />}
-              sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 2, py: 0.5, fontWeight: 500, fontSize: 15, minWidth: 0, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
-            >
-              WhatsApp
-            </Button>
-            <Button
-              href="tel:+35799901101"
-              sx={{ color: 'white', fontWeight: 500, fontSize: 15, minWidth: 0 }}
-            >
-              +357 999 011 01
-            </Button>
-          </Box>
-          {/* Burger menu for mobile */}
-          <MenuIcon sx={{ color: 'white', fontSize: 36, ml: 2, display: { xs: 'block', lg: 'none' }, cursor: 'pointer' }} onClick={handleMenuOpen} />
-        </Box>
-        {/* Mobile Fullscreen Menu Overlay */}
-        {mobileMenuOpen && (
-          <Box
-            sx={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100vw',
-              height: '100vh',
-              bgcolor: 'rgba(9, 37, 46, 0.97)',
-              zIndex: 2000,
-              display: { xs: 'flex', lg: 'none' },
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              p: 4,
-            }}
-          >
-            <CloseIcon onClick={handleMenuClose} sx={{ color: 'white', fontSize: 40, position: 'absolute', top: 24, right: 24, cursor: 'pointer' }} />
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, alignItems: 'center', mt: 6 }}>
-              <Button
-                href="https://wa.me/35799901101"
-                target="_blank"
-                startIcon={<WhatsAppIcon />}
-                sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
-              >
-                WhatsApp
-              </Button>
-              <Button
-                href="tel:+35799901101"
-                sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
-              >
-                +357 999 011 01
-              </Button>
-              <Box sx={{ height: 24 }} />
-              {[
-                { id: 'about', label: 'About' },
-                { id: 'properties', label: 'Properties' },
-                { id: 'advantages', label: 'Advantages' },
-                { id: 'reviews', label: 'Reviews' },
-                { id: 'faq', label: 'FAQ' },
-                { id: 'contact', label: 'Contact' },
-              ].map((item) => (
-                <Button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  sx={{ color: 'white', fontSize: 22, fontWeight: 500, background: 'none', boxShadow: 'none', minWidth: 220, justifyContent: 'flex-start', textTransform: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
-                >
-                  {item.label}
-                </Button>
-              ))}
-            </Box>
-          </Box>
-        )}
+         {/*Sticky Header Bar */}
+        {/*<Box sx={{*/}
+        {/*  position: 'sticky',*/}
+        {/*  top: 0,*/}
+        {/*  left: 0,*/}
+        {/*  width: '100%',*/}
+        {/*  zIndex: 11,*/}
+        {/*  display: 'flex',*/}
+        {/*  justifyContent: 'space-between',*/}
+        {/*  alignItems: 'center',*/}
+        {/*  px: { xs: 2, md: 6 },*/}
+        {/*  pt: { xs: 2.5, md: 3 },*/}
+        {/*  pb: { xs: 1, md: 2 },*/}
+        {/*  minHeight: 64,*/}
+        {/*  background: 'transparent',*/}
+        {/*  backdropFilter: 'none',*/}
+        {/*}}>*/}
+        {/*  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>*/}
+        {/*    <Typography variant="h4" sx={{ color: 'white', fontWeight: 700, letterSpacing: 1, fontFamily: 'Suisse, ui-sans-serif, system-ui, sans-serif' }}>*/}
+        {/*      Inessa*/}
+        {/*    </Typography>*/}
+        {/*  </Box>*/}
+        {/*  <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 3 }}>*/}
+        {/*    <Button*/}
+        {/*      href="https://wa.me/35799901101"*/}
+        {/*      target="_blank"*/}
+        {/*      startIcon={<WhatsAppIcon />}*/}
+        {/*      sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 2, py: 0.5, fontWeight: 500, fontSize: 15, minWidth: 0, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}*/}
+        {/*    >*/}
+        {/*      WhatsApp*/}
+        {/*    </Button>*/}
+        {/*    <Button*/}
+        {/*      href="tel:+35799901101"*/}
+        {/*      sx={{ color: 'white', fontWeight: 500, fontSize: 15, minWidth: 0 }}*/}
+        {/*    >*/}
+        {/*      +357 999 011 01*/}
+        {/*    </Button>*/}
+        {/*  </Box>*/}
+        {/*  /!* Burger menu for mobile *!/*/}
+        {/*  <MenuIcon sx={{ color: 'white', fontSize: 36, ml: 2, display: { xs: 'block', lg: 'none' }, cursor: 'pointer' }} onClick={handleMenuOpen} />*/}
+        {/*</Box>*/}
+        {/*/!* Mobile Fullscreen Menu Overlay *!/*/}
+        {/*{mobileMenuOpen && (*/}
+        {/*  <Box*/}
+        {/*    sx={{*/}
+        {/*      position: 'fixed',*/}
+        {/*      top: 0,*/}
+        {/*      left: 0,*/}
+        {/*      width: '100vw',*/}
+        {/*      height: '100vh',*/}
+        {/*      bgcolor: 'rgba(9, 37, 46, 0.97)',*/}
+        {/*      zIndex: 2000,*/}
+        {/*      display: { xs: 'flex', lg: 'none' },*/}
+        {/*      flexDirection: 'column',*/}
+        {/*      alignItems: 'center',*/}
+        {/*      justifyContent: 'center',*/}
+        {/*      p: 4,*/}
+        {/*    }}*/}
+        {/*  >*/}
+        {/*    <CloseIcon onClick={handleMenuClose} sx={{ color: 'white', fontSize: 40, position: 'absolute', top: 24, right: 24, cursor: 'pointer' }} />*/}
+        {/*    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, alignItems: 'center', mt: 6 }}>*/}
+        {/*      <Button*/}
+        {/*        href="https://wa.me/35799901101"*/}
+        {/*        target="_blank"*/}
+        {/*        startIcon={<WhatsAppIcon />}*/}
+        {/*        sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}*/}
+        {/*      >*/}
+        {/*        WhatsApp*/}
+        {/*      </Button>*/}
+        {/*      <Button*/}
+        {/*        href="tel:+35799901101"*/}
+        {/*        sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}*/}
+        {/*      >*/}
+        {/*        +357 999 011 01*/}
+        {/*      </Button>*/}
+        {/*      <Box sx={{ height: 24 }} />*/}
+        {/*      {[*/}
+        {/*        { id: 'about', label: 'About' },*/}
+        {/*        { id: 'properties', label: 'Properties' },*/}
+        {/*        { id: 'advantages', label: 'Advantages' },*/}
+        {/*        { id: 'reviews', label: 'Reviews' },*/}
+        {/*        { id: 'faq', label: 'FAQ' },*/}
+        {/*        { id: 'contact', label: 'Contact' },*/}
+        {/*      ].map((item) => (*/}
+        {/*        <Button*/}
+        {/*          key={item.id}*/}
+        {/*          onClick={() => handleNavClick(item.id)}*/}
+        {/*          sx={{ color: 'white', fontSize: 22, fontWeight: 500, background: 'none', boxShadow: 'none', minWidth: 220, justifyContent: 'flex-start', textTransform: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}*/}
+        {/*        >*/}
+        {/*          {item.label}*/}
+        {/*        </Button>*/}
+        {/*      ))}*/}
+        {/*    </Box>*/}
+        {/*  </Box>*/}
+        {/*)}*/}
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', alignItems: 'center', px: { xs: 2, md: 6 } }}>
           <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 8, md: 0 } }}>
             <Typography variant="overline" sx={{ mb: 2, opacity: 0.85, fontWeight: 600, fontSize: 15, letterSpacing: 1.2, textTransform: 'none' }}>
@@ -293,8 +392,17 @@ const LandingPage = () => {
       </Box>
 
       {/* About Section */}
-      <Box sx={{ py: 8, bgcolor: 'background.paper' }}>
-        <Container maxWidth="lg">
+      {/*<Box sx={{ py: 8, bgcolor: 'background.paper' }}>*/}
+      <Box
+          sx={{
+            py: 8,
+            backgroundImage: `url(${bgWater})`, // путь к твоему фону
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+      >
+        <Container maxWidth="lg" sx={{py: 8}}>
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={4}>
               <Box
@@ -309,13 +417,13 @@ const LandingPage = () => {
               />
             </Grid>
             <Grid item xs={12} md={8}>
-              <Typography variant="h2" gutterBottom>
+              <Typography variant="h2" gutterBottom sx={{color: 'white'}}>
                 Кто я
               </Typography>
-              <Typography variant="h5" color="primary" gutterBottom>
+              <Typography variant="h5" color="primary" gutterBottom sx={{color: 'white'}}>
                 Инесса
               </Typography>
-              <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+              <Typography variant="subtitle1" color="text.secondary" gutterBottom sx={{color: 'white'}}>
                 Эксперт в инвестиционной недвижимости на Кипре<br />
                 Руководитель по развитию Giovani Homes
               </Typography>
@@ -328,18 +436,18 @@ const LandingPage = () => {
                 ].map((point, index) => (
                   <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                     <Box sx={{ color: 'primary.main', fontSize: 24 }}>✔</Box>
-                    <Typography variant="body1">{point}</Typography>
+                    <Typography variant="body1" sx={{color: 'white'}}>{point}</Typography>
                   </Box>
                 ))}
               </Box>
             </Grid>
           </Grid>
         </Container>
-      </Box>
+      {/*</Box>*/}
 
       {/* Pain Points and Solutions Section */}
-      <Box sx={{ py: 8, bgcolor: 'background.default' }}>
-        <Container maxWidth="lg">
+      {/*<Box sx={{ py: 8, bgcolor: 'background.default' }}>*/}
+        <Container maxWidth="lg" sx={{py: 8}}>
           <Grid container spacing={6}>
             <Grid item xs={12} md={6}>
               <Typography variant="h3" gutterBottom>
@@ -379,6 +487,7 @@ const LandingPage = () => {
             </Grid>
           </Grid>
         </Container>
+      {/*</Box>*/}
       </Box>
 
       {/* How I Work Section */}
