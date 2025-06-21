@@ -189,7 +189,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Hero Section ===== */}
-        <ParallaxLayer offset={0} speed={1} factor={3} style={{
+        <ParallaxLayer offset={0} speed={1.3} factor={3} style={{
           backgroundImage: `url(${bgWater})`,
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh',  alignItems: 'center', zIndex: 2 }}>
           <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 } }}>
@@ -362,7 +362,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== How I Work Section ===== */}
-        <ParallaxLayer offset={3.5} speed={1} style={{
+        <ParallaxLayer offset={2} speed={0} style={{
           backgroundImage: 'url("https://placehold.co/1920x800/00bcd4/ffffff?text=How+I+Work+BG")',
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
         <Container maxWidth="lg">
@@ -430,7 +430,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== What You Get Section ===== */}
-        <ParallaxLayer offset={3.5} speed={1} style={{
+        <ParallaxLayer offset={3} speed={0} style={{
           backgroundImage: 'url("https://placehold.co/1920x800/006064/ffffff?text=What+You+Get+BG")',
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
           <Container maxWidth="lg">
@@ -474,7 +474,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Properties Section ===== */}
-        <ParallaxLayer offset={4.5} speed={1} style={{
+        <ParallaxLayer offset={4} speed={0} style={{
           backgroundImage: 'url("https://placehold.co/1920x800/263238/ffffff?text=Properties+BG")',
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
           <Container maxWidth="lg">
@@ -664,7 +664,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== CTA Section ===== */}
-        <ParallaxLayer offset={4.5} speed={1} style={{
+        <ParallaxLayer offset={5} speed={0} style={{
           backgroundImage: 'url("https://placehold.co/1920x800/00BCD4/ffffff?text=CTA+BG")',
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
           <Box 
@@ -720,7 +720,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Testimonials Section ===== */}
-        <ParallaxLayer offset={5.5} speed={1} style={{
+        <ParallaxLayer offset={6} speed={0} style={{
           backgroundImage: 'url("https://placehold.co/1920x800/607d8b/ffffff?text=Testimonials+BG")',
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
           <Container maxWidth="lg">
@@ -754,7 +754,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Contact Form Section ===== */}
-        <ParallaxLayer offset={6.5} speed={1} style={{
+        <ParallaxLayer offset={7} speed={0} style={{
           backgroundImage: 'url("https://placehold.co/1920x800/37474f/ffffff?text=Contact+Form+BG")',
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
         <Container maxWidth="md">
@@ -849,7 +849,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Footer ===== */}
-        <ParallaxLayer offset={7.5} speed={1} style={{
+        <ParallaxLayer offset={8} speed={0} style={{
           backgroundImage: 'url("https://placehold.co/1920x400/222/fff?text=Footer+BG")',
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '40vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
       <Box sx={{ py: 4, bgcolor: 'primary.main', color: 'white' }}>
