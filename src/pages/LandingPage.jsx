@@ -13,7 +13,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
-import bgWater from '../assets/water.png';
+import bgWater from '../assets/water_copy1.png';
 import bgSand from '../assets/sand.png';
 
 const properties = [
@@ -189,9 +189,9 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Hero Section ===== */}
-        <ParallaxLayer offset={0} speed={1.3} factor={3} style={{
+        <ParallaxLayer offset={0} speed={1} factor={2.5} style={{
           backgroundImage: `url(${bgWater})`,
-          backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh',  alignItems: 'center', zIndex: 2 }}>
+          backgroundSize: 'cover', backgroundPosition: 'center', alignItems: 'center', zIndex: 2 }}>
           <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 } }}>
             <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 8, md: 5 } }}>
               <Typography variant="overline" sx={{ mb: 2, opacity: 0.85, fontWeight: 600, fontSize: 15, letterSpacing: 1.2, textTransform: 'none' }}>
@@ -316,7 +316,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Pain Points and Solutions Section ===== */}
-        <ParallaxLayer offset={1} speed={0} factor={1.5} style={{
+        <ParallaxLayer offset={1} speed={0} factor={1} style={{
           backgroundImage: `url(${bgSand})`,
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
           <Container maxWidth="lg" sx={{py: 8}}>
@@ -363,7 +363,7 @@ const LandingPage = () => {
 
         {/* ===== How I Work Section ===== */}
         <ParallaxLayer offset={2} speed={0} style={{
-          backgroundImage: 'url("https://placehold.co/1920x800/00bcd4/ffffff?text=How+I+Work+BG")',
+          backgroundImage: 'url("https://placehold.co/1920x800/ffffff")',
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
         <Container maxWidth="lg">
           <Typography variant="h2" align="center" gutterBottom>
