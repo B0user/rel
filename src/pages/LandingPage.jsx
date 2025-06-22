@@ -195,12 +195,12 @@ const LandingPage = () => {
           backgroundImage: `url(${bgWater})`,
           backgroundSize: 'cover', backgroundPosition: 'center', alignItems: 'center', zIndex: 5 }}>
           <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 } }}>
-            <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 8, md: 5 } }}>
+            <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 8, md: 5 }, mt: 6}}>
               <Typography variant="overline" sx={{ mb: 2, opacity: 0.85, fontWeight: 600, fontSize: 15, letterSpacing: 1.2, textTransform: 'none' }}>
                 На основе 100+ собственных сделок
               </Typography>
               <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '2.1rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
-                  Эксклюзивная недвижимость на Кипре — под ваш запрос и с полным сопровождением
+                  Эксклюзивная недвижимостьь на Кипре — под ваш запрос и с полным сопровождением
               </Typography>
               <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
                   Виллы, апартаменты и инвестиционные проекты в Протарасе и Айя-Напе. Без переплат и потерь времени. Все этапы беру на себя.
@@ -443,7 +443,7 @@ const LandingPage = () => {
         <ParallaxLayer offset={3} speed={0} factor={0.5} style={{
           backgroundColor: '#006064', zIndex: 1 }}>
           <Container maxWidth="lg">
-            <Typography variant="h2" align="center" gutterBottom sx={{ color: 'white' }}>
+            <Typography variant="h2" align="center" gutterBottom sx={{ color: 'white', mt: 6}}>
               Что вы получаете
             </Typography>
             
@@ -483,10 +483,10 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Properties Section ===== */}
-        <ParallaxLayer offset={3.5} speed={0} factor={1.5} style={{
+        <ParallaxLayer offset={3.5} speed={0} factor={2.5} style={{
           backgroundColor: '#fff', zIndex: 1 }}>
           <Container maxWidth="lg">
-            <Typography variant="h2" align="center" gutterBottom>
+            <Typography variant="h2" align="center" gutterBottom sx={{mt: 6}}>
               Топ-объекты от застройщика
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
@@ -494,7 +494,13 @@ const LandingPage = () => {
             </Typography>
             
             {/* Desktop Grid View */}
-            <Grid container spacing={4} sx={{ mt: 4, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
+            <Grid container spacing={4} sx={{
+                mt: 4,
+                display: 'none',
+                [theme.breakpoints.up('md')]: {
+                    display: 'flex',
+                }
+                , justifyContent: 'center' }}>
               {[
                 {
                   name: 'Apanema Villas',
