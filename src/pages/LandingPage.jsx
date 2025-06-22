@@ -13,8 +13,8 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
-import bgWater from '../assets/water_copy1.png';
-import bgSand from '../assets/sand.png';
+import bgWater from '../assets/water_copy1.webp';
+import bgSand from '../assets/sand.webp';
 
 const properties = [
   {
@@ -84,7 +84,7 @@ const LandingPage = () => {
 
   return (
     <Box sx={{  }}>
-      <Parallax pages={9} style={{ top: 0, left: 0 }}>
+      <Parallax pages={8} style={{ top: 0, left: 0 }}>
         {/* ===== Navbar Section ===== */}
         <ParallaxLayer offset={0} speed={0.1} style={{ zIndex: 20, pointerEvents: 'auto' }}>
           <Box sx={{ position: 'fixed', width: '100%', zIndex: 20 }}>
@@ -188,10 +188,12 @@ const LandingPage = () => {
           </Box>
         </ParallaxLayer>
 
+        
+
         {/* ===== Hero Section ===== */}
-        <ParallaxLayer offset={0} speed={1} factor={2.5} style={{
+        <ParallaxLayer offset={0} speed={1.2} factor={2.5} style={{
           backgroundImage: `url(${bgWater})`,
-          backgroundSize: 'cover', backgroundPosition: 'center', alignItems: 'center', zIndex: 2 }}>
+          backgroundSize: 'cover', backgroundPosition: 'center', alignItems: 'center', zIndex: 5 }}>
           <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 } }}>
             <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 8, md: 5 } }}>
               <Typography variant="overline" sx={{ mb: 2, opacity: 0.85, fontWeight: 600, fontSize: 15, letterSpacing: 1.2, textTransform: 'none' }}>
@@ -315,6 +317,14 @@ const LandingPage = () => {
           </Container>
         </ParallaxLayer>
 
+        
+
+        {/* ===== underlayer Section ===== */}
+        <ParallaxLayer offset={0} speed={1} factor={2.5} style={{
+          backgroundImage: `url(${bgWater})`,
+          backgroundSize: 'cover', backgroundPosition: 'center', alignItems: 'center', zIndex: 2 }}>
+        </ParallaxLayer>
+
         {/* ===== Pain Points and Solutions Section ===== */}
         <ParallaxLayer offset={1} speed={0} factor={1} style={{
           backgroundImage: `url(${bgSand})`,
@@ -363,8 +373,8 @@ const LandingPage = () => {
 
         {/* ===== How I Work Section ===== */}
         <ParallaxLayer offset={2} speed={0} style={{
-          backgroundImage: 'url("https://placehold.co/1920x800/ffffff")',
-          backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
+          backgroundColor: '#fff',
+          minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
         <Container maxWidth="lg">
           <Typography variant="h2" align="center" gutterBottom>
               Как я работаю
@@ -430,9 +440,8 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== What You Get Section ===== */}
-        <ParallaxLayer offset={3} speed={0} style={{
-          backgroundImage: 'url("https://placehold.co/1920x800/006064/ffffff?text=What+You+Get+BG")',
-          backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
+        <ParallaxLayer offset={3} speed={0} factor={0.5} style={{
+          backgroundColor: '#006064', zIndex: 1 }}>
           <Container maxWidth="lg">
             <Typography variant="h2" align="center" gutterBottom sx={{ color: 'white' }}>
               Что вы получаете
@@ -474,9 +483,8 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Properties Section ===== */}
-        <ParallaxLayer offset={4} speed={0} style={{
-          backgroundImage: 'url("https://placehold.co/1920x800/263238/ffffff?text=Properties+BG")',
-          backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
+        <ParallaxLayer offset={3.5} speed={0} factor={1.5} style={{
+          backgroundColor: '#fff', zIndex: 1 }}>
           <Container maxWidth="lg">
             <Typography variant="h2" align="center" gutterBottom>
               Топ-объекты от застройщика
@@ -664,9 +672,8 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== CTA Section ===== */}
-        <ParallaxLayer offset={5} speed={0} style={{
-          backgroundImage: 'url("https://placehold.co/1920x800/00BCD4/ffffff?text=CTA+BG")',
-          backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
+        <ParallaxLayer offset={5} speed={0} factor={0.3}  style={{
+          backgroundColor: '#00BCD4', zIndex: 1 }}>
           <Box 
             sx={{ 
               py: 6,
@@ -720,9 +727,8 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Testimonials Section ===== */}
-        <ParallaxLayer offset={6} speed={0} style={{
-          backgroundImage: 'url("https://placehold.co/1920x800/607d8b/ffffff?text=Testimonials+BG")',
-          backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
+        <ParallaxLayer offset={5.4} speed={0} factor={0.6} style={{
+          backgroundColor: '#f5f7fa', zIndex: 1 }}>
           <Container maxWidth="lg">
             <Typography variant="h2" align="center" gutterBottom>
               Отзывы клиентов
@@ -754,9 +760,8 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Contact Form Section ===== */}
-        <ParallaxLayer offset={7} speed={0} style={{
-          backgroundImage: 'url("https://placehold.co/1920x800/37474f/ffffff?text=Contact+Form+BG")',
-          backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
+        <ParallaxLayer offset={6} speed={0} style={{
+          backgroundColor: '#fff', zIndex: 1 }}>
         <Container maxWidth="md">
           <Typography variant="h2" align="center" gutterBottom>
               Получить персональный подбор
@@ -849,9 +854,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Footer ===== */}
-        <ParallaxLayer offset={8} speed={0} style={{
-          backgroundImage: 'url("https://placehold.co/1920x400/222/fff?text=Footer+BG")',
-          backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '40vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
+        <ParallaxLayer offset={7} speed={0} factor={0.3} style={{zIndex: 1 }}>
       <Box sx={{ py: 4, bgcolor: 'primary.main', color: 'white' }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
