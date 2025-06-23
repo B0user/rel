@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Container, Typography, Button, Grid, Card, CardContent, CardMedia, TextField, MenuItem, IconButton, Paper, FormControl, InputLabel, Select } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
@@ -15,6 +15,9 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
 import bgWater from '../assets/water_copy1.webp';
 import bgSand from '../assets/sand.webp';
+
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const properties = [
   {
@@ -61,9 +64,32 @@ const properties = [
   }
 ];
 
+function useWindowWidth() {
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return width;
+}
+
+
 const LandingPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const theme = useTheme();
+  const width = useWindowWidth();
+
+  const isXs = useMediaQuery(theme.breakpoints.only('xs'));
+  const isSm = useMediaQuery(theme.breakpoints.only('sm'));
+  const isMd = useMediaQuery(theme.breakpoints.only('md'));
+  const isLg = useMediaQuery(theme.breakpoints.only('lg'));
+  const isXl = useMediaQuery(theme.breakpoints.only('xl'));
+
 
   const handleMenuOpen = () => setMobileMenuOpen(true);
   const handleMenuClose = () => setMobileMenuOpen(false);
@@ -83,109 +109,110 @@ const LandingPage = () => {
   });
 
   return (
-    <Box sx={{  }}>
-      <Parallax pages={8} style={{ top: 0, left: 0 }}>
-        {/* ===== Navbar Section ===== */}
-        <ParallaxLayer offset={0} speed={0.1} style={{ zIndex: 20, pointerEvents: 'auto' }}>
-          <Box sx={{ position: 'fixed', width: '100%', zIndex: 20 }}>
-        <Box sx={{
+    <Box sx={{}}>
+        <Box sx={{ position: 'fixed', width: '100%', zIndex: 20 }}>
+            <Box sx={{
                 position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          zIndex: 11,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          px: { xs: 2, md: 6 },
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 11,
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                px: { xs: 2, md: 6 },
                 // pt: { xs: 2.5, md: 3 },
                 pt: {xs: 1.5, md: 1.5},
-          pb: { xs: 1, md: 2 },
-          minHeight: 64,
+                pb: { xs: 1, md: 2 },
+                minHeight: 64,
                 // background: 'transparent',
                 backgroundColor: 'rgba(0,0,0,0.1)',
                 // backdropFilter: 'none',
                 backdropFilter: 'blur(4px)',
-        }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant="h4" sx={{ color: 'white', fontWeight: 700, letterSpacing: 1, fontFamily: 'Suisse, ui-sans-serif, system-ui, sans-serif' }}>
-              Inessa
-            </Typography>
-          </Box>
-          <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 3 }}>
-            <Button
-              href="https://wa.me/35799901101"
-              target="_blank"
-              startIcon={<WhatsAppIcon />}
-              sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 2, py: 0.5, fontWeight: 500, fontSize: 15, minWidth: 0, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
-            >
-              WhatsApp
-            </Button>
-            <Button
-              href="tel:+35799901101"
-              sx={{ color: 'white', fontWeight: 500, fontSize: 15, minWidth: 0 }}
-            >
-              +357 999 011 01
-            </Button>
-          </Box>
-          {/* Burger menu for mobile */}
-          <MenuIcon sx={{ color: 'white', fontSize: 36, ml: 2, display: { xs: 'block', lg: 'none' }, cursor: 'pointer' }} onClick={handleMenuOpen} />
-        </Box>
-        {/* Mobile Fullscreen Menu Overlay */}
-        {mobileMenuOpen && (
-          <Box
-            sx={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100vw',
-              height: '100vh',
-              bgcolor: 'rgba(9, 37, 46, 0.97)',
-              zIndex: 2000,
-              display: { xs: 'flex', lg: 'none' },
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              p: 4,
-            }}
-          >
-            <CloseIcon onClick={handleMenuClose} sx={{ color: 'white', fontSize: 40, position: 'absolute', top: 24, right: 24, cursor: 'pointer' }} />
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, alignItems: 'center', mt: 6 }}>
-              <Button
-                href="https://wa.me/35799901101"
-                target="_blank"
-                startIcon={<WhatsAppIcon />}
-                sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
-              >
-                WhatsApp
-              </Button>
-              <Button
-                href="tel:+35799901101"
-                sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
-              >
-                +357 999 011 01
-              </Button>
-              <Box sx={{ height: 24 }} />
-              {[
-                { id: 'about', label: 'About' },
-                { id: 'properties', label: 'Properties' },
-                { id: 'advantages', label: 'Advantages' },
-                { id: 'reviews', label: 'Reviews' },
-                { id: 'faq', label: 'FAQ' },
-                { id: 'contact', label: 'Contact' },
-              ].map((item) => (
-                <Button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  sx={{ color: 'white', fontSize: 22, fontWeight: 500, background: 'none', boxShadow: 'none', minWidth: 220, justifyContent: 'flex-start', textTransform: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
-                >
-                  {item.label}
-                </Button>
-              ))}
+            }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                    <Typography variant="h4" sx={{ color: 'white', fontWeight: 700, letterSpacing: 1, fontFamily: 'Suisse, ui-sans-serif, system-ui, sans-serif' }}>
+                        Inessa
+                    </Typography>
+                </Box>
+                <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 3 }}>
+                    <Button
+                        href="https://wa.me/35799901101"
+                        target="_blank"
+                        startIcon={<WhatsAppIcon />}
+                        sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 2, py: 0.5, fontWeight: 500, fontSize: 15, minWidth: 0, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
+                    >
+                        WhatsApp
+                    </Button>
+                    <Button
+                        href="tel:+35799901101"
+                        sx={{ color: 'white', fontWeight: 500, fontSize: 15, minWidth: 0 }}
+                    >
+                        +357 999 011 01
+                    </Button>
+                </Box>
+                {/* Burger menu for mobile */}
+                <MenuIcon sx={{ color: 'white', fontSize: 36, ml: 2, display: { xs: 'block', lg: 'none' }, cursor: 'pointer' }} onClick={handleMenuOpen} />
             </Box>
-          </Box>
-        )}
-          </Box>
+            {/* Mobile Fullscreen Menu Overlay */}
+            {mobileMenuOpen && (
+                <Box
+                    sx={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        width: '100vw',
+                        height: '100vh',
+                        bgcolor: 'rgba(9, 37, 46, 0.97)',
+                        zIndex: 2000,
+                        display: { xs: 'flex', lg: 'none' },
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        p: 4,
+                    }}
+                >
+                    <CloseIcon onClick={handleMenuClose} sx={{ color: 'white', fontSize: 40, position: 'absolute', top: 24, right: 24, cursor: 'pointer' }} />
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, alignItems: 'center', mt: 6 }}>
+                        <Button
+                            href="https://wa.me/35799901101"
+                            target="_blank"
+                            startIcon={<WhatsAppIcon />}
+                            sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
+                        >
+                            WhatsApp
+                        </Button>
+                        <Button
+                            href="tel:+35799901101"
+                            sx={{ color: 'white', borderColor: 'white', borderWidth: 1, borderStyle: 'solid', borderRadius: 2, px: 4, py: 1.5, fontWeight: 600, fontSize: 18, minWidth: 220, '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
+                        >
+                            +357 999 011 01
+                        </Button>
+                        <Box sx={{ height: 24 }} />
+                        {[
+                            { id: 'about', label: 'About' },
+                            { id: 'properties', label: 'Properties' },
+                            { id: 'advantages', label: 'Advantages' },
+                            { id: 'reviews', label: 'Reviews' },
+                            { id: 'faq', label: 'FAQ' },
+                            { id: 'contact', label: 'Contact' },
+                        ].map((item) => (
+                            <Button
+                                key={item.id}
+                                onClick={() => handleNavClick(item.id)}
+                                sx={{ color: 'white', fontSize: 22, fontWeight: 500, background: 'none', boxShadow: 'none', minWidth: 220, justifyContent: 'flex-start', textTransform: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.08)' } }}
+                            >
+                                {item.label}
+                            </Button>
+                        ))}
+                    </Box>
+                </Box>
+            )}
+        </Box>
+      <Parallax pages={8} style={{ top: 0, left: 0 }}>
+        {/* ===== Navbar Section ===== */}
+        <ParallaxLayer offset={0} speed={0.1} style={{ zIndex: 20, pointerEvents: 'auto' }}>
+
         </ParallaxLayer>
 
         
@@ -274,8 +301,8 @@ const LandingPage = () => {
               </Box>
             </Box>
           </Container>
-          <Container maxWidth="lg" sx={{py: 8}}>
-          <Grid container spacing={4} alignItems="center">
+          <Container maxWidth="lg" sx={{py: 8, mt: 14}}>
+          <Grid container spacing={4} alignItems="center" sx={{backgroundColor: 'rgba(255, 255, 255, 0.4)', p: 3, borderRadius: '14px'}}>
             <Grid item xs={12} md={4}>
               <Box
                 component="img"
@@ -289,13 +316,13 @@ const LandingPage = () => {
               />
             </Grid>
             <Grid item xs={12} md={8}>
-                <Typography variant="h2" gutterBottom sx={{color: 'white'}}>
+                <Typography variant="h2" gutterBottom >
                   Кто я
               </Typography>
-                <Typography variant="h5" color="primary" gutterBottom sx={{color: 'white'}}>
+                <Typography variant="h5" color="primary" gutterBottom >
                   Инесса
               </Typography>
-                <Typography variant="subtitle1" color="text.secondary" gutterBottom sx={{color: 'white'}}>
+                <Typography variant="subtitle1" color="text.secondary" gutterBottom >
                   Эксперт в инвестиционной недвижимости на Кипре<br />
                   Руководитель по развитию Giovani Homes
               </Typography>
@@ -308,7 +335,7 @@ const LandingPage = () => {
                   ].map((point, index) => (
                     <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                       <Box sx={{ color: 'primary.main', fontSize: 24 }}>✔</Box>
-                      <Typography variant="body1" sx={{color: 'white'}}>{point}</Typography>
+                      <Typography variant="body1">{point}</Typography>
                     </Box>
                   ))}
                 </Box>
@@ -321,8 +348,12 @@ const LandingPage = () => {
 
         {/* ===== underlayer Section ===== */}
         <ParallaxLayer offset={0} speed={1} factor={2.5} style={{
-          backgroundImage: `url(${bgWater})`,
-          backgroundSize: 'cover', backgroundPosition: 'center', alignItems: 'center', zIndex: 2 }}>
+            backgroundImage: `url(${bgWater})`,
+            backgroundSize: 'cover',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+            maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+            zIndex: 2
+        }}>
         </ParallaxLayer>
 
         {/* ===== Pain Points and Solutions Section ===== */}
@@ -330,7 +361,7 @@ const LandingPage = () => {
           backgroundImage: `url(${bgSand})`,
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
           <Container maxWidth="lg" sx={{py: 8}}>
-            <Grid container spacing={6}>
+            <Grid container spacing={6} sx={{backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: '14px', p: 3}}>
               <Grid item xs={12} md={6}>
                 <Typography variant="h3" gutterBottom>
                   Типовое состояние клиента
@@ -483,10 +514,24 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Properties Section ===== */}
-        <ParallaxLayer offset={3.5} speed={0} factor={2.5} style={{
+        <ParallaxLayer offset={3.5} speed={0} factor={2} style={{
           backgroundColor: '#fff', zIndex: 1 }}>
           <Container maxWidth="lg">
-            <Typography variant="h2" align="center" gutterBottom sx={{mt: 6}}>
+              {/*<Typography variant="body1">Window width: {width}px</Typography>*/}
+              {/*<Typography variant="body2">*/}
+              {/*    Breakpoint: {isXs && 'xs'}*/}
+              {/*    {isSm && 'sm'}*/}
+              {/*    {isMd && 'md'}*/}
+              {/*    {isLg && 'lg'}*/}
+              {/*    {isXl && 'xl'}*/}
+              {/*</Typography>*/}
+
+              {/*{(isMd || isLg || isXl) && (*/}
+              {/*    <Grid container spacing={4} sx={{ mt: 4, justifyContent: 'center' }}>*/}
+              {/*        <Typography variant="h6">Этот блок виден на md и выше</Typography>*/}
+              {/*    </Grid>*/}
+              {/*)}*/}
+            <Typography variant="h2" align="center" gutterBottom >
               Топ-объекты от застройщика
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
@@ -494,13 +539,14 @@ const LandingPage = () => {
             </Typography>
             
             {/* Desktop Grid View */}
-            <Grid container spacing={4} sx={{
-                mt: 4,
-                display: 'none',
-                [theme.breakpoints.up('md')]: {
-                    display: 'flex',
-                }
-                , justifyContent: 'center' }}>
+              <Grid container spacing={4}
+                    sx={{
+                        mt: 4,
+                        display: { xs: 'none', md: 'grid' },
+                        gridTemplateColumns: { md: 'repeat(3, 1fr)' }, // 👈 3 колонки
+                        gap: 4, // заменяет spacing, если не хочешь использовать spacing от MUI
+                        justifyContent: 'center',
+                    }}>
               {[
                 {
                   name: 'Apanema Villas',
