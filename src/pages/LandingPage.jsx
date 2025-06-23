@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Box, Container, Typography, Button, Grid, Card, CardContent, CardMedia, TextField, MenuItem, IconButton, Paper, FormControl, InputLabel, Select } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
@@ -12,8 +12,10 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import { motion } from 'framer-motion';
 
-import bgWater from '../assets/water_copy1.webp';
+import bgWater from '../assets/water_copy2.webp';
+import bgWater2 from '../assets/water_copy3.webp';
 import bgSand from '../assets/sand.webp';
 
 import { useTheme } from '@mui/material/styles';
@@ -89,7 +91,6 @@ const LandingPage = () => {
   const isMd = useMediaQuery(theme.breakpoints.only('md'));
   const isLg = useMediaQuery(theme.breakpoints.only('lg'));
   const isXl = useMediaQuery(theme.breakpoints.only('xl'));
-
 
   const handleMenuOpen = () => setMobileMenuOpen(true);
   const handleMenuClose = () => setMobileMenuOpen(false);
@@ -209,16 +210,11 @@ const LandingPage = () => {
                 </Box>
             )}
         </Box>
-      <Parallax pages={8} style={{ top: 0, left: 0 }}>
-        {/* ===== Navbar Section ===== */}
-        <ParallaxLayer offset={0} speed={0.1} style={{ zIndex: 20, pointerEvents: 'auto' }}>
-
-        </ParallaxLayer>
-
+      <Parallax pages={7.2} style={{ top: 0, left: 0 }}>
         
 
         {/* ===== Hero Section ===== */}
-        <ParallaxLayer offset={0} speed={1.2} factor={2.5} style={{
+        <ParallaxLayer offset={0} speed={1.4} factor={2.5} style={{
           backgroundImage: `url(${bgWater})`,
           backgroundSize: 'cover', backgroundPosition: 'center', alignItems: 'center', zIndex: 5 }}>
           <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 } }}>
@@ -227,7 +223,7 @@ const LandingPage = () => {
                 На основе 100+ собственных сделок
               </Typography>
               <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '2.1rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
-                  Эксклюзивная недвижимостьь на Кипре — под ваш запрос и с полным сопровождением
+                  Эксклюзивная недвижимость на Кипре — под ваш запрос и с полным сопровождением
               </Typography>
               <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
                   Виллы, апартаменты и инвестиционные проекты в Протарасе и Айя-Напе. Без переплат и потерь времени. Все этапы беру на себя.
@@ -302,7 +298,7 @@ const LandingPage = () => {
             </Box>
           </Container>
           <Container maxWidth="lg" sx={{py: 8, mt: 14}}>
-          <Grid container spacing={4} alignItems="center" sx={{backgroundColor: 'rgba(255, 255, 255, 0.4)', p: 3, borderRadius: '14px'}}>
+          <Grid container spacing={4} alignItems="center" sx={{backgroundColor: 'rgba(255, 255, 255, 0.7)', p: 3, borderRadius: '14px'}}>
             <Grid item xs={12} md={4}>
               <Box
                 component="img"
@@ -347,17 +343,18 @@ const LandingPage = () => {
         
 
         {/* ===== underlayer Section ===== */}
-        <ParallaxLayer offset={0} speed={1} factor={2.5} style={{
-            backgroundImage: `url(${bgWater})`,
+        <ParallaxLayer offset={0.5} speed={1.8} factor={2.5} style={{
+            backgroundImage: `url(${bgWater2})`,
             backgroundSize: 'cover',
-            WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
-            maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+            backgroundPosition: 'center',
+            // WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
+            // maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
             zIndex: 2
         }}>
         </ParallaxLayer>
 
         {/* ===== Pain Points and Solutions Section ===== */}
-        <ParallaxLayer offset={1} speed={0} factor={1} style={{
+        <ParallaxLayer offset={0.9} speed={0} factor={1.1} style={{
           backgroundImage: `url(${bgSand})`,
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
           <Container maxWidth="lg" sx={{py: 8}}>
@@ -373,10 +370,18 @@ const LandingPage = () => {
                     'Не знаете, с чего начать',
                     'Нет времени на поездки и оформление'
                   ].map((point, index) => (
-                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
-                      <Box sx={{ color: 'error.main', fontSize: 24 }}>❌</Box>
-                      <Typography variant="h6">{point}</Typography>
-                    </Box>
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                        <Box sx={{ color: 'error.main', fontSize: 24 }}>❌</Box>
+                        <Typography variant="h6">{point}</Typography>
+                      </Box>
+                    </motion.div>
                   ))}
                 </Box>
               </Grid>
@@ -391,10 +396,18 @@ const LandingPage = () => {
                     'Видеотуры, консультации, сделки удалённо',
                     'Безопасно, прозрачно, официально'
                   ].map((point, index) => (
-                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
-                      <Box sx={{ color: 'success.main', fontSize: 24 }}>✅</Box>
-                      <Typography variant="h6">{point}</Typography>
-                    </Box>
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                        <Box sx={{ color: 'success.main', fontSize: 24 }}>✅</Box>
+                        <Typography variant="h6">{point}</Typography>
+                      </Box>
+                    </motion.div>
                   ))}
                 </Box>
             </Grid>
@@ -408,10 +421,10 @@ const LandingPage = () => {
           minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
         <Container maxWidth="lg">
           <Typography variant="h2" align="center" gutterBottom>
-              Как я работаю
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
-              Просто. Прозрачно. Честно.
+            Как я работаю
+          </Typography>
+          <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
+            Просто. Прозрачно. Честно.
           </Typography>
             
           <Grid container spacing={4} sx={{ mt: 4 }}>
@@ -438,32 +451,39 @@ const LandingPage = () => {
                 }
               ].map((step, index) => (
                 <Grid item xs={12} key={index}>
-                  <Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }}>
-                    <Box
-                      sx={{
-                        width: 40,
-                        height: 40,
-                        borderRadius: '50%',
-                        bgcolor: 'primary.main',
-                        color: 'white',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontWeight: 'bold',
-                        flexShrink: 0
-                      }}
-                    >
-                      {index + 1}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: index * 0.15 }}
+                  >
+                    <Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }}>
+                      <Box
+                        sx={{
+                          width: 40,
+                          height: 40,
+                          borderRadius: '50%',
+                          bgcolor: 'primary.main',
+                          color: 'white',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontWeight: 'bold',
+                          flexShrink: 0
+                        }}
+                      >
+                        {index + 1}
+                      </Box>
+                      <Box>
+                        <Typography variant="h5" gutterBottom>
+                          {step.title}
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                          {step.description}
+                        </Typography>
+                      </Box>
                     </Box>
-                    <Box>
-                    <Typography variant="h5" gutterBottom>
-                        {step.title}
-                      </Typography>
-                      <Typography variant="body1" color="text.secondary">
-                        {step.description}
-                      </Typography>
-                    </Box>
-                  </Box>
+                  </motion.div>
                 </Grid>
               ))}
             </Grid>
@@ -488,25 +508,32 @@ const LandingPage = () => {
                 { icon: '🏖', text: 'Локация и стиль жизни — только топ-локации' }
               ].map((item, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
-                  <Box 
-                    sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: 2,
-                      bgcolor: 'rgba(255,255,255,0.1)',
-                      borderRadius: '50px',
-                      py: 2,
-                      px: 3,
-                      border: '1px solid rgba(255,255,255,0.2)'
-                    }}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: index * 0.15 }}
                   >
-                    <Typography variant="h5" sx={{ lineHeight: 1 }}>
-                      {item.icon}
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: 'white', fontWeight: 500 }}>
-                      {item.text}
-                    </Typography>
-                  </Box>
+                    <Box 
+                      sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: 2,
+                        bgcolor: 'rgba(255,255,255,0.1)',
+                        borderRadius: '50px',
+                        py: 2,
+                        px: 3,
+                        border: '1px solid rgba(255,255,255,0.2)'
+                      }}
+                    >
+                      <Typography variant="h5" sx={{ lineHeight: 1 }}>
+                        {item.icon}
+                      </Typography>
+                      <Typography variant="body1" sx={{ color: 'white', fontWeight: 500 }}>
+                        {item.text}
+                      </Typography>
+                    </Box>
+                  </motion.div>
                 </Grid>
               ))}
             </Grid>
@@ -604,36 +631,43 @@ const LandingPage = () => {
                   details: '1–2 спальни',
                   image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Euphoria'
                 }
-              ].slice(0, 6).map((property) => (
+              ].slice(0, 6).map((property, index) => (
                 <Grid item xs={12} md={4} key={property.name}>
-                  <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                    <CardMedia
-                      component="img"
-                      sx={{ 
-                        height: 240,
-                        objectFit: 'cover'
-                      }}
-                      image={property.image}
-                      alt={property.name}
-                    />
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography variant="h5" gutterBottom>
-                        {property.name}
-                      </Typography>
-                      <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-                        {property.location}
-                      </Typography>
-                      <Typography variant="h6" color="primary" gutterBottom>
-                        {property.price}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {property.details}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: index * 0.15 }}
+                  >
+                    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                      <CardMedia
+                        component="img"
+                        sx={{ 
+                          height: 240,
+                          objectFit: 'cover'
+                        }}
+                        image={property.image}
+                        alt={property.name}
+                      />
+                      <CardContent sx={{ flexGrow: 1 }}>
+                        <Typography variant="h5" gutterBottom>
+                          {property.name}
+                        </Typography>
+                        <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                          {property.location}
+                        </Typography>
+                        <Typography variant="h6" color="primary" gutterBottom>
+                          {property.price}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {property.details}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
 
             {/* Mobile Slider View */}
             <Box sx={{ position: 'relative', mt: 4, display: { xs: 'block', md: 'none' } }}>

@@ -31,7 +31,7 @@
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
-    "framer-motion": "^12.18.1",
+    "framer-motion": "^12.19.1",
     "globals": "^16.0.0",
     "postcss": "^8.5.5",
     "react-intersection-observer": "^9.16.0",
