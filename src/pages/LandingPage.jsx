@@ -285,7 +285,7 @@ const LandingPage = () => {
                         borderColor: 'white',
                       },
                     }}
-                    onClick={scrollToSection}
+                    onClick={() => scrollToSection(contactFormRef)}
                   >
                     {t.hero.button1}
                   </Button>
@@ -732,7 +732,7 @@ const LandingPage = () => {
                     bgcolor: 'rgba(255,255,255,0.9)'
                   }
                 }}
-                onClick={scrollToSection}
+                onClick={() => scrollToSection(contactFormRef)}
               >
                 {t.cta.button}
               </Button>
