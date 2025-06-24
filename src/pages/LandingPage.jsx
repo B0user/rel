@@ -17,6 +17,7 @@ import { motion } from 'framer-motion';
 import bgWater from '../assets/water_copy2.webp';
 import bgWater2 from '../assets/water_copy3.webp';
 import bgSand from '../assets/sand.webp';
+import WhoAmI from '../assets/photos/who_am_i.webp';
 
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -210,7 +211,7 @@ const LandingPage = () => {
                 </Box>
             )}
         </Box>
-      <Parallax pages={7.2} style={{ top: 0, left: 0 }}>
+      <Parallax pages={7.8} style={{ top: 0, left: 0 }}>
         
 
         {/* ===== Hero Section ===== */}
@@ -218,11 +219,19 @@ const LandingPage = () => {
           backgroundImage: `url(${bgWater})`,
           backgroundSize: 'cover', backgroundPosition: 'center', alignItems: 'center', zIndex: 5 }}>
           <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 } }}>
-            <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 8, md: 5 }, mt: 6}}>
-              <Typography variant="overline" sx={{ mb: 2, opacity: 0.85, fontWeight: 600, fontSize: 15, letterSpacing: 1.2, textTransform: 'none' }}>
+            <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 6, md: 6 }, mt: {xs: 2, md: 6}}}>
+              <Typography variant="overline" sx={{
+                  mb: {sm: 0, md: 2},
+                  opacity: 0.85,
+                  fontWeight: 600,
+                  fontSize: 15,
+                  letterSpacing: 1.2,
+                  textTransform: 'none',
+                  lineHeight: 0.5,
+              }}>
                 На основе 100+ собственных сделок
               </Typography>
-              <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '2.1rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
+              <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '1.8rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
                   Эксклюзивная недвижимость на Кипре — под ваш запрос и с полным сопровождением
               </Typography>
               <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
@@ -297,23 +306,27 @@ const LandingPage = () => {
               </Box>
             </Box>
           </Container>
-          <Container maxWidth="lg" sx={{py: 8, mt: 14}}>
-          <Grid container spacing={4} alignItems="center" sx={{backgroundColor: 'rgba(255, 255, 255, 0.7)', p: 3, borderRadius: '14px'}}>
+          <Container maxWidth="lg" sx={{py: {sm: 1, md: 8}, mt: {sm: 1, md: 14}}}>
+          <Grid container spacing={4} alignItems="center" sx={{backgroundColor: 'rgba(255, 255, 255, 0.7)', p: 3, borderRadius: '14px', justifyContent: 'left'}}>
             <Grid item xs={12} md={4}>
               <Box
                 component="img"
-                  src="https://placehold.co/400x600/09252E/FFFFFF?text=Inessa"
+                // src="https://placehold.co/400x600/09252E/FFFFFF?text=Inessa"
+                src={WhoAmI}
                 alt="Inessa"
                 sx={{
-                  width: '100%',
-                  borderRadius: 2,
-                  boxShadow: 3,
+                    width: {xs: '100%', sm: '340px', md: '340px'},
+                    height: 'auto',
+                    borderRadius: 2,
+                    boxShadow: 3,
+                    display: 'block',
+                    maxWidth: '100%',
                 }}
               />
             </Grid>
             <Grid item xs={12} md={8}>
                 <Typography variant="h2" gutterBottom >
-                  Кто я
+                  Обо мне
               </Typography>
                 <Typography variant="h5" color="primary" gutterBottom >
                   Инесса
@@ -354,13 +367,14 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Pain Points and Solutions Section ===== */}
+          { (isXs || isSm) ?
         <ParallaxLayer offset={0.9} speed={0} factor={1.1} style={{
           backgroundImage: `url(${bgSand})`,
           backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
           <Container maxWidth="lg" sx={{py: 8}}>
-            <Grid container spacing={6} sx={{backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: '14px', p: 3}}>
+            <Grid container spacing={6} sx={{backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: '14px', p: 3, mt: {xs: '300px', sm: '200px'}, mb: {xs: '100px'}}}>
               <Grid item xs={12} md={6}>
-                <Typography variant="h3" gutterBottom>
+                <Typography variant="h3" gutterBottom sx={{fontSize: {xs: '22px', md: '28px', xl: '28px'}}}>
                   Типовое состояние клиента
                 </Typography>
                 <Box sx={{ mt: 4 }}>
@@ -377,16 +391,16 @@ const LandingPage = () => {
                       viewport={{ once: true, amount: 0.3 }}
                       transition={{ duration: 0.6, delay: index * 0.15 }}
                     >
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: {xs: 1, sm: 1, md: 3} }}>
                         <Box sx={{ color: 'error.main', fontSize: 24 }}>❌</Box>
-                        <Typography variant="h6">{point}</Typography>
+                        <Typography variant="h6" sx={{fontSize: {xs: '16px'}}}>{point}</Typography>
                       </Box>
                     </motion.div>
                   ))}
                 </Box>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h3" gutterBottom>
+                <Typography variant="h3" gutterBottom sx={{fontSize: {xs: '22px'}}}>
                   Решение от меня
                 </Typography>
                 <Box sx={{ mt: 4 }}>
@@ -403,9 +417,9 @@ const LandingPage = () => {
                       viewport={{ once: true, amount: 0.3 }}
                       transition={{ duration: 0.6, delay: index * 0.15 }}
                     >
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: {xs: 1, sm: 1, md: 3} }}>
                         <Box sx={{ color: 'success.main', fontSize: 24 }}>✅</Box>
-                        <Typography variant="h6">{point}</Typography>
+                        <Typography variant="h6" sx={{fontSize: {xs: '16px'}}}>{point}</Typography>
                       </Box>
                     </motion.div>
                   ))}
@@ -414,13 +428,75 @@ const LandingPage = () => {
           </Grid>
         </Container>
         </ParallaxLayer>
+          :
+              <ParallaxLayer offset={0.9} speed={0} factor={1.1} style={{
+                  backgroundImage: `url(${bgSand})`,
+                  backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
+                  <Container maxWidth="lg" sx={{py: 8}}>
+                      <Grid container spacing={6} sx={{backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: '14px', p: 3, mt: {sm: 8}}}>
+                          <Grid item xs={12} md={6}>
+                              <Typography variant="h3" gutterBottom sx={{fontSize: {xs: '22px', md: '28px', xl: '28px'}}}>
+                                  Типовое состояние клиента
+                              </Typography>
+                              <Box sx={{ mt: 4 }}>
+                                  {[
+                                      'Сложно разобраться в рынке',
+                                      'Страх потерь, недоверие к посредникам',
+                                      'Не знаете, с чего начать',
+                                      'Нет времени на поездки и оформление'
+                                  ].map((point, index) => (
+                                      <motion.div
+                                          key={index}
+                                          initial={{ opacity: 0, y: 40 }}
+                                          whileInView={{ opacity: 1, y: 0 }}
+                                          viewport={{ once: true, amount: 0.3 }}
+                                          transition={{ duration: 0.6, delay: index * 0.15 }}
+                                      >
+                                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                                              <Box sx={{ color: 'error.main', fontSize: 24 }}>❌</Box>
+                                              <Typography variant="h6">{point}</Typography>
+                                          </Box>
+                                      </motion.div>
+                                  ))}
+                              </Box>
+                          </Grid>
+                          <Grid item xs={12} md={6}>
+                              <Typography variant="h3" gutterBottom>
+                                  Решение от меня
+                              </Typography>
+                              <Box sx={{ mt: 4 }}>
+                                  {[
+                                      'Я беру на себя весь процесс — от подбора до ключей',
+                                      'Только проверенные объекты и честные условия',
+                                      'Видеотуры, консультации, сделки удалённо',
+                                      'Безопасно, прозрачно, официально'
+                                  ].map((point, index) => (
+                                      <motion.div
+                                          key={index}
+                                          initial={{ opacity: 0, y: 40 }}
+                                          whileInView={{ opacity: 1, y: 0 }}
+                                          viewport={{ once: true, amount: 0.3 }}
+                                          transition={{ duration: 0.6, delay: index * 0.15 }}
+                                      >
+                                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                                              <Box sx={{ color: 'success.main', fontSize: 24 }}>✅</Box>
+                                              <Typography variant="h6">{point}</Typography>
+                                          </Box>
+                                      </motion.div>
+                                  ))}
+                              </Box>
+                          </Grid>
+                      </Grid>
+                  </Container>
+              </ParallaxLayer>
+          }
 
         {/* ===== How I Work Section ===== */}
         <ParallaxLayer offset={2} speed={0} style={{
           backgroundColor: '#fff',
           minHeight: '100vh', display: 'flex', alignItems: 'center', zIndex: 1 }}>
-        <Container maxWidth="lg">
-          <Typography variant="h2" align="center" gutterBottom>
+        <Container maxWidth="lg" sx={{mb: {xs: '100px'}}}>
+          <Typography variant="h2" align="center" gutterBottom sx={{mt: {xs: '100px'}}}>
             Как я работаю
           </Typography>
           <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
@@ -491,8 +567,8 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== What You Get Section ===== */}
-        <ParallaxLayer offset={3} speed={0} factor={0.5} style={{
-          backgroundColor: '#006064', zIndex: 1 }}>
+        <ParallaxLayer offset={3} speed={0} factor={1} style={{
+          backgroundColor: '#006064', zIndex: 1, minHeight: '100vh'}}>
           <Container maxWidth="lg">
             <Typography variant="h2" align="center" gutterBottom sx={{ color: 'white', mt: 6}}>
               Что вы получаете
@@ -523,7 +599,8 @@ const LandingPage = () => {
                         borderRadius: '50px',
                         py: 2,
                         px: 3,
-                        border: '1px solid rgba(255,255,255,0.2)'
+                        border: '1px solid rgba(255,255,255,0.2)',
+                          height: '100%',
                       }}
                     >
                       <Typography variant="h5" sx={{ lineHeight: 1 }}>
@@ -541,7 +618,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Properties Section ===== */}
-        <ParallaxLayer offset={3.5} speed={0} factor={2} style={{
+        <ParallaxLayer offset={4} speed={0} factor={2} style={{
           backgroundColor: '#fff', zIndex: 1 }}>
           <Container maxWidth="lg">
               {/*<Typography variant="body1">Window width: {width}px</Typography>*/}
@@ -558,7 +635,7 @@ const LandingPage = () => {
               {/*        <Typography variant="h6">Этот блок виден на md и выше</Typography>*/}
               {/*    </Grid>*/}
               {/*)}*/}
-            <Typography variant="h2" align="center" gutterBottom >
+            <Typography variant="h2" align="center" gutterBottom sx={{mt: {xs: '100px'}}}>
               Топ-объекты от застройщика
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
@@ -736,24 +813,24 @@ const LandingPage = () => {
               </Box>
             </Box>
 
-            <Box sx={{ mt: 6, textAlign: 'center' }}>
-              <Typography 
-                variant="h6" 
-                gutterBottom
-                sx={{ 
-                  color: 'white',
-                  bgcolor: '#00BCD4',
-                  py: 3,
-                  px: 4,
-                  borderRadius: 2,
-                  fontWeight: 500,
-                  maxWidth: 800,
-                  mx: 'auto'
-                }}
-              >
-                Смотреть весь каталог и получить подбор под ваш бюджет — ниже
-                    </Typography>
-                  </Box>
+            {/*<Box sx={{ mt: 6, textAlign: 'center' }}>*/}
+            {/*  <Typography */}
+            {/*    variant="h6" */}
+            {/*    gutterBottom*/}
+            {/*    sx={{ */}
+            {/*      color: 'white',*/}
+            {/*      bgcolor: '#00BCD4',*/}
+            {/*      py: 3,*/}
+            {/*      px: 4,*/}
+            {/*      borderRadius: 2,*/}
+            {/*      fontWeight: 500,*/}
+            {/*      maxWidth: 800,*/}
+            {/*      mx: 'auto'*/}
+            {/*    }}*/}
+            {/*  >*/}
+            {/*    Смотреть весь каталог и получить подбор под ваш бюджет — ниже*/}
+            {/*        </Typography>*/}
+            {/*      </Box>*/}
           </Container>
         </ParallaxLayer>
 
@@ -813,8 +890,8 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Testimonials Section ===== */}
-        <ParallaxLayer offset={5.4} speed={0} factor={0.6} style={{
-          backgroundColor: '#f5f7fa', zIndex: 1 }}>
+        <ParallaxLayer offset={5.6} speed={0} factor={1} style={{
+          backgroundColor: '#f5f7fa', zIndex: 1, paddingTop: '5%' }}>
           <Container maxWidth="lg">
             <Typography variant="h2" align="center" gutterBottom>
               Отзывы клиентов
@@ -846,10 +923,10 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Contact Form Section ===== */}
-        <ParallaxLayer offset={6} speed={0} style={{
+        <ParallaxLayer offset={6.2} speed={0} style={{
           backgroundColor: '#fff', zIndex: 1 }}>
         <Container maxWidth="md">
-          <Typography variant="h2" align="center" gutterBottom>
+          <Typography variant="h2" align="center" gutterBottom sx={{mt: {xs: '40px'}}}>
               Получить персональный подбор
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
@@ -940,7 +1017,7 @@ const LandingPage = () => {
         </ParallaxLayer>
 
         {/* ===== Footer ===== */}
-        <ParallaxLayer offset={7} speed={0} factor={0.3} style={{zIndex: 1 }}>
+        <ParallaxLayer offset={7.2} speed={0} factor={0.6} style={{zIndex: 1 }}>
       <Box sx={{ py: 4, bgcolor: 'primary.main', color: 'white' }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
