@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Box, Container, Typography, Button, Grid, Card, CardContent, CardMedia, TextField, MenuItem, IconButton, Paper, FormControl, InputLabel, Select } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import EmailIcon from '@mui/icons-material/Email';
@@ -12,6 +12,8 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 import { motion } from 'framer-motion';
+
+
 
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -82,9 +84,6 @@ function useWindowWidth() {
     return width;
 }
 
-const PropertiesSection = lazy(() => import('./PropertiesSection'));
-const TestimonialsSection = lazy(() => import('./TestimonialsSection'));
-const ContactFormSection = lazy(() => import('./ContactFormSection'));
 
 const LandingPage = () => {
   const [language, setLanguage] = useState('ru');
@@ -560,11 +559,138 @@ const LandingPage = () => {
           </section>
 
           {/* ===== Properties Section ===== */}
-          <Suspense fallback={<div style={{textAlign: 'center', padding: 40}}>Загрузка объектов...</div>}>
-            <section ref={propertiesRef}>
-              <PropertiesSection properties={properties} t={t} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
-            </section>
-          </Suspense>
+          <section ref={propertiesRef}>
+            <Box sx={{
+              backgroundColor: '#fff', zIndex: 1, py: 8
+            }}>
+              <Container maxWidth="lg">
+                <Typography variant="h2" align="center" gutterBottom >
+                  {t.properties.title}
+                </Typography>
+                <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
+                  {t.properties.subtitle}
+                </Typography>
+                
+                {/* Desktop Grid View */}
+                <Grid container spacing={4}
+                      sx={{
+                          mt: 4,
+                          display: { xs: 'none', md: 'grid' },
+                          gridTemplateColumns: { md: 'repeat(3, 1fr)' },
+                          gap: 4,
+                          justifyContent: 'center',
+                      }}>
+                {properties.slice(0, 6).map((property, index) => (
+                  <Grid item xs={12} md={4} key={property.name}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
+                    >
+                      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                        <CardMedia
+                          component="img"
+                          sx={{ 
+                            height: 240,
+                            objectFit: 'cover'
+                          }}
+                          image={property.image}
+                          alt={property.name}
+                          width={400}
+                          height={240}
+                          loading="lazy"
+                        />
+                        <CardContent sx={{ flexGrow: 1 }}>
+                          <Typography variant="h5" gutterBottom>
+                            {property.name}
+                          </Typography>
+                          <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                            {property.location}
+                          </Typography>
+                          <Typography variant="h6" color="primary" gutterBottom>
+                            {property.price}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {property.details}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  </Grid>
+                ))}
+                </Grid>
+
+                {/* Mobile Slider View */}
+                <Box sx={{ position: 'relative', mt: 4, display: { xs: 'block', md: 'none' } }}>
+                  <Box sx={{ overflow: 'hidden', position: 'relative' }}>
+                    <Box
+                      {...swipeHandlers}
+                      sx={{
+                        display: 'flex',
+                        transition: 'transform 0.3s ease-in-out',
+                        transform: `translateX(-${currentSlide * (100)}%)`,
+                        width: '100%'
+                      }}
+                    >
+                      {properties.map((property) => (
+                        <Box
+                          key={property.name}
+                          sx={{
+                            width: 'calc(100% - 16px)',
+                            flexShrink: 0,
+                            mx: 1
+                          }}
+                        >
+                          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                            <CardMedia
+                              component="img"
+                              sx={{ height: 300, objectFit: 'cover', width: 400 }}
+                              image={property.image}
+                              alt={property.name}
+                              loading="lazy"
+                            />
+                            <CardContent sx={{ flexGrow: 1 }}>
+                              <Typography variant="h5" gutterBottom>
+                                {property.name}
+                              </Typography>
+                              <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                                {property.location}
+                              </Typography>
+                              <Typography variant="h6" color="primary" gutterBottom>
+                                {property.price}
+                              </Typography>
+                              <Typography variant="body2" color="text.secondary">
+                                {property.details}
+                              </Typography>
+                            </CardContent>
+                          </Card>
+                        </Box>
+                      ))}
+                    </Box>
+                  </Box>
+                </Box>
+
+                {/* Dots indicator */}
+                <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 4 }}>
+                  {properties.map((_, index) => (
+                    <Box
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      sx={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        bgcolor: currentSlide === index ? 'primary.main' : 'grey.300',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.3s'
+                      }}
+                    />
+                  ))}
+                </Box>
+              </Container>
+            </Box>
+          </section>
 
           {/* ===== CTA Section ===== */}
           <Box 
@@ -620,18 +746,127 @@ const LandingPage = () => {
           </Box>
 
           {/* ===== Testimonials Section ===== */}
-          <Suspense fallback={<div style={{textAlign: 'center', padding: 40}}>Загрузка отзывов...</div>}>
-            <section ref={reviewsRef}>
-              <TestimonialsSection t={t} />
-            </section>
-          </Suspense>
+          <section ref={reviewsRef}>
+            <Box sx={{
+              backgroundColor: '#f5f7fa', zIndex: 1, py: 8
+            }}>
+              <Container maxWidth="lg">
+                <Typography variant="h2" align="center" gutterBottom>
+                  {t.testimonials.title}
+                </Typography>
+                
+                <Grid container spacing={4} sx={{ mt: 4 }}>
+                  {t.testimonials.reviews.map((review, index) => (
+                  <Grid item xs={12} md={6} key={index}>
+                    <Paper sx={{ p: 4, height: '100%' }}>
+                      <Typography variant="body1" gutterBottom>
+                        {review.text}
+                      </Typography>
+                      <Typography variant="subtitle1" color="primary" sx={{ mt: 2 }}>
+                        {review.author}
+                      </Typography>
+                    </Paper>
+                  </Grid>
+                  ))}
+                </Grid>
+              </Container>
+            </Box>
+          </section>
 
           {/* ===== Contact Form Section ===== */}
-          <Suspense fallback={<div style={{textAlign: 'center', padding: 40}}>Загрузка формы...</div>}>
-            <section ref={contactFormRef}>
-              <ContactFormSection t={t} contactFormRef={contactFormRef} handleFormSubmit={handleFormSubmit} />
-            </section>
-          </Suspense>
+          <section ref={contactFormRef}>
+            <Box sx={{ backgroundColor: '#fff', zIndex: 1, py: 8 }}>
+              <Container maxWidth="md">
+                <Typography variant="h2" align="center" gutterBottom >
+                  {t.contactForm.title}
+                </Typography>
+                <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
+                  {t.contactForm.subtitle}
+                </Typography>
+                
+                <Paper 
+                  elevation={3} 
+                  sx={{ 
+                    mt: 4, 
+                    p: { xs: 2, sm: 4 },
+                    borderRadius: 2
+                  }}
+                >
+                  <FormControl fullWidth component="form" noValidate autoComplete="off" sx={{ display: 'flex', flexDirection: 'column', gap: 3 }} onSubmit={handleFormSubmit}>
+                    <TextField
+                      fullWidth
+                      required
+                      name="fullName"
+                      label={t.contactForm.nameLabel}
+                      variant="outlined"
+                    />
+                    <TextField
+                      fullWidth
+                      required
+                      name="contact"
+                      label={t.contactForm.contactLabel}
+                      variant="outlined"
+                    />
+                    <Box sx={{ display: 'flex', gap: 3, flexDirection: { xs: 'column', sm: 'row' } }}>
+                      <FormControl fullWidth>
+                        <InputLabel id="purpose-label">{t.contactForm.purposeLabel}</InputLabel>
+                        <Select
+                          labelId="purpose-label"
+                          name="purpose"
+                          label={t.contactForm.purposeLabel}
+                          defaultValue=""
+                        >
+                          {t.contactForm.purposeOptions.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                        </Select>
+                      </FormControl>
+                      <FormControl fullWidth>
+                        <InputLabel id="budget-label">{t.contactForm.budgetLabel}</InputLabel>
+                        <Select
+                          labelId="budget-label"
+                          name="budget"
+                          label={t.contactForm.budgetLabel}
+                          defaultValue=""
+                        >
+                          {t.contactForm.budgetOptions.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                        </Select>
+                      </FormControl>
+                    </Box>
+                    <TextField
+                      fullWidth
+                      multiline
+                      rows={4}
+                      name="comment"
+                      label={t.contactForm.commentLabel}
+                      variant="outlined"
+                    />
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      type="submit"
+                      sx={{ 
+                        py: 1.5,
+                        fontSize: '1.1rem',
+                        fontWeight: 600,
+                        mt: 2
+                      }}
+                    >
+                      {t.contactForm.button}
+                    </Button>
+                  </FormControl>
+                </Paper>
+              </Container>
+            </Box>
+          </section>
         </main>
 
         {/* ===== Footer ===== */}
