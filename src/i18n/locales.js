@@ -99,56 +99,48 @@ export const locales = {
           location: 'Kapparis / Protaras',
           price: 'от €474 000 + VAT',
           details: '3–4 спальни',
-          image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Apanema+Villas'
         },
         {
           name: 'Premiere Pearl B',
           location: 'Pernera / Protaras',
           price: 'от €595 000',
           details: '3 спальни',
-          image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Premiere+Pearl'
         },
         {
           name: 'Angelico Apartments',
           location: 'Kapparis / Protaras',
           price: 'от €153 000 + VAT',
           details: 'ROI 6–8%',
-          image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Angelico'
         },
         {
           name: 'Blue View Lifestyle',
           location: 'Kapparis / Protaras',
           price: 'от €255 000 + VAT',
           details: '2–3 спальни',
-          image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Blue+View'
         },
         {
           name: 'Sabai Beachfront',
           location: 'у пляжа',
           price: 'от €300 000+',
           details: '2–3 спальни',
-          image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Sabai'
         },
         {
           name: 'Alma Villas',
           location: '350 м до пляжа',
           price: 'от €399 000 + VAT',
           details: 'сдача 2025',
-          image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Alma'
         },
         {
           name: 'Semeli B Villas',
           location: 'Пернера',
           price: 'от €460 000 + VAT',
           details: '3 спальни',
-          image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Semeli'
         },
         {
           name: 'Euphoria Apartments',
           location: 'Paralimni',
           price: 'от €135 000 + VAT',
           details: '1–2 спальни',
-          image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Euphoria'
         }
       ]
     },

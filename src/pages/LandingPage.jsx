@@ -21,48 +21,52 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { locales } from '../i18n/locales.js';
 
+// Property Images
+import apanemaImg from '../assets/properties/apa_1.webp';
+import premiereImg from '../assets/properties/pre_1.webp';
+import angelicoImg from '../assets/properties/ang_1.webp';
+import blueViewImg from '../assets/properties/blu_1.webp';
+import sabaiImg from '../assets/properties/sab_1.webp';
+import almaImg from '../assets/properties/alm_1.webp';
+import semeliImg from '../assets/properties/sem_1.webp';
+import euphoriaImg from '../assets/properties/eup_1.webp';
+
 const properties = [
   {
     name: 'Apanema Villas',
     location: 'Kapparis / Protaras',
     price: 'от €474 000 + VAT',
     details: '3–4 спальни',
-    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Apanema+Villas'
   },
   {
     name: 'Premiere Pearl B',
     location: 'Pernera / Protaras',
     price: 'от €595 000',
     details: '3 спальни',
-    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Premiere+Pearl'
   },
   {
     name: 'Angelico Apartments',
     location: 'Kapparis / Protaras',
     price: 'от €153 000 + VAT',
     details: 'ROI 6–8%',
-    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Angelico'
   },
   {
     name: 'Blue View Lifestyle',
     location: 'Kapparis / Protaras',
     price: 'от €255 000 + VAT',
     details: '2–3 спальни',
-    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Blue+View'
   },
   {
     name: 'Sabai Beachfront',
     location: 'у пляжа',
     price: 'от €300 000+',
     details: '2–3 спальни',
-    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Sabai'
   },
   {
     name: 'Alma Villas',
     location: '350 м до пляжа',
     price: 'от €399 000 + VAT',
     details: 'сдача 2025',
-    image: 'https://placehold.co/600x400/09252E/FFFFFF?text=Alma'
   }
 ];
 
@@ -132,6 +136,13 @@ const LandingPage = () => {
     preventDefaultTouchmoveEvent: true,
     trackMouse: false
   });
+
+  // Combine locales text with imported images
+  const propertyImages = [apanemaImg, premiereImg, angelicoImg, blueViewImg, sabaiImg, almaImg, semeliImg, euphoriaImg];
+  const properties = t.properties.list.map((prop, index) => ({
+    ...prop,
+    image: propertyImages[index]
+  }));
 
   return (
     <>
@@ -579,7 +590,7 @@ const LandingPage = () => {
                         gap: 4, // заменяет spacing, если не хочешь использовать spacing от MUI
                         justifyContent: 'center',
                     }}>
-              {t.properties.list.slice(0, 6).map((property, index) => (
+              {properties.slice(0, 6).map((property, index) => (
                 <Grid item xs={12} md={4} key={property.name}>
                   <motion.div
                     initial={{ opacity: 0, y: 40 }}
