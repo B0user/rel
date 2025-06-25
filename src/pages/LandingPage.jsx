@@ -252,118 +252,94 @@ const LandingPage = () => {
             }}>
               <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 }, position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 6, md: 6 }, mt: {xs: 2, md: 6}}}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    <Typography variant="overline" sx={{
-                      mb: {sm: 0, md: 2},
-                      opacity: 0.85,
-                      fontWeight: 600,
-                      fontSize: 15,
-                      letterSpacing: 1.2,
-                      textTransform: 'none',
-                      lineHeight: 0.5,
-                    }}>
-                      {t.hero.pretitle}
-                    </Typography>
-                    <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '1.8rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
-                      {t.hero.title}
-                    </Typography>
-                    <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
-                      {t.hero.subtitle}
-                    </Typography>
-                  </motion.div>
+                  <Typography variant="overline" sx={{
+                    mb: {sm: 0, md: 2},
+                    opacity: 0.85,
+                    fontWeight: 600,
+                    fontSize: 15,
+                    letterSpacing: 1.2,
+                    textTransform: 'none',
+                    lineHeight: 0.5,
+                  }}>
+                    {t.hero.pretitle}
+                  </Typography>
+                  <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '1.8rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
+                    {t.hero.title}
+                  </Typography>
+                  <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
+                    {t.hero.subtitle}
+                  </Typography>
                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column' }, gap: 2, mt: 3 }}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 40 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.3 }}
-                    >
-                      <Button
-                        variant="outlined"
-                        size="large"
-                        sx={{
-                          color: 'white',
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      sx={{
+                        color: 'white',
+                        borderColor: 'white',
+                        fontWeight: 600,
+                        px: 4,
+                        py: 1.5,
+                        fontSize: '1.1rem',
+                        borderRadius: 2,
+                        backdropFilter: 'blur(2px)',
+                        boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                        '&:hover': {
+                          background: 'rgba(255,255,255,0.08)',
                           borderColor: 'white',
-                          fontWeight: 600,
-                          px: 4,
-                          py: 1.5,
-                          fontSize: '1.1rem',
-                          borderRadius: 2,
-                          backdropFilter: 'blur(2px)',
-                          boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
-                          '&:hover': {
-                            background: 'rgba(255,255,255,0.08)',
-                            borderColor: 'white',
-                          },
-                        }}
-                        onClick={() => scrollToSection(contactFormRef)}
-                      >
-                        {t.hero.button1}
-                      </Button>
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, y: 40 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.5 }}
+                        },
+                      }}
+                      onClick={() => scrollToSection(contactFormRef)}
                     >
-                      <Button
-                        variant="outlined"
-                        size="large"
-                        startIcon={<WhatsAppIcon />}
-                        sx={{
-                          color: 'white',
+                      {t.hero.button1}
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      startIcon={<WhatsAppIcon />}
+                      sx={{
+                        color: 'white',
+                        borderColor: 'white',
+                        fontWeight: 600,
+                        px: 4,
+                        py: 1.5,
+                        fontSize: '1.1rem',
+                        borderRadius: 2,
+                        backdropFilter: 'blur(2px)',
+                        boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                        '&:hover': {
+                          background: 'rgba(255,255,255,0.08)',
                           borderColor: 'white',
-                          fontWeight: 600,
-                          px: 4,
-                          py: 1.5,
-                          fontSize: '1.1rem',
-                          borderRadius: 2,
-                          backdropFilter: 'blur(2px)',
-                          boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
-                          '&:hover': {
-                            background: 'rgba(255,255,255,0.08)',
-                            borderColor: 'white',
-                          },
-                        }}
-                        component="a"
-                        href="https://wa.me/35799901101"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {t.hero.button2}
-                      </Button>
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, y: 40 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.7 }}
+                        },
+                      }}
+                      component="a"
+                      href="https://wa.me/35799901101"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <Button
-                        variant="outlined"
-                        size="large"
-                        startIcon={<DownloadIcon />}
-                        sx={{
-                          color: 'white',
+                      {t.hero.button2}
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      startIcon={<DownloadIcon />}
+                      sx={{
+                        color: 'white',
+                        borderColor: 'white',
+                        fontWeight: 600,
+                        px: 4,
+                        py: 1.5,
+                        fontSize: '1.1rem',
+                        borderRadius: 2,
+                        backdropFilter: 'blur(2px)',
+                        boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                        '&:hover': {
+                          background: 'rgba(255,255,255,0.08)',
                           borderColor: 'white',
-                          fontWeight: 600,
-                          px: 4,
-                          py: 1.5,
-                          fontSize: '1.1rem',
-                          borderRadius: 2,
-                          backdropFilter: 'blur(2px)',
-                          boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
-                          '&:hover': {
-                            background: 'rgba(255,255,255,0.08)',
-                            borderColor: 'white',
-                          },
-                        }}
-                      >
-                        {t.hero.button3}
-                      </Button>
-                    </motion.div>
+                        },
+                      }}
+                    >
+                      {t.hero.button3}
+                    </Button>
                   </Box>
                 </Box>
               </Container>
