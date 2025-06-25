@@ -13,14 +13,15 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 import { motion } from 'framer-motion';
 
-import bgHero from '../assets/hero.webp';
-import WhoAmI from '../assets/photos/who_am_i.webp';
+
 
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { locales } from '../i18n/locales.js';
 
+import bgHero from '../assets/hero.webp';
+import WhoAmI from '../assets/photos/who_am_i.webp';
 // Property Images
 import apanemaImg from '../assets/properties/apa_1.webp';
 import premiereImg from '../assets/properties/pre_1.webp';
@@ -236,425 +237,393 @@ const LandingPage = () => {
             </Box>
           )}
         </Box>
-        {/* ===== Hero Section ===== */}
-        <Box ref={heroRef} sx={{
-          position: 'relative',
-          minHeight: '100vh',
-          height: '100vh',
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.2) 100%), url(${bgHero})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          alignItems: 'center',
-          zIndex: 5
-        }}>
-          <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 }, position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 6, md: 6 }, mt: {xs: 2, md: 6}}}>
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <Typography variant="overline" sx={{
-                  mb: {sm: 0, md: 2},
-                  opacity: 0.85,
-                  fontWeight: 600,
-                  fontSize: 15,
-                  letterSpacing: 1.2,
-                  textTransform: 'none',
-                  lineHeight: 0.5,
-                }}>
-                  {t.hero.pretitle}
-                </Typography>
-                <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '1.8rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
-                  {t.hero.title}
-                </Typography>
-                <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
-                  {t.hero.subtitle}
-                </Typography>
-              </motion.div>
-              <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column' }, gap: 2, mt: 3 }}>
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    sx={{
-                      color: 'white',
-                      borderColor: 'white',
-                      fontWeight: 600,
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1.1rem',
-                      borderRadius: 2,
-                      backdropFilter: 'blur(2px)',
-                      boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
-                      '&:hover': {
-                        background: 'rgba(255,255,255,0.08)',
-                        borderColor: 'white',
-                      },
-                    }}
-                    onClick={() => scrollToSection(contactFormRef)}
-                  >
-                    {t.hero.button1}
-                  </Button>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                >
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    startIcon={<WhatsAppIcon />}
-                    sx={{
-                      color: 'white',
-                      borderColor: 'white',
-                      fontWeight: 600,
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1.1rem',
-                      borderRadius: 2,
-                      backdropFilter: 'blur(2px)',
-                      boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
-                      '&:hover': {
-                        background: 'rgba(255,255,255,0.08)',
-                        borderColor: 'white',
-                      },
-                    }}
-                    component="a"
-                    href="https://wa.me/35799901101"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {t.hero.button2}
-                  </Button>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                >
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    startIcon={<DownloadIcon />}
-                    sx={{
-                      color: 'white',
-                      borderColor: 'white',
-                      fontWeight: 600,
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1.1rem',
-                      borderRadius: 2,
-                      backdropFilter: 'blur(2px)',
-                      boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
-                      '&:hover': {
-                        background: 'rgba(255,255,255,0.08)',
-                        borderColor: 'white',
-                      },
-                    }}
-                  >
-                    {t.hero.button3}
-                  </Button>
-                </motion.div>
-              </Box>
-            </Box>
-          </Container>
-        </Box>
-
-        {/* ===== About Me Section ===== */}
-        <Box ref={aboutRef} sx={{
-          backgroundColor: '#f7f7f9',
-          
-          py: 8,
-        }}>
-          <Container maxWidth="lg">
-            <Grid container spacing={4} alignItems="center" sx={{backgroundColor: 'rgba(255, 255, 255, 0.7)', p: 3, borderRadius: '14px', justifyContent: 'left'}}>
-              <Grid item xs={12} md={4}>
-                <Box
-                  component="img"
-                  // src="https://placehold.co/400x600/09252E/FFFFFF?text=Inessa"
-                  src={WhoAmI}
-                  alt="Inessa"
-                  sx={{
-                    width: {xs: '100%', sm: '340px', md: '340px'},
-                    height: 'auto',
-                    borderRadius: 2,
-                    boxShadow: 3,
-                    display: 'block',
-                    maxWidth: '100%',
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} md={8}>
-                <Typography variant="h2" gutterBottom >
-                  {t.about.title}
-                </Typography>
-                <Typography variant="h5" color="primary" gutterBottom >
-                  {t.about.name}
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary" gutterBottom >
-                  {t.about.role}<br />
-                  {t.about.company}
-                </Typography>
-                <Box sx={{ mt: 4 }}>
-                  {t.about.points.map((point, index) => (
-                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                      <Box sx={{ color: 'primary.main', fontSize: 24 }}>✔</Box>
-                      <Typography variant="body1">{point}</Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-
-        {/* ===== Pain Points and Solutions Section ===== */}
-        <Box ref={painRef} sx={{
-          backgroundColor: '#eaf3fa',
-          py: 8,
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-          <Container maxWidth="lg">
-            <Grid container spacing={6} sx={{backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: '14px', p: 3, }}>
-              <Grid item xs={12} md={6}>
-                <Typography variant="h3" gutterBottom sx={{fontSize: {xs: '22px', md: '28px', xl: '28px'}}}>
-                  {t.painPoints.title}
-                </Typography>
-                <Box sx={{ mt: 4 }}>
-                  {t.painPoints.points.map((point, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.6, delay: index * 0.15 }}
-                    >
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: {xs: 1, sm: 1, md: 3} }}>
-                        <Box sx={{ color: 'error.main', fontSize: 24 }}>❌</Box>
-                        <Typography variant="h6" sx={{fontSize: {xs: '16px', md: '1rem'}}}>{point}</Typography>
-                      </Box>
-                    </motion.div>
-                  ))}
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Typography variant="h3" gutterBottom sx={{fontSize: {xs: '22px', md: '28px', xl: '28px'}}}>
-                  {t.solutions.title}
-                </Typography>
-                <Box sx={{ mt: 4 }}>
-                  {t.solutions.points.map((point, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.6, delay: index * 0.15 }}
-                    >
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: {xs: 1, sm: 1, md: 3} }}>
-                        <Box sx={{ color: 'success.main', fontSize: 24 }}>✅</Box>
-                        <Typography variant="h6" sx={{fontSize: {xs: '16px', md: '1rem'}}}>{point}</Typography>
-                      </Box>
-                    </motion.div>
-                  ))}
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-
-        {/* ===== How I Work Section ===== */}
-        <Box ref={howIWorkRef} sx={{
-          backgroundColor: '#fff',
-          display: 'flex', alignItems: 'center', py: 8
-        }}>
-          <Container maxWidth="lg" sx={{mb: {xs: '100px'}}}>
-            <Typography variant="h2" align="center" gutterBottom >
-              {t.howIWork.title}
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
-              {t.howIWork.subtitle}
-            </Typography>
-            
-            <Grid container spacing={4} sx={{ mt: 4 }}>
-              {t.howIWork.steps.map((step, index) => (
-                <Grid item xs={12} key={index}>
+        <main>
+          {/* ===== Hero Section ===== */}
+          <section ref={heroRef}>
+            <Box sx={{
+              position: 'relative',
+              minHeight: '100vh',
+              height: '100vh',
+              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.2) 100%), url(${bgHero})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              alignItems: 'center',
+              zIndex: 5
+            }}>
+              <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 }, position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 6, md: 6 }, mt: {xs: 2, md: 6}}}>
                   <motion.div
                     initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: index * 0.15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
                   >
-                    <Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }}>
-                      <Box
+                    <Typography variant="overline" sx={{
+                      mb: {sm: 0, md: 2},
+                      opacity: 0.85,
+                      fontWeight: 600,
+                      fontSize: 15,
+                      letterSpacing: 1.2,
+                      textTransform: 'none',
+                      lineHeight: 0.5,
+                    }}>
+                      {t.hero.pretitle}
+                    </Typography>
+                    <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '1.8rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
+                      {t.hero.title}
+                    </Typography>
+                    <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
+                      {t.hero.subtitle}
+                    </Typography>
+                  </motion.div>
+                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column' }, gap: 2, mt: 3 }}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                    >
+                      <Button
+                        variant="outlined"
+                        size="large"
                         sx={{
-                          width: 40,
-                          height: 40,
-                          borderRadius: '50%',
-                          bgcolor: 'primary.main',
                           color: 'white',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontWeight: 'bold',
-                          flexShrink: 0
+                          borderColor: 'white',
+                          fontWeight: 600,
+                          px: 4,
+                          py: 1.5,
+                          fontSize: '1.1rem',
+                          borderRadius: 2,
+                          backdropFilter: 'blur(2px)',
+                          boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                          '&:hover': {
+                            background: 'rgba(255,255,255,0.08)',
+                            borderColor: 'white',
+                          },
+                        }}
+                        onClick={() => scrollToSection(contactFormRef)}
+                      >
+                        {t.hero.button1}
+                      </Button>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.5 }}
+                    >
+                      <Button
+                        variant="outlined"
+                        size="large"
+                        startIcon={<WhatsAppIcon />}
+                        sx={{
+                          color: 'white',
+                          borderColor: 'white',
+                          fontWeight: 600,
+                          px: 4,
+                          py: 1.5,
+                          fontSize: '1.1rem',
+                          borderRadius: 2,
+                          backdropFilter: 'blur(2px)',
+                          boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                          '&:hover': {
+                            background: 'rgba(255,255,255,0.08)',
+                            borderColor: 'white',
+                          },
+                        }}
+                        component="a"
+                        href="https://wa.me/35799901101"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {t.hero.button2}
+                      </Button>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.7 }}
+                    >
+                      <Button
+                        variant="outlined"
+                        size="large"
+                        startIcon={<DownloadIcon />}
+                        sx={{
+                          color: 'white',
+                          borderColor: 'white',
+                          fontWeight: 600,
+                          px: 4,
+                          py: 1.5,
+                          fontSize: '1.1rem',
+                          borderRadius: 2,
+                          backdropFilter: 'blur(2px)',
+                          boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                          '&:hover': {
+                            background: 'rgba(255,255,255,0.08)',
+                            borderColor: 'white',
+                          },
                         }}
                       >
-                        {index + 1}
-                      </Box>
-                      <Box>
-                        <Typography variant="h5" gutterBottom>
-                          {step.title}
-                        </Typography>
-                        <Typography variant="body1" color="text.secondary">
-                          {step.description}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </Box>
+                        {t.hero.button3}
+                      </Button>
+                    </motion.div>
+                  </Box>
+                </Box>
+              </Container>
+            </Box>
+          </section>
 
-        {/* ===== What You Get Section ===== */}
-        <Box ref={whatYouGetRef} sx={{
-          backgroundColor: '#006064', zIndex: 1, py: 8
-        }}>
-          <Container maxWidth="lg">
-            <Typography variant="h2" align="center" gutterBottom sx={{ color: 'white' }}>
-              {t.whatYouGet.title}
-            </Typography>
-            
-            <Grid container spacing={3} sx={{ mt: 4 }}>
-              {t.whatYouGet.points.map((item, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: index * 0.15 }}
-                  >
-                    <Box 
-                      sx={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        gap: 2,
-                        bgcolor: 'rgba(255,255,255,0.1)',
-                        borderRadius: '50px',
-                        py: 2,
-                        px: 3,
-                        border: '1px solid rgba(255,255,255,0.2)',
-                          height: '100%',
-                      }}
-                    >
-                      <Typography variant="h5" sx={{ lineHeight: 1 }}>
-                        {item.icon}
-                      </Typography>
-                      <Typography variant="body1" sx={{ color: 'white', fontWeight: 500 }}>
-                        {item.text}
-                      </Typography>
-                    </Box>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </Box>
-
-        {/* ===== Properties Section ===== */}
-        <Box ref={propertiesRef} sx={{
-          backgroundColor: '#fff', zIndex: 1, py: 8
-        }}>
-          <Container maxWidth="lg">
-            <Typography variant="h2" align="center" gutterBottom >
-              {t.properties.title}
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
-              {t.properties.subtitle}
-            </Typography>
-            
-            {/* Desktop Grid View */}
-              <Grid container spacing={4}
-                    sx={{
-                        mt: 4,
-                        display: { xs: 'none', md: 'grid' },
-                        gridTemplateColumns: { md: 'repeat(3, 1fr)' }, // 👈 3 колонки
-                        gap: 4, // заменяет spacing, если не хочешь использовать spacing от MUI
-                        justifyContent: 'center',
-                    }}>
-              {properties.slice(0, 6).map((property, index) => (
-                <Grid item xs={12} md={4} key={property.name}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: index * 0.15 }}
-                  >
-                    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                      <CardMedia
-                        component="img"
-                        sx={{ 
-                          height: 240,
-                          objectFit: 'cover'
-                        }}
-                        image={property.image}
-                        alt={property.name}
-                      />
-                      <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography variant="h5" gutterBottom>
-                          {property.name}
-                        </Typography>
-                        <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-                          {property.location}
-                        </Typography>
-                        <Typography variant="h6" color="primary" gutterBottom>
-                          {property.price}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {property.details}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
-
-            {/* Mobile Slider View */}
-            <Box sx={{ position: 'relative', mt: 4, display: { xs: 'block', md: 'none' } }}>
-              <Box sx={{ overflow: 'hidden', position: 'relative' }}>
-                <Box
-                  {...swipeHandlers}
-                  sx={{
-                    display: 'flex',
-                    transition: 'transform 0.3s ease-in-out',
-                    transform: `translateX(-${currentSlide * (100)}%)`,
-                    width: '100%'
-                  }}
-                >
-                  {properties.map((property) => (
+          {/* ===== About Me Section ===== */}
+          <section ref={aboutRef}>
+            <Box sx={{
+              backgroundColor: '#f7f7f9',
+              py: 8,
+            }}>
+              <Container maxWidth="lg">
+                <Grid container spacing={4} alignItems="center" sx={{backgroundColor: 'rgba(255, 255, 255, 0.7)', p: 3, borderRadius: '14px', justifyContent: 'left'}}>
+                  <Grid item xs={12} md={4}>
                     <Box
-                      key={property.name}
+                      component="img"
+                      src={WhoAmI}
+                      alt="Фото Инессы - эксперт по недвижимости на Кипре"
+                      width={340}
+                      height={510}
+                      loading="lazy"
                       sx={{
-                        width: 'calc(100% - 16px)',
-                        flexShrink: 0,
-                        mx: 1
+                        width: {xs: '100%', sm: '340px', md: '340px'},
+                        height: 'auto',
+                        borderRadius: 2,
+                        boxShadow: 3,
+                        display: 'block',
+                        maxWidth: '100%',
                       }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={8}>
+                    <Typography variant="h2" gutterBottom >
+                      {t.about.title}
+                    </Typography>
+                    <Typography variant="h5" color="primary" gutterBottom >
+                      {t.about.name}
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary" gutterBottom >
+                      {t.about.role}<br />
+                      {t.about.company}
+                    </Typography>
+                    <Box sx={{ mt: 4 }}>
+                      {t.about.points.map((point, index) => (
+                        <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                          <Box sx={{ color: 'primary.main', fontSize: 24 }}>✔</Box>
+                          <Typography variant="body1">{point}</Typography>
+                        </Box>
+                      ))}
+                    </Box>
+                  </Grid>
+                </Grid>
+              </Container>
+            </Box>
+          </section>
+
+          {/* ===== Pain Points and Solutions Section ===== */}
+          <section ref={painRef}>
+            <Box sx={{
+              backgroundColor: '#eaf3fa',
+              py: 8,
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+              <Container maxWidth="lg">
+                <Grid container spacing={6} sx={{backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: '14px', p: 3, }}>
+                  <Grid item xs={12} md={6}>
+                    <Typography variant="h3" gutterBottom sx={{fontSize: {xs: '22px', md: '28px', xl: '28px'}}}>
+                      {t.painPoints.title}
+                    </Typography>
+                    <Box sx={{ mt: 4 }}>
+                      {t.painPoints.points.map((point, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 40 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, amount: 0.3 }}
+                          transition={{ duration: 0.6, delay: index * 0.15 }}
+                        >
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: {xs: 1, sm: 1, md: 3} }}>
+                            <Box sx={{ color: 'error.main', fontSize: 24 }}>❌</Box>
+                            <Typography variant="h6" sx={{fontSize: {xs: '16px', md: '1rem'}}}>{point}</Typography>
+                          </Box>
+                        </motion.div>
+                      ))}
+                    </Box>
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Typography variant="h3" gutterBottom sx={{fontSize: {xs: '22px', md: '28px', xl: '28px'}}}>
+                      {t.solutions.title}
+                    </Typography>
+                    <Box sx={{ mt: 4 }}>
+                      {t.solutions.points.map((point, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 40 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, amount: 0.3 }}
+                          transition={{ duration: 0.6, delay: index * 0.15 }}
+                        >
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: {xs: 1, sm: 1, md: 3} }}>
+                            <Box sx={{ color: 'success.main', fontSize: 24 }}>✅</Box>
+                            <Typography variant="h6" sx={{fontSize: {xs: '16px', md: '1rem'}}}>{point}</Typography>
+                          </Box>
+                        </motion.div>
+                      ))}
+                    </Box>
+                  </Grid>
+                </Grid>
+              </Container>
+            </Box>
+          </section>
+
+          {/* ===== How I Work Section ===== */}
+          <section ref={howIWorkRef}>
+            <Box sx={{
+              backgroundColor: '#fff',
+              display: 'flex', alignItems: 'center', py: 8
+            }}>
+              <Container maxWidth="lg" sx={{mb: {xs: '100px'}}}>
+                <Typography variant="h2" align="center" gutterBottom >
+                  {t.howIWork.title}
+                </Typography>
+                <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
+                  {t.howIWork.subtitle}
+                </Typography>
+                
+                <Grid container spacing={4} sx={{ mt: 4 }}>
+                  {t.howIWork.steps.map((step, index) => (
+                    <Grid item xs={12} key={index}>
+                      <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.6, delay: index * 0.15 }}
+                      >
+                        <Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start' }}>
+                          <Box
+                            sx={{
+                              width: 40,
+                              height: 40,
+                              borderRadius: '50%',
+                              bgcolor: 'primary.main',
+                              color: 'white',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              fontWeight: 'bold',
+                              flexShrink: 0
+                            }}
+                          >
+                            {index + 1}
+                          </Box>
+                          <Box>
+                            <Typography variant="h5" gutterBottom>
+                              {step.title}
+                            </Typography>
+                            <Typography variant="body1" color="text.secondary">
+                              {step.description}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </motion.div>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Container>
+            </Box>
+          </section>
+
+          {/* ===== What You Get Section ===== */}
+          <section ref={whatYouGetRef}>
+            <Box sx={{
+              backgroundColor: '#006064', zIndex: 1, py: 8
+            }}>
+              <Container maxWidth="lg">
+                <Typography variant="h2" align="center" gutterBottom sx={{ color: 'white' }}>
+                  {t.whatYouGet.title}
+                </Typography>
+                
+                <Grid container spacing={3} sx={{ mt: 4 }}>
+                  {t.whatYouGet.points.map((item, index) => (
+                    <Grid item xs={12} sm={6} md={4} key={index}>
+                      <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.6, delay: index * 0.15 }}
+                      >
+                        <Box 
+                          sx={{ 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            gap: 2,
+                            bgcolor: 'rgba(255,255,255,0.1)',
+                            borderRadius: '50px',
+                            py: 2,
+                            px: 3,
+                            border: '1px solid rgba(255,255,255,0.2)',
+                              height: '100%',
+                          }}
+                        >
+                          <Typography variant="h5" sx={{ lineHeight: 1 }}>
+                            {item.icon}
+                          </Typography>
+                          <Typography variant="body1" sx={{ color: 'white', fontWeight: 500 }}>
+                            {item.text}
+                          </Typography>
+                        </Box>
+                      </motion.div>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Container>
+            </Box>
+          </section>
+
+          {/* ===== Properties Section ===== */}
+          <section ref={propertiesRef}>
+            <Box sx={{
+              backgroundColor: '#fff', zIndex: 1, py: 8
+            }}>
+              <Container maxWidth="lg">
+                <Typography variant="h2" align="center" gutterBottom >
+                  {t.properties.title}
+                </Typography>
+                <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
+                  {t.properties.subtitle}
+                </Typography>
+                
+                {/* Desktop Grid View */}
+                <Grid container spacing={4}
+                      sx={{
+                          mt: 4,
+                          display: { xs: 'none', md: 'grid' },
+                          gridTemplateColumns: { md: 'repeat(3, 1fr)' },
+                          gap: 4,
+                          justifyContent: 'center',
+                      }}>
+                {properties.slice(0, 6).map((property, index) => (
+                  <Grid item xs={12} md={4} key={property.name}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
                     >
                       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                         <CardMedia
                           component="img"
-                          height="300"
+                          sx={{ 
+                            height: 240,
+                            objectFit: 'cover'
+                          }}
                           image={property.image}
                           alt={property.name}
+                          width={400}
+                          height={240}
+                          loading="lazy"
                         />
                         <CardContent sx={{ flexGrow: 1 }}>
                           <Typography variant="h5" gutterBottom>
@@ -671,33 +640,83 @@ const LandingPage = () => {
                           </Typography>
                         </CardContent>
                       </Card>
+                    </motion.div>
+                  </Grid>
+                ))}
+                </Grid>
+
+                {/* Mobile Slider View */}
+                <Box sx={{ position: 'relative', mt: 4, display: { xs: 'block', md: 'none' } }}>
+                  <Box sx={{ overflow: 'hidden', position: 'relative' }}>
+                    <Box
+                      {...swipeHandlers}
+                      sx={{
+                        display: 'flex',
+                        transition: 'transform 0.3s ease-in-out',
+                        transform: `translateX(-${currentSlide * (100)}%)`,
+                        width: '100%'
+                      }}
+                    >
+                      {properties.map((property) => (
+                        <Box
+                          key={property.name}
+                          sx={{
+                            width: 'calc(100% - 16px)',
+                            flexShrink: 0,
+                            mx: 1
+                          }}
+                        >
+                          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                            <CardMedia
+                              component="img"
+                              sx={{ height: 300, objectFit: 'cover', width: 400 }}
+                              image={property.image}
+                              alt={property.name}
+                              loading="lazy"
+                            />
+                            <CardContent sx={{ flexGrow: 1 }}>
+                              <Typography variant="h5" gutterBottom>
+                                {property.name}
+                              </Typography>
+                              <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                                {property.location}
+                              </Typography>
+                              <Typography variant="h6" color="primary" gutterBottom>
+                                {property.price}
+                              </Typography>
+                              <Typography variant="body2" color="text.secondary">
+                                {property.details}
+                              </Typography>
+                            </CardContent>
+                          </Card>
+                        </Box>
+                      ))}
                     </Box>
+                  </Box>
+                </Box>
+
+                {/* Dots indicator */}
+                <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 4 }}>
+                  {properties.map((_, index) => (
+                    <Box
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      sx={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        bgcolor: currentSlide === index ? 'primary.main' : 'grey.300',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.3s'
+                      }}
+                    />
                   ))}
                 </Box>
-              </Box>
+              </Container>
             </Box>
+          </section>
 
-            {/* Dots indicator */}
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 4 }}>
-              {properties.map((_, index) => (
-                <Box
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  sx={{
-                    width: 10,
-                    height: 10,
-                    borderRadius: '50%',
-                    bgcolor: currentSlide === index ? 'primary.main' : 'grey.300',
-                    cursor: 'pointer',
-                    transition: 'background-color 0.3s'
-                  }}
-                />
-              ))}
-            </Box>
-          </Container>
-        </Box>
-
-        {/* ===== CTA Section ===== */}
+          {/* ===== CTA Section ===== */}
           <Box 
             sx={{ 
               py: 6,
@@ -750,158 +769,163 @@ const LandingPage = () => {
             </Container>
           </Box>
 
-        {/* ===== Testimonials Section ===== */}
-        <Box ref={reviewsRef} sx={{
-          backgroundColor: '#f5f7fa', zIndex: 1, py: 8
-        }}>
-          <Container maxWidth="lg">
-            <Typography variant="h2" align="center" gutterBottom>
-              {t.testimonials.title}
-            </Typography>
-            
-            <Grid container spacing={4} sx={{ mt: 4 }}>
-              {t.testimonials.reviews.map((review, index) => (
-              <Grid item xs={12} md={6} key={index}>
-                <Paper sx={{ p: 4, height: '100%' }}>
-                  <Typography variant="body1" gutterBottom>
-                    {review.text}
-                  </Typography>
-                  <Typography variant="subtitle1" color="primary" sx={{ mt: 2 }}>
-                    {review.author}
-                  </Typography>
-                </Paper>
-              </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </Box>
+          {/* ===== Testimonials Section ===== */}
+          <section ref={reviewsRef}>
+            <Box sx={{
+              backgroundColor: '#f5f7fa', zIndex: 1, py: 8
+            }}>
+              <Container maxWidth="lg">
+                <Typography variant="h2" align="center" gutterBottom>
+                  {t.testimonials.title}
+                </Typography>
+                
+                <Grid container spacing={4} sx={{ mt: 4 }}>
+                  {t.testimonials.reviews.map((review, index) => (
+                  <Grid item xs={12} md={6} key={index}>
+                    <Paper sx={{ p: 4, height: '100%' }}>
+                      <Typography variant="body1" gutterBottom>
+                        {review.text}
+                      </Typography>
+                      <Typography variant="subtitle1" color="primary" sx={{ mt: 2 }}>
+                        {review.author}
+                      </Typography>
+                    </Paper>
+                  </Grid>
+                  ))}
+                </Grid>
+              </Container>
+            </Box>
+          </section>
 
-        {/* ===== Contact Form Section ===== */}
-        <Box ref={contactFormRef} sx={{ backgroundColor: '#fff', zIndex: 1, py: 8 }}>
-          <Container maxWidth="md">
-            <Typography variant="h2" align="center" gutterBottom >
-              {t.contactForm.title}
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
-              {t.contactForm.subtitle}
-            </Typography>
-            
-            <Paper 
-              elevation={3} 
-              sx={{ 
-                mt: 4, 
-                p: { xs: 2, sm: 4 },
-                borderRadius: 2
-              }}
-            >
-              <FormControl fullWidth component="form" noValidate autoComplete="off" sx={{ display: 'flex', flexDirection: 'column', gap: 3 }} onSubmit={handleFormSubmit}>
-                <TextField
-                  fullWidth
-                  required
-                  name="fullName"
-                  label={t.contactForm.nameLabel}
-                  variant="outlined"
-                />
-                <TextField
-                  fullWidth
-                  required
-                  name="contact"
-                  label={t.contactForm.contactLabel}
-                  variant="outlined"
-                />
-                <Box sx={{ display: 'flex', gap: 3, flexDirection: { xs: 'column', sm: 'row' } }}>
-                  <FormControl fullWidth>
-                    <InputLabel id="purpose-label">{t.contactForm.purposeLabel}</InputLabel>
-                    <Select
-                      labelId="purpose-label"
-                      name="purpose"
-                      label={t.contactForm.purposeLabel}
-                      defaultValue=""
-                    >
-                      {t.contactForm.purposeOptions.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                    </Select>
-                  </FormControl>
-                  <FormControl fullWidth>
-                    <InputLabel id="budget-label">{t.contactForm.budgetLabel}</InputLabel>
-                    <Select
-                      labelId="budget-label"
-                      name="budget"
-                      label={t.contactForm.budgetLabel}
-                      defaultValue=""
-                    >
-                      {t.contactForm.budgetOptions.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                    </Select>
-                  </FormControl>
-                </Box>
-                <TextField
-                  fullWidth
-                  multiline
-                  rows={4}
-                  name="comment"
-                  label={t.contactForm.commentLabel}
-                  variant="outlined"
-                />
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  type="submit"
+          {/* ===== Contact Form Section ===== */}
+          <section ref={contactFormRef}>
+            <Box sx={{ backgroundColor: '#fff', zIndex: 1, py: 8 }}>
+              <Container maxWidth="md">
+                <Typography variant="h2" align="center" gutterBottom >
+                  {t.contactForm.title}
+                </Typography>
+                <Typography variant="h5" align="center" color="text.secondary" gutterBottom>
+                  {t.contactForm.subtitle}
+                </Typography>
+                
+                <Paper 
+                  elevation={3} 
                   sx={{ 
-                    py: 1.5,
-                    fontSize: '1.1rem',
-                    fontWeight: 600,
-                    mt: 2
+                    mt: 4, 
+                    p: { xs: 2, sm: 4 },
+                    borderRadius: 2
                   }}
                 >
-                  {t.contactForm.button}
-                </Button>
-              </FormControl>
-            </Paper>
-          </Container>
-        </Box>
+                  <FormControl fullWidth component="form" noValidate autoComplete="off" sx={{ display: 'flex', flexDirection: 'column', gap: 3 }} onSubmit={handleFormSubmit}>
+                    <TextField
+                      fullWidth
+                      required
+                      name="fullName"
+                      label={t.contactForm.nameLabel}
+                      variant="outlined"
+                    />
+                    <TextField
+                      fullWidth
+                      required
+                      name="contact"
+                      label={t.contactForm.contactLabel}
+                      variant="outlined"
+                    />
+                    <Box sx={{ display: 'flex', gap: 3, flexDirection: { xs: 'column', sm: 'row' } }}>
+                      <FormControl fullWidth>
+                        <InputLabel id="purpose-label">{t.contactForm.purposeLabel}</InputLabel>
+                        <Select
+                          labelId="purpose-label"
+                          name="purpose"
+                          label={t.contactForm.purposeLabel}
+                          defaultValue=""
+                        >
+                          {t.contactForm.purposeOptions.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                        </Select>
+                      </FormControl>
+                      <FormControl fullWidth>
+                        <InputLabel id="budget-label">{t.contactForm.budgetLabel}</InputLabel>
+                        <Select
+                          labelId="budget-label"
+                          name="budget"
+                          label={t.contactForm.budgetLabel}
+                          defaultValue=""
+                        >
+                          {t.contactForm.budgetOptions.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                        </Select>
+                      </FormControl>
+                    </Box>
+                    <TextField
+                      fullWidth
+                      multiline
+                      rows={4}
+                      name="comment"
+                      label={t.contactForm.commentLabel}
+                      variant="outlined"
+                    />
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      type="submit"
+                      sx={{ 
+                        py: 1.5,
+                        fontSize: '1.1rem',
+                        fontWeight: 600,
+                        mt: 2
+                      }}
+                    >
+                      {t.contactForm.button}
+                    </Button>
+                  </FormControl>
+                </Paper>
+              </Container>
+            </Box>
+          </section>
+        </main>
 
         {/* ===== Footer ===== */}
-      <Box sx={{ py: 4, bgcolor: 'primary.main', color: 'white' }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={4}>
-                <Grid item xs={12} md={6}>
-              <Typography variant="h6" gutterBottom>
-                    {t.footer.contactsTitle}
-              </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                <WhatsAppIcon />
-                <Typography>{t.footer.phone}</Typography>
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                <EmailIcon />
-                <Typography>{t.footer.email}</Typography>
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <LocationOnIcon />
-                    <Typography>{t.footer.location}</Typography>
-              </Box>
+        <Box sx={{ py: 4, bgcolor: 'primary.main', color: 'white' }}>
+          <Container maxWidth="lg">
+            <Grid container spacing={4}>
+                  <Grid item xs={12} md={6}>
+                <Typography variant="h6" gutterBottom>
+                      {t.footer.contactsTitle}
+                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                  <WhatsAppIcon />
+                  <Typography>{t.footer.phone}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                  <EmailIcon />
+                  <Typography>{t.footer.email}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <LocationOnIcon />
+                      <Typography>{t.footer.location}</Typography>
+                </Box>
+              </Grid>
+                  <Grid item xs={12} md={6}>
+                <Typography variant="h6" gutterBottom>
+                      {t.footer.socialTitle}
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 2 }}>
+                      <InstagramIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
+                      <LinkedInIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
+                </Box>
+              </Grid>
             </Grid>
-                <Grid item xs={12} md={6}>
-              <Typography variant="h6" gutterBottom>
-                    {t.footer.socialTitle}
-              </Typography>
-              <Box sx={{ display: 'flex', gap: 2 }}>
-                    <InstagramIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
-                    <LinkedInIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+          </Container>
+        </Box>
       </Box>
     </>
   );
