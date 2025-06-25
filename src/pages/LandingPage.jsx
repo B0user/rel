@@ -12,8 +12,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 import { motion } from 'framer-motion';
-
-
+import Avatar from '@mui/material/Avatar';
 
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -31,6 +30,14 @@ import sabaiImg from '../assets/properties/sab_1.webp';
 import almaImg from '../assets/properties/alm_1.webp';
 import semeliImg from '../assets/properties/sem_1.webp';
 import euphoriaImg from '../assets/properties/eup_1.webp';
+// Testimonial images
+import testimonial1 from '../assets/photos/testimonials/1.webp';
+import testimonial2 from '../assets/photos/testimonials/2.webp';
+import testimonial3 from '../assets/photos/testimonials/3.webp';
+import testimonial4 from '../assets/photos/testimonials/4.webp';
+import testimonial5 from '../assets/photos/testimonials/5.webp';
+import testimonial6 from '../assets/photos/testimonials/6.webp';
+import testimonial7 from '../assets/photos/testimonials/7.webp';
 
 const properties = [
   {
@@ -84,6 +91,9 @@ function useWindowWidth() {
     return width;
 }
 
+const testimonialAvatars = [
+  testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6, testimonial7
+];
 
 const LandingPage = () => {
   const [language, setLanguage] = useState('ru');
@@ -672,7 +682,7 @@ const LandingPage = () => {
                 </Box>
 
                 {/* Dots indicator */}
-                <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 4 }}>
+                <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'center', gap: 1, mt: 4 }}>
                   {properties.map((_, index) => (
                     <Box
                       key={index}
@@ -757,16 +767,24 @@ const LandingPage = () => {
                 
                 <Grid container spacing={4} sx={{ mt: 4 }}>
                   {t.testimonials.reviews.map((review, index) => (
-                  <Grid item xs={12} md={6} key={index}>
-                    <Paper sx={{ p: 4, height: '100%' }}>
-                      <Typography variant="body1" gutterBottom>
-                        {review.text}
-                      </Typography>
-                      <Typography variant="subtitle1" color="primary" sx={{ mt: 2 }}>
-                        {review.author}
-                      </Typography>
-                    </Paper>
-                  </Grid>
+                    <Grid item xs={12} md={6} key={index}>
+                      <Paper sx={{ p: 4, height: '100%', display: 'flex', alignItems: 'flex-start', gap: 2 }}>
+                        <Avatar
+                          src={testimonialAvatars[index]}
+                          alt={`Аватар клиента ${review.author}`}
+                          sx={{ width: 56, height: 56, mr: 2 }}
+                          imgProps={{ loading: 'lazy', width: 56, height: 56 }}
+                        />
+                        <Box>
+                          <Typography variant="body1" gutterBottom>
+                            {review.text}
+                          </Typography>
+                          <Typography variant="subtitle1" color="primary" sx={{ mt: 2 }}>
+                            {review.author}
+                          </Typography>
+                        </Box>
+                      </Paper>
+                    </Grid>
                   ))}
                 </Grid>
               </Container>
