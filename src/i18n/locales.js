@@ -272,6 +272,7 @@ export const locales = {
                 text: 'Мы мечтали о доме с видом на море и возможностью получить ПМЖ. Инесса помогла сделать всё быстро, понятно и без давления. Panorama оказалась идеальным выбором для жизни. Надёжность и искренность — вот за что мы ей благодарны!',
                 property: 'Panorama Villas',
                 tags: 'Для жизни + ПМЖ | Вид на море | Прямой застройщик',
+                photo: 'vanessakevin.jpg',
             },
             {
                 flag: '🇮🇱',
@@ -282,6 +283,7 @@ export const locales = {
                 text: 'Это уже моя вторая покупка с Инессой. В этот раз — пентхаус с собственным бассейном. Сделка на этапе начала строительства и с беспроцентной рассрочкой — всё как нужно инвестору. Ценю личный подход и прозрачность в каждой детали.',
                 property: 'Angelico Penthouse',
                 tags: 'Инвестиция на ранней стадии | Беспроцентная рассрочка | Собственный бассейн',
+                photo: 'zeev.jpg',
             },
             {
                 flag: '🇰🇿',
@@ -292,6 +294,7 @@ export const locales = {
                 text: 'Купила ещё на этапе планов две квартиры. Мы с архитектором сделали невероятную перепланировку — и теперь это мой настоящий дом. Инесса — не просто профессионал, а человек, с которым чувствуешь уверенность и поддержку. Уже планирую следующую инвестицию.',
                 property: 'Semeli / индивидуальный проект',
                 tags: 'ПМЖ | Уникальный дизайн | Долгосрочные планы',
+                photo: 'dina.jpg',
             },
             {
                 flag: '🇷🇺',
@@ -302,6 +305,7 @@ export const locales = {
                 text: 'Купили с мужем и детьми уютный дом рядом с пляжем. Мы переехали на Кипр ради климата, безопасности и спокойствия. Инесса взяла всё на себя: от подбора до оформления. С ней чувствуешь, что тебе действительно хотят помочь, а не просто продать.',
                 property: 'Premiere Pearl Villas |  A',
                 tags: 'ПМЖ всей семьёй | Комфорт + безопасность | Полное сопровождение',
+                photo: 'olesya.jpg',
             },
             {
                 flag: '🇫🇷',
@@ -312,6 +316,7 @@ export const locales = {
                 text: 'Сотрудничаю с Инессой уже третий раз. Начали с квартиры в Cosmo — она сдана в долгосрочную аренду с доходностью около 6%. Затем купили объект на стадии строительства с прямым видом на море. Недавно приобрёл третью квартиру — вторичку рядом со школой, где будут жить мои дети. Спасибо за профессионализм, поддержку и стратегическое мышление!',
                 property: 'Cosmo, вторичная квартира, Angelico с садом на крыше',
                 tags: 'ROI 6% | Доход + семейное жильё | 3 объекта через одного специалиста',
+                photo: 'greppo.jpg',
             },
         ]
     },
@@ -608,6 +613,7 @@ export const locales = {
                 text: 'We dreamed of a home with a sea view and the opportunity to obtain a residence permit. Inessa helped make everything fast, clear and without pressure. Panorama turned out to be the perfect choice for living. Reliability and sincerity — thats what we are grateful to her for!',
                 property: 'Panorama Villas',
                 tags: 'For living + residence permit | Sea view | Direct developer',
+                photo: 'vanessakevin.jpg',
             },
             {
                 flag: '🇮🇱',
@@ -618,6 +624,7 @@ export const locales = {
                 text: 'This is my second purchase with Inessa. This time — a penthouse with a private pool. The deal was at the start of construction and with interest-free installments — just what an investor needs. I appreciate the personal approach and transparency in every detail.',
                 property: 'Angelico Penthouse',
                 tags: 'Early stage investment | Interest-free installments | Private pool',
+                photo: 'zeev.jpg',
             },
             {
                 flag: '🇰🇿',
@@ -628,6 +635,7 @@ export const locales = {
                 text: 'I bought two apartments at the planning stage. My architect and I made an incredible redesign — and now its my real home. Inessa is not just a professional, but a person with whom you feel confident and supported. Already planning my next investment.',
                 property: 'Semeli / individual project',
                 tags: 'Residence permit | Unique design | Long-term plans',
+                photo: 'dina.jpg',
             },
             {
                 flag: '🇷🇺',
@@ -638,6 +646,7 @@ export const locales = {
                 text: 'My husband, children and I bought a cozy house near the beach. We moved to Cyprus for the climate, safety and peace of mind. Inessa took care of everything: from selection to paperwork. With her, you feel that they really want to help you, not just sell.',
                 property: 'Premiere Pearl Villas |  A',
                 tags: 'Residence permit for the whole family | Comfort + safety | Full support',
+                photo: 'olesya.jpg',
             },
             {
                 flag: '🇫🇷',
@@ -648,6 +657,7 @@ export const locales = {
                 text: 'I have been working with Inessa for the third time. We started with an apartment in Cosmo — it is rented out long-term with a yield of about 6%. Then we bought a property at the construction stage with a direct sea view. Recently I bought a third apartment — a resale near the school where my children will live. Thank you for your professionalism, support and strategic thinking!',
                 property: 'Cosmo, resale apartment, Angelico with rooftop garden',
                 tags: 'ROI 6% | Income + family housing | 3 properties with one specialist',
+                photo: 'greppo.jpg',
             },
         ]
     },

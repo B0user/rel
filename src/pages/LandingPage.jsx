@@ -55,6 +55,11 @@ import testimonial4 from '../assets/photos/testimonials/4.webp';
 import testimonial5 from '../assets/photos/testimonials/5.webp';
 import testimonial6 from '../assets/photos/testimonials/6.webp';
 import testimonial7 from '../assets/photos/testimonials/7.webp';
+import reviewVanessaKevin from '../assets/reviews/vanessakevin.jpg';
+import reviewZeev from '../assets/reviews/zeev.jpg';
+import reviewDina from '../assets/reviews/dina.jpg';
+import reviewOlesya from '../assets/reviews/olesya.jpg';
+import reviewGreppo from '../assets/reviews/greppo.jpg';
 
 const properties = [
   {
@@ -94,6 +99,15 @@ const properties = [
     details: 'сдача 2025',
   }
 ];
+
+// Мапа для быстрого доступа к фото по имени файла
+const reviewPhotos = {
+  'vanessakevin.jpg': reviewVanessaKevin,
+  'zeev.jpg': reviewZeev,
+  'dina.jpg': reviewDina,
+  'olesya.jpg': reviewOlesya,
+  'greppo.jpg': reviewGreppo,
+};
 
 function useWindowWidth() {
     const [width, setWidth] = useState(window.innerWidth);
@@ -685,7 +699,7 @@ const LandingPage = () => {
                   </Typography>
                   <Grid container spacing={2} alignItems="center" justifyContent="center" sx={{ width: '100%' }}>
                     <Grid item xs={12} sm={5} md={4} sx={{width: {xs: '100%', md: 'auto'}}}>
-                      <Button fullWidth variant="contained" color="primary" size="large" sx={{ py: 1.5, fontWeight: 700, fontSize: { xs: 16, sm: 18 }, width: {xs: '100%', md: 'auto'} }}>
+                      <Button fullWidth variant="contained" color="primary" size="large" sx={{ py: 1.5, fontWeight: 700, fontSize: { xs: 16, sm: 18 }, width: {xs: '100%', md: 'auto'} }} onClick={() => scrollToSection(contactFormRef)}>
                         {t.howIWork.bottomBlock.button1}
                       </Button>
                     </Grid>
@@ -1033,9 +1047,20 @@ const LandingPage = () => {
                         minHeight: 260,
                       }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-                          <Typography variant="h4" component="span" sx={{ fontSize: 36 }}>{review.flag}</Typography>
-                          <Typography variant="h6" sx={{ fontWeight: 700 }}>{review.author}</Typography>
-                          <Typography variant="body2" sx={{ color: 'text.secondary', ml: 1 }}>{review.city}</Typography>
+                          {review.photo && reviewPhotos[review.photo] ? (
+                            <Avatar
+                              src={reviewPhotos[review.photo]}
+                              alt={review.author}
+                              sx={{ width: 56, height: 56, mr: 2 }}
+                              imgProps={{ loading: 'lazy', width: 56, height: 56 }}
+                            />
+                          ) : (
+                            <Avatar sx={{ width: 56, height: 56, mr: 2, fontSize: 32 }}>{review.flag}</Avatar>
+                          )}
+                          <Box>
+                            <Typography variant="h6" sx={{ fontWeight: 700 }}>{review.author}</Typography>
+                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>{review.city}</Typography>
+                          </Box>
                         </Box>
                         <Typography variant="subtitle2" sx={{ color: 'primary.main', fontWeight: 600, mb: 1 }}>{review.goal}</Typography>
                         <Typography variant="body1" sx={{ mb: 2, fontStyle: 'italic', color: 'text.primary' }}>
