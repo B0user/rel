@@ -226,7 +226,7 @@ const LandingPage = () => {
                   sx={{
                     cursor: 'pointer',
                     fontWeight: language === 'ru' ? 700 : 400,
-                    color: language === 'ru' ? 'primary.main' : 'white',
+                    color: language === 'ru' ? '#f5f7fa' : 'white',
                     textDecoration: language === 'ru' ? 'underline' : 'none',
                     fontSize: 16,
                     transition: 'color 0.2s',
@@ -240,7 +240,7 @@ const LandingPage = () => {
                   sx={{
                     cursor: 'pointer',
                     fontWeight: language === 'en' ? 700 : 400,
-                    color: language === 'en' ? 'primary.main' : 'white',
+                    color: language === 'en' ? '#f5f7fa' : 'white',
                     textDecoration: language === 'en' ? 'underline' : 'none',
                     fontSize: 16,
                     transition: 'color 0.2s',
