@@ -254,7 +254,7 @@ const LandingPage = () => {
               position: 'relative',
               minHeight: '100vh',
               height: '100vh',
-              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.2) 100%), url(${bgHero})`,
+              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%), url(${bgHero})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               alignItems: 'center',
@@ -276,8 +276,11 @@ const LandingPage = () => {
                   <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '1.8rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
                     {t.hero.title}
                   </Typography>
+                  <Typography variant="h5" sx={{ mb: 0, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
+                    {t.hero.subtitle1}
+                  </Typography>
                   <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
-                    {t.hero.subtitle}
+                    {t.hero.subtitle2}
                   </Typography>
                   <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column' }, gap: 2, mt: 3 }}>
                     <Button
@@ -285,7 +288,7 @@ const LandingPage = () => {
                       size="large"
                       sx={{
                         color: 'white',
-                        borderColor: 'white',
+                        // borderColor: 'white',
                         fontWeight: 600,
                         px: 4,
                         py: 1.5,
@@ -293,8 +296,9 @@ const LandingPage = () => {
                         borderRadius: 2,
                         backdropFilter: 'blur(2px)',
                         boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                        backgroundColor: '#00BCD4',
                         '&:hover': {
-                          background: 'rgba(255,255,255,0.08)',
+                          background: 'rgba(255,255,255,0.4)',
                           borderColor: 'white',
                         },
                       }}
@@ -328,30 +332,66 @@ const LandingPage = () => {
                     >
                       {t.hero.button2}
                     </Button>
-                    <Button
-                      variant="outlined"
-                      size="large"
-                      startIcon={<DownloadIcon />}
-                      sx={{
-                        color: 'white',
-                        borderColor: 'white',
-                        fontWeight: 600,
-                        px: 4,
-                        py: 1.5,
-                        fontSize: '1.1rem',
-                        borderRadius: 2,
-                        backdropFilter: 'blur(2px)',
-                        boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
-                        '&:hover': {
-                          background: 'rgba(255,255,255,0.08)',
-                          borderColor: 'white',
-                        },
-                      }}
-                    >
-                      {t.hero.button3}
-                    </Button>
+                    <Box sx={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                      <Button
+                        variant="text"
+                        size="large"
+                        startIcon={<DownloadIcon />}
+                        sx={{
+                          color: 'white',
+                          // borderColor: 'white',
+                          fontWeight: 600,
+                          px: 4,
+                          py: 1.5,
+                          fontSize: '1.1rem',
+                          borderRadius: 2,
+                          // backdropFilter: 'blur(2px)',
+                          // boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                          '&:hover': {
+                            borderColor: 'white',
+                            border: '1px solid'
+                          },
+                        }}
+                      >
+                        {t.hero.button3}
+                      </Button>
+                    </Box>
                   </Box>
                 </Box>
+
+                <Box sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '10px'
+                }}>
+                {t.hero.attention_triggers.map((trigger) => (
+                    <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: 1,
+                          bgcolor: 'rgba(255,255,255,0.1)',
+                          borderRadius: '50px',
+                          py: 2,
+                          px: 3,
+                          border: '1px solid rgba(255,255,255,0.2)',
+                          backdropFilter: 'blur(2px)',
+                          height: '40px',
+                          width: 'fit-content',
+                          textAlign: 'center',
+                        }}
+                    >
+                      <Typography variant="h5" sx={{ lineHeight: 1 }}>
+                        {trigger.icon}
+                      </Typography>
+                      <Typography variant="body1" sx={{ color: 'white', fontWeight: 500 }}>
+                        {trigger.text}
+                      </Typography>
+                    </Box>
+                ))}
+                </Box>
+
               </Container>
             </Box>
           </section>
@@ -363,7 +403,7 @@ const LandingPage = () => {
               py: 8,
             }}>
               <Container maxWidth="lg">
-                <Grid container spacing={4} alignItems="center" sx={{backgroundColor: 'rgba(255, 255, 255, 0.7)', p: 3, borderRadius: '14px', justifyContent: 'left'}}>
+                <Grid container spacing={4} alignItems="center" sx={{backgroundColor: 'rgba(255, 255, 255, 0.7)', p: 3, borderRadius: '14px', justifyContent: 'left' }}>
                   <Grid item xs={12} md={4}>
                     <Box
                       component="img"
@@ -389,8 +429,10 @@ const LandingPage = () => {
                     <Typography variant="h5" color="primary" gutterBottom >
                       {t.about.name}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary" gutterBottom >
+                    <Typography variant="subtitle1" color="text.secondary" gutterBottom sx={{textWrap: 'wrap'}} >
                       {t.about.role}<br />
+                    </Typography>
+                    <Typography color="text.secondary" gutterBottom sx={{width: { sm: '200px',md: '500px' } }} >
                       {t.about.company}
                     </Typography>
                     <Box sx={{ mt: 4 }}>
@@ -403,6 +445,21 @@ const LandingPage = () => {
                     </Box>
                   </Grid>
                 </Grid>
+                <Box
+                    sx={{
+                      mt: 4,
+                      p: 3,
+                      borderLeft: '4px solid',
+                      borderColor: 'primary.main',
+                      backgroundColor: '#fff',
+                      borderRadius: 2,
+                      boxShadow: 1,
+                    }}
+                >
+                  <Typography variant="body1" fontStyle="italic" color="text.secondary">
+                    “{t.about.quote}”
+                  </Typography>
+                </Box>
               </Container>
             </Box>
           </section>
