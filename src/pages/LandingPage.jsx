@@ -55,11 +55,11 @@ import testimonial4 from '../assets/photos/testimonials/4.webp';
 import testimonial5 from '../assets/photos/testimonials/5.webp';
 import testimonial6 from '../assets/photos/testimonials/6.webp';
 import testimonial7 from '../assets/photos/testimonials/7.webp';
-import reviewVanessaKevin from '../assets/reviews/vanessakevin.jpg';
-import reviewZeev from '../assets/reviews/zeev.jpg';
-import reviewDina from '../assets/reviews/dina.jpg';
-import reviewOlesya from '../assets/reviews/olesya.jpg';
-import reviewGreppo from '../assets/reviews/greppo.jpg';
+import reviewVanessaKevin from '../assets/reviews/vanessakevin.webp';
+import reviewZeev from '../assets/reviews/zeev.webp';
+import reviewDina from '../assets/reviews/dina.webp';
+import reviewOlesya from '../assets/reviews/olesya.webp';
+import reviewGreppo from '../assets/reviews/greppo.webp';
 
 const properties = [
   {
