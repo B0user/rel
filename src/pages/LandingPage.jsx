@@ -721,7 +721,7 @@ const LandingPage = () => {
                           gap: 4,
                           justifyContent: 'center',
                       }}>
-                {properties.slice(0, 6).map((property, index) => {
+                {properties.slice(0, 9).map((property, index) => {
                   const [photoIndex, setPhotoIndex] = useState(0);
                   const handlePrev = (e) => {
                     e.stopPropagation();
@@ -732,20 +732,20 @@ const LandingPage = () => {
                     setPhotoIndex((prev) => (prev === property.photos.length - 1 ? 0 : prev + 1));
                   };
                   return (
-                    <Grid item xs={12} md={4} key={property.name}>
+                    <Grid item xs={12} md={4} key={property.title}>
                       <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6, delay: index * 0.15 }}
                       >
-                        <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                        <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 4, boxShadow: 3, overflow: 'hidden' }}>
                           <Box sx={{ position: 'relative' }}>
                             <CardMedia
                               component="img"
                               sx={{ height: 240, objectFit: 'cover' }}
                               image={property.photos[photoIndex]}
-                              alt={property.name}
+                              alt={property.title}
                               width={400}
                               height={240}
                               loading="lazy"
@@ -764,19 +764,18 @@ const LandingPage = () => {
                               ))}
                             </Box>
                           </Box>
-                          <CardContent sx={{ flexGrow: 1 }}>
-                            <Typography variant="h5" gutterBottom>
-                              {property.name}
+                          <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                              <Typography variant="h4" component="span">{property.emoji}</Typography>
+                              <Typography variant="h6" sx={{ fontWeight: 700 }}>{property.title}</Typography>
+                            </Box>
+                            <Typography variant="body2" sx={{ color: 'primary.main', fontWeight: 600, mb: 0.5 }}>
+                              <LocationOnIcon fontSize="small" sx={{ verticalAlign: 'middle', mr: 0.5 }} />{property.location}
                             </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-                              {property.location}
-                            </Typography>
-                            <Typography variant="h6" color="primary" gutterBottom>
-                              {property.price}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                              {property.details}
-                            </Typography>
+                            <Typography variant="h6" color="primary" sx={{ fontWeight: 700, mb: 0.5 }}>{property.price}</Typography>
+                            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.5 }}>{property.details}</Typography>
+                            <Typography variant="body2" sx={{ color: 'success.main', fontWeight: 600, mb: 0.5 }}>{property.suitability}</Typography>
+                            <Typography variant="body2" sx={{ color: 'text.primary', mb: 0.5 }}>{property.features}</Typography>
                           </CardContent>
                         </Card>
                       </motion.div>
@@ -809,20 +808,20 @@ const LandingPage = () => {
                         };
                         return (
                           <Box
-                            key={property.name}
+                            key={property.title}
                             sx={{
                               width: 'calc(100% - 16px)',
                               flexShrink: 0,
                               mx: 1
                             }}
                           >
-                            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 4, boxShadow: 3, overflow: 'hidden' }}>
                               <Box sx={{ position: 'relative' }}>
                                 <CardMedia
                                   component="img"
                                   sx={{ height: 300, objectFit: 'cover', width: 400 }}
                                   image={property.photos[photoIndex]}
-                                  alt={property.name}
+                                  alt={property.title}
                                   loading="lazy"
                                 />
                                 {/* Кнопки навигации */}
@@ -839,19 +838,18 @@ const LandingPage = () => {
                                   ))}
                                 </Box>
                               </Box>
-                              <CardContent sx={{ flexGrow: 1 }}>
-                                <Typography variant="h5" gutterBottom>
-                                  {property.name}
+                              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                                  <Typography variant="h4" component="span">{property.emoji}</Typography>
+                                  <Typography variant="h6" sx={{ fontWeight: 700 }}>{property.title}</Typography>
+                                </Box>
+                                <Typography variant="body2" sx={{ color: 'primary.main', fontWeight: 600, mb: 0.5 }}>
+                                  <LocationOnIcon fontSize="small" sx={{ verticalAlign: 'middle', mr: 0.5 }} />{property.location}
                                 </Typography>
-                                <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-                                  {property.location}
-                                </Typography>
-                                <Typography variant="h6" color="primary" gutterBottom>
-                                  {property.price}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                  {property.details}
-                                </Typography>
+                                <Typography variant="h6" color="primary" sx={{ fontWeight: 700, mb: 0.5 }}>{property.price}</Typography>
+                                <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.5 }}>{property.details}</Typography>
+                                <Typography variant="body2" sx={{ color: 'success.main', fontWeight: 600, mb: 0.5 }}>{property.suitability}</Typography>
+                                <Typography variant="body2" sx={{ color: 'text.primary', mb: 0.5 }}>{property.features}</Typography>
                               </CardContent>
                             </Card>
                           </Box>
@@ -944,25 +942,34 @@ const LandingPage = () => {
                 <Typography variant="h2" align="center" gutterBottom>
                   {t.testimonials.title}
                 </Typography>
-                
                 <Grid container spacing={4} sx={{ mt: 4 }}>
                   {t.testimonials.reviews.map((review, index) => (
                     <Grid item xs={12} md={6} key={index}>
-                      <Paper sx={{ p: 4, height: '100%', display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-                        <Avatar
-                          src={testimonialAvatars[index]}
-                          alt={`Аватар клиента ${review.author}`}
-                          sx={{ width: 56, height: 56, mr: 2 }}
-                          imgProps={{ loading: 'lazy', width: 56, height: 56 }}
-                        />
-                        <Box>
-                          <Typography variant="body1" gutterBottom>
-                            {review.text}
-                          </Typography>
-                          <Typography variant="subtitle1" color="primary" sx={{ mt: 2 }}>
-                            {review.author}
-                          </Typography>
+                      <Paper sx={{
+                        p: { xs: 2, sm: 4 },
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 2,
+                        borderRadius: 4,
+                        boxShadow: 2,
+                        bgcolor: 'white',
+                        minHeight: 260,
+                      }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+                          <Typography variant="h4" component="span" sx={{ fontSize: 36 }}>{review.flag}</Typography>
+                          <Typography variant="h6" sx={{ fontWeight: 700 }}>{review.author}</Typography>
+                          <Typography variant="body2" sx={{ color: 'text.secondary', ml: 1 }}>{review.city}</Typography>
                         </Box>
+                        <Typography variant="subtitle2" sx={{ color: 'primary.main', fontWeight: 600, mb: 1 }}>{review.goal}</Typography>
+                        <Typography variant="body1" sx={{ mb: 2, fontStyle: 'italic', color: 'text.primary' }}>
+                          “{review.text}”
+                        </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', mb: 1 }}>
+                          <LocationOnIcon fontSize="small" sx={{ color: 'primary.main' }} />
+                          <Typography variant="body2" sx={{ fontWeight: 600 }}>{review.property}</Typography>
+                        </Box>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 14 }}>{review.tags}</Typography>
                       </Paper>
                     </Grid>
                   ))}
