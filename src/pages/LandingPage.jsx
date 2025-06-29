@@ -149,10 +149,13 @@ const LandingPage = () => {
   });
 
   // Combine locales text with imported images
-  const propertyImages = [apanemaImg, premiereImg, angelicoImg, blueViewImg, sabaiImg, almaImg, semeliImg, euphoriaImg];
   const properties = t.properties.list.map((prop, index) => ({
     ...prop,
-    image: propertyImages[index]
+    photos: [
+      `https://placehold.co/400x240?text=${encodeURIComponent(prop.name)}+Photo+1`,
+      `https://placehold.co/400x240?text=${encodeURIComponent(prop.name)}+Photo+2`,
+      `https://placehold.co/400x240?text=${encodeURIComponent(prop.name)}+Photo+3`,
+    ]
   }));
 
   return (
@@ -473,6 +476,7 @@ const LandingPage = () => {
               alignItems: 'center'
             }}>
               <Container maxWidth="lg">
+                <Typography sx={{textAlign: 'left', fontSize: '28px', paddingLeft: 3, marginBottom: 6}}>{t.pain.title}</Typography>
                 <Grid container spacing={6} sx={{backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: '14px', p: 3, }}>
                   <Grid item xs={12} md={6}>
                     <Typography variant="h3" gutterBottom sx={{fontSize: {xs: '22px', md: '28px', xl: '28px'}}}>
@@ -517,6 +521,15 @@ const LandingPage = () => {
                     </Box>
                   </Grid>
                 </Grid>
+                <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 2, marginTop: 4}}>
+                  <Typography sx={{fontSize: '24px'}}>{t.pain.titleCTA}</Typography>
+                  <Typography>{t.pain.subtitleCTA}</Typography>
+                  <Button
+                      variant="contained"
+                          color="primary"
+                          size="large"
+                  >{t.pain.buttonCTA}</Button>
+                </Box>
               </Container>
             </Box>
           </section>
@@ -568,12 +581,62 @@ const LandingPage = () => {
                             <Typography variant="body1" color="text.secondary">
                               {step.description}
                             </Typography>
+                            <Typography variant="body1" color="text.primary" sx={{fontWeight: 'bold'}}>
+                              {step.res}
+                            </Typography>
                           </Box>
                         </Box>
                       </motion.div>
                     </Grid>
                   ))}
                 </Grid>
+
+                <Box
+                  sx={{
+                    mt: 8,
+                    mb: 2,
+                    p: { xs: 2, sm: 4 },
+                    background: 'linear-gradient(90deg, #e0f7fa 0%, #f1f8e9 100%)',
+                    borderRadius: 4,
+                    boxShadow: 3,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 3,
+                  }}
+                >
+                  <Typography variant="h5" align="center" sx={{ fontWeight: 700, color: 'primary.main', mb: 1 }}>
+                    {t.howIWork.bottomBlock.top}
+                  </Typography>
+                  <Grid container spacing={2} alignItems="center" justifyContent="center" sx={{ width: '100%' }}>
+                    <Grid item xs={12} sm={5} md={4}>
+                      <Button fullWidth variant="contained" color="primary" size="large" sx={{ py: 1.5, fontWeight: 700, fontSize: { xs: 16, sm: 18 } }}>
+                        {t.howIWork.bottomBlock.button1}
+                      </Button>
+                    </Grid>
+                    <Grid item xs={12} sm={2} md={1} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <Typography variant="body1" align="center" sx={{ color: 'primary.main', fontWeight: 600 }}>
+                        {t.howIWork.bottomBlock.orText}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={5} md={4}>
+                      <Button
+                        fullWidth
+                        variant="outlined"
+                        color="primary"
+                        size="large"
+                        startIcon={<WhatsAppIcon />}
+                        sx={{ py: 1.5, fontWeight: 700, fontSize: { xs: 16, sm: 18 } }}
+                      >
+                        {t.howIWork.bottomBlock.button2}
+                      </Button>
+                    </Grid>
+                  </Grid>
+                  <Typography variant="body1" align="center" sx={{ color: 'text.secondary', mt: 2 }}>
+                    {t.howIWork.bottomBlock.bottom}
+                  </Typography>
+                </Box>
+
               </Container>
             </Box>
           </section>
@@ -581,16 +644,18 @@ const LandingPage = () => {
           {/* ===== What You Get Section ===== */}
           <section ref={whatYouGetRef}>
             <Box sx={{
-              backgroundColor: '#006064', zIndex: 1, py: 8
+              // backgroundColor: '#006064',
+              background: 'linear-gradient(to bottom, #001f24 30%, #004d4d 60%, #0097a7 100%)',
+              zIndex: 1, py: 8
             }}>
               <Container maxWidth="lg">
                 <Typography variant="h2" align="center" gutterBottom sx={{ color: 'white' }}>
                   {t.whatYouGet.title}
                 </Typography>
                 
-                <Grid container spacing={3} sx={{ mt: 4 }}>
+                <Grid container spacing={3} sx={{ mt: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, marginTop: 4 }}>
                   {t.whatYouGet.points.map((item, index) => (
-                    <Grid item xs={12} sm={6} md={4} key={index}>
+                    <Grid item xs={12} sm={12} md={4} key={index}>
                       <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -599,22 +664,31 @@ const LandingPage = () => {
                       >
                         <Box 
                           sx={{ 
-                            display: 'flex', 
-                            alignItems: 'center', 
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'left',
+                            alignItems: 'left',
+                            width: {sm: '300px', md: '450px', lg: '500px'},
                             gap: 2,
                             bgcolor: 'rgba(255,255,255,0.1)',
-                            borderRadius: '50px',
+                            borderRadius: '10px',
                             py: 2,
                             px: 3,
                             border: '1px solid rgba(255,255,255,0.2)',
-                              height: '100%',
+                            height: {sm: '300px', md: '250px', lg: '200px'},
                           }}
                         >
                           <Typography variant="h5" sx={{ lineHeight: 1 }}>
                             {item.icon}
                           </Typography>
-                          <Typography variant="body1" sx={{ color: 'white', fontWeight: 500 }}>
-                            {item.text}
+                          <Typography variant="body1" sx={{textAlign: 'left', color: 'white', fontWeight: 800, fontSize: '16px', lineHeight: 1}}>
+                            {item.title}
+                          </Typography>
+                          <Typography sx={{textAlign: 'left', color: 'white', fontWeight: 500, lineHeight: 1}}>
+                            <i>{item.description}</i>
+                          </Typography>
+                          <Typography sx={{textAlign: 'left', color: 'white', fontWeight: 300, lineHeight: 1  }}>
+                            {item.res}
                           </Typography>
                         </Box>
                       </motion.div>
@@ -647,45 +721,68 @@ const LandingPage = () => {
                           gap: 4,
                           justifyContent: 'center',
                       }}>
-                {properties.slice(0, 6).map((property, index) => (
-                  <Grid item xs={12} md={4} key={property.name}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.6, delay: index * 0.15 }}
-                    >
-                      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                        <CardMedia
-                          component="img"
-                          sx={{ 
-                            height: 240,
-                            objectFit: 'cover'
-                          }}
-                          image={property.image}
-                          alt={property.name}
-                          width={400}
-                          height={240}
-                          loading="lazy"
-                        />
-                        <CardContent sx={{ flexGrow: 1 }}>
-                          <Typography variant="h5" gutterBottom>
-                            {property.name}
-                          </Typography>
-                          <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-                            {property.location}
-                          </Typography>
-                          <Typography variant="h6" color="primary" gutterBottom>
-                            {property.price}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {property.details}
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  </Grid>
-                ))}
+                {properties.slice(0, 6).map((property, index) => {
+                  const [photoIndex, setPhotoIndex] = useState(0);
+                  const handlePrev = (e) => {
+                    e.stopPropagation();
+                    setPhotoIndex((prev) => (prev === 0 ? property.photos.length - 1 : prev - 1));
+                  };
+                  const handleNext = (e) => {
+                    e.stopPropagation();
+                    setPhotoIndex((prev) => (prev === property.photos.length - 1 ? 0 : prev + 1));
+                  };
+                  return (
+                    <Grid item xs={12} md={4} key={property.name}>
+                      <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.6, delay: index * 0.15 }}
+                      >
+                        <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                          <Box sx={{ position: 'relative' }}>
+                            <CardMedia
+                              component="img"
+                              sx={{ height: 240, objectFit: 'cover' }}
+                              image={property.photos[photoIndex]}
+                              alt={property.name}
+                              width={400}
+                              height={240}
+                              loading="lazy"
+                            />
+                            {/* Кнопки навигации */}
+                            <IconButton onClick={handlePrev} sx={{ position: 'absolute', top: '50%', left: 8, transform: 'translateY(-50%)', bgcolor: 'rgba(255,255,255,0.7)' }}>
+                              <ArrowBackIosNewIcon fontSize="small" />
+                            </IconButton>
+                            <IconButton onClick={handleNext} sx={{ position: 'absolute', top: '50%', right: 8, transform: 'translateY(-50%)', bgcolor: 'rgba(255,255,255,0.7)' }}>
+                              <ArrowForwardIosIcon fontSize="small" />
+                            </IconButton>
+                            {/* Индикаторы */}
+                            <Box sx={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 1 }}>
+                              {property.photos.map((_, idx) => (
+                                <Box key={idx} sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: idx === photoIndex ? 'primary.main' : 'grey.300' }} />
+                              ))}
+                            </Box>
+                          </Box>
+                          <CardContent sx={{ flexGrow: 1 }}>
+                            <Typography variant="h5" gutterBottom>
+                              {property.name}
+                            </Typography>
+                            <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                              {property.location}
+                            </Typography>
+                            <Typography variant="h6" color="primary" gutterBottom>
+                              {property.price}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                              {property.details}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    </Grid>
+                  );
+                })}
                 </Grid>
 
                 {/* Mobile Slider View */}
@@ -700,40 +797,66 @@ const LandingPage = () => {
                         width: '100%'
                       }}
                     >
-                      {properties.map((property) => (
-                        <Box
-                          key={property.name}
-                          sx={{
-                            width: 'calc(100% - 16px)',
-                            flexShrink: 0,
-                            mx: 1
-                          }}
-                        >
-                          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                            <CardMedia
-                              component="img"
-                              sx={{ height: 300, objectFit: 'cover', width: 400 }}
-                              image={property.image}
-                              alt={property.name}
-                              loading="lazy"
-                            />
-                            <CardContent sx={{ flexGrow: 1 }}>
-                              <Typography variant="h5" gutterBottom>
-                                {property.name}
-                              </Typography>
-                              <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-                                {property.location}
-                              </Typography>
-                              <Typography variant="h6" color="primary" gutterBottom>
-                                {property.price}
-                              </Typography>
-                              <Typography variant="body2" color="text.secondary">
-                                {property.details}
-                              </Typography>
-                            </CardContent>
-                          </Card>
-                        </Box>
-                      ))}
+                      {properties.map((property, propIdx) => {
+                        const [photoIndex, setPhotoIndex] = useState(0);
+                        const handlePrev = (e) => {
+                          e.stopPropagation();
+                          setPhotoIndex((prev) => (prev === 0 ? property.photos.length - 1 : prev - 1));
+                        };
+                        const handleNext = (e) => {
+                          e.stopPropagation();
+                          setPhotoIndex((prev) => (prev === property.photos.length - 1 ? 0 : prev + 1));
+                        };
+                        return (
+                          <Box
+                            key={property.name}
+                            sx={{
+                              width: 'calc(100% - 16px)',
+                              flexShrink: 0,
+                              mx: 1
+                            }}
+                          >
+                            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                              <Box sx={{ position: 'relative' }}>
+                                <CardMedia
+                                  component="img"
+                                  sx={{ height: 300, objectFit: 'cover', width: 400 }}
+                                  image={property.photos[photoIndex]}
+                                  alt={property.name}
+                                  loading="lazy"
+                                />
+                                {/* Кнопки навигации */}
+                                <IconButton onClick={handlePrev} sx={{ position: 'absolute', top: '50%', left: 8, transform: 'translateY(-50%)', bgcolor: 'rgba(255,255,255,0.7)' }}>
+                                  <ArrowBackIosNewIcon fontSize="small" />
+                                </IconButton>
+                                <IconButton onClick={handleNext} sx={{ position: 'absolute', top: '50%', right: 8, transform: 'translateY(-50%)', bgcolor: 'rgba(255,255,255,0.7)' }}>
+                                  <ArrowForwardIosIcon fontSize="small" />
+                                </IconButton>
+                                {/* Индикаторы */}
+                                <Box sx={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 1 }}>
+                                  {property.photos.map((_, idx) => (
+                                    <Box key={idx} sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: idx === photoIndex ? 'primary.main' : 'grey.300' }} />
+                                  ))}
+                                </Box>
+                              </Box>
+                              <CardContent sx={{ flexGrow: 1 }}>
+                                <Typography variant="h5" gutterBottom>
+                                  {property.name}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                                  {property.location}
+                                </Typography>
+                                <Typography variant="h6" color="primary" gutterBottom>
+                                  {property.price}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                  {property.details}
+                                </Typography>
+                              </CardContent>
+                            </Card>
+                          </Box>
+                        );
+                      })}
                     </Box>
                   </Box>
                 </Box>
