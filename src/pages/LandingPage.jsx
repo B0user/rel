@@ -217,7 +217,8 @@ const LandingPage = () => {
             backdropFilter: 'blur(4px)',
           }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              <Typography variant="h4" sx={{ color: 'white', fontWeight: 700, letterSpacing: 1, fontFamily: 'Suisse, ui-sans-serif, system-ui, sans-serif' }}>
+              <Typography variant="h4" sx={{ color: 'white', fontSize: { xs: '14px', md: '24px' },
+                 fontWeight: 700, letterSpacing: 1, fontFamily: 'Suisse, ui-sans-serif, system-ui, sans-serif' }}>
                 {t.nav.title}
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, ml: 2 }}>
@@ -328,7 +329,7 @@ const LandingPage = () => {
               zIndex: 5
             }}>
               <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 }, position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 6, md: 6 }, mt: {xs: 2, md: 6}}}>
+                <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 1, md: 6 }, mt: {xs: 10, md: 6}}}>
                   <Typography variant="overline" sx={{
                     mb: {sm: 0, md: 2},
                     opacity: 0.85,
@@ -359,7 +360,7 @@ const LandingPage = () => {
                         fontWeight: 600,
                         px: 4,
                         py: 1.5,
-                        fontSize: '1.1rem',
+                        fontSize: { xs: '0.8rem', md: '1.1rem' },
                         borderRadius: 2,
                         backdropFilter: 'blur(2px)',
                         boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
@@ -383,7 +384,7 @@ const LandingPage = () => {
                         fontWeight: 600,
                         px: 4,
                         py: 1.5,
-                        fontSize: '1.1rem',
+                        ffontSize: { xs: '0.8rem', md: '1.1rem' },
                         borderRadius: 2,
                         backdropFilter: 'blur(2px)',
                         boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
@@ -410,7 +411,7 @@ const LandingPage = () => {
                           fontWeight: 600,
                           px: 4,
                           py: 1.5,
-                          fontSize: '1.1rem',
+                          fontSize: { xs: '0.8rem', md: '1.1rem' },
                           borderRadius: 2,
                           // backdropFilter: 'blur(2px)',
                           // boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
@@ -434,7 +435,7 @@ const LandingPage = () => {
                     alignItems: 'center',
                     justifyContent: { xs: 'flex-start', md: 'center' },
                     gap: { xs: 1.5, sm: 2, md: 3 },
-                    mt: { xs: 1, md: 2 },
+                    mt: { xs: 0, md: 2 },
                   }}
                 >
                   {t.hero.attention_triggers.map((trigger, idx) => (
@@ -444,11 +445,11 @@ const LandingPage = () => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: 1,
+                        gap: {xs: 0, md: 1},
                         bgcolor: 'rgba(255,255,255,0.1)',
                         borderRadius: '50px',
-                        py: 2,
-                        px: 3,
+                        py: {xs: 1, md: 2},
+                        px: {xs: 1, md: 3},
                         border: '1px solid rgba(255,255,255,0.2)',
                         backdropFilter: 'blur(2px)',
                         minHeight: 40,
@@ -594,12 +595,14 @@ const LandingPage = () => {
                   </Grid>
                 </Grid>
                 <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 2, marginTop: 4}}>
-                  <Typography sx={{fontSize: '24px'}}>{t.pain.titleCTA}</Typography>
-                  <Typography>{t.pain.subtitleCTA}</Typography>
+                  <Typography sx={{fontSize: {xs: '18px', md: '24px'}, textAlign: 'center'}}>{t.pain.titleCTA}</Typography>
+                  <Typography sx={{fontSize: {xs: '14px', md: '16px'}, textAlign: 'center'}}>{t.pain.subtitleCTA}</Typography>
                   <Button
                       variant="contained"
                           color="primary"
                           size="large"
+                          width="100%"
+                          onClick={() => scrollToSection(contactFormRef)}
                   >{t.pain.buttonCTA}</Button>
                 </Box>
               </Container>
@@ -677,12 +680,12 @@ const LandingPage = () => {
                     gap: 3,
                   }}
                 >
-                  <Typography variant="h5" align="center" sx={{ fontWeight: 700, color: 'primary.main', mb: 1 }}>
+                  <Typography variant="h5" align="center" sx={{ fontWeight: 700, color: 'primary.main', mb: 1, fontSize: {xs: '16px', md: '20px'}}}>
                     {t.howIWork.bottomBlock.top}
                   </Typography>
                   <Grid container spacing={2} alignItems="center" justifyContent="center" sx={{ width: '100%' }}>
-                    <Grid item xs={12} sm={5} md={4}>
-                      <Button fullWidth variant="contained" color="primary" size="large" sx={{ py: 1.5, fontWeight: 700, fontSize: { xs: 16, sm: 18 } }}>
+                    <Grid item xs={12} sm={5} md={4} sx={{width: {xs: '100%', md: 'auto'}}}>
+                      <Button fullWidth variant="contained" color="primary" size="large" sx={{ py: 1.5, fontWeight: 700, fontSize: { xs: 16, sm: 18 }, width: {xs: '100%', md: 'auto'} }}>
                         {t.howIWork.bottomBlock.button1}
                       </Button>
                     </Grid>
@@ -691,7 +694,7 @@ const LandingPage = () => {
                         {t.howIWork.bottomBlock.orText}
                       </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={5} md={4}>
+                    <Grid item xs={12} sm={5} md={4} sx={{width: {xs: '100%', md: 'auto'}}}>
                       <Button
                         fullWidth
                         variant="outlined"
@@ -884,10 +887,11 @@ const LandingPage = () => {
                             sx={{
                               width: 'calc(100% - 16px)',
                               flexShrink: 0,
-                              mx: 1
+                              mx: 1,
+                              my: {xs: 2, md: 0}
                             }}
                           >
-                            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 4, boxShadow: 3, overflow: 'hidden' }}>
+                            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 4, boxShadow: 3, overflow: 'hidden', mb: {xs: 2, md: 0}}}>
                               <Box sx={{ position: 'relative' }}>
                                 <CardMedia
                                   component="img"
