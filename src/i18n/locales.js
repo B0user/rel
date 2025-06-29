@@ -336,6 +336,339 @@ export const locales = {
     }
   },
   en: {
-    // Add English translations here
+    nav: {
+      title: 'Cyprus from the Heart | Inessa',
+      whatsapp: 'WhatsApp',
+      phone: '+357 999 011 01',
+    },
+    mobileMenu: {
+      hero: 'Home',
+      about: 'About Me',
+      pain: 'Problems',
+      howIWork: 'How I Work',
+      whatYouGet: 'Benefits',
+      properties: 'Properties',
+      reviews: 'Testimonials',
+      contact: 'Contact',
+    },
+    hero: {
+      pretitle: 'Based on 100+ personal deals',
+      title: 'Real estate in Cyprus — ROI up to 7%, residence permit and full turnkey support',
+      subtitle1: 'Selection of villas and apartments in Protaras and Ayia Napa.',
+      subtitle2: 'No intermediaries, overpayments or stress — from first request to registration.',
+      button1: 'Get a personal selection',
+      button2: 'Consultation',
+      button3: 'Guide to buying property in Cyprus',
+      attention_triggers: [
+        {text: '6+ years in Cyprus real estate | Giovani Homes representative', icon: '🏡'},
+        {text: '70+ deals in Protaras and Ayia Napa', icon: '📍'},
+        {text: 'Everything under control — from the first call to the keys in hand', icon: '🔑'},
+      ]
+    },
+    about: {
+      title: 'About Me',
+      name: 'Inessa',
+      role: 'Expert in investment real estate in Cyprus',
+      company: 'Head of Development at Giovani Homes — the #1 developer in Protaras and Ayia Napa',
+      points: [
+        '6+ years of experience in the market',
+        '70+ successful deals with clients from 12 countries',
+        'From apartments to hotel construction — individual strategies',
+        'Long-term relationships and personal support',
+        'Access to exclusive, off-market properties',
+        'Languages: 🇷🇺 🇬🇧 🇬🇷'
+      ],
+      quote: 'I dont just select a property. I create confidence, results and comfort for the client — as for myself.'
+    },
+    pain: {
+      title: 'What difficulties you may face — and how I solve them',
+      titleCTA: 'I want you to feel as calm as my clients',
+      subtitleCTA: 'Leave a request — and get 3–5 properties tailored to your needs.',
+      buttonCTA: 'Get a personal selection'
+    },
+    painPoints: {
+      title: 'Typical client state',
+      points: [
+        'Difficult to understand the market',
+        'Distrust, fear of loss',
+        'Dont know where to start',
+        'No time to travel and arrange everything',
+        'Need investment, but dont know how it works'
+      ]
+    },
+    solutions: {
+      title: 'My solution',
+      points: [
+        'I take care of the whole process — from selection to keys',
+        'Only verified properties and honest terms',
+        'I explain everything step by step, support at all stages',
+        'Video tours, consultations, deals — everything can be done remotely',
+        'I calculate ROI, select for your goal: income, leisure or residence permit'
+      ]
+    },
+    howIWork: {
+      title: 'How I Work',
+      subtitle: 'Simple. Transparent. Honest.',
+      steps: [
+        {
+          title: 'First consultation',
+          description: 'You tell me your goal (housing, investment, residence permit) and budget. I ask the right questions so there are no mistakes.',
+          res: 'Result: a clear understanding of where to start and where to go.'
+        },
+        {
+          title: 'Personal selection',
+          description: 'Based on experience from 100+ deals, I select 3–5 exact properties for your request. ROI, analysis, potential — all clearly presented.',
+          res: 'Result: you save time and immediately see what works for you.'
+        },
+        {
+          title: 'Video tour and documents',
+          description: 'Online viewings, consultations, document checks — no flights, all remote.',
+          res: 'Result: complete trust and a sense of control, even at a distance.'
+        },
+        {
+          title: 'Turnkey deal',
+          description: 'Legal support, translations, paperwork — I handle it all.',
+          res: 'Result: the deal goes safely, officially, with no "grey areas".'
+        },
+        {
+          title: 'Post-service',
+          description: 'Furniture selection, rental, residence permit, tax issues — I continue to support after purchase.',
+          res: 'Result: passive income, comfort or a ready-to-live-in home — hassle-free.'
+        }
+      ],
+      bottomBlock: {
+        top: 'I support you from the first step to the keys and even after — with trust, experience and full transparency.',
+        bottom: 'I know the market. I listen to the client. And I dont offer what I dont believe in myself.',
+        button1: 'Request selection',
+        button2: 'Contact via Whatsapp',
+        orText: 'or',
+      },
+    },
+    whatYouGet: {
+      title: 'What you get',
+      points: [
+        {
+          icon: '💼',
+          title: 'Individual approach — no flow and templates',
+          description: 'I work not with "clients", but with people. I listen, calculate, advise — as for myself.',
+          res: 'You get a precise selection, not a generic list from the website.'
+        },
+        {
+          icon: '📉',
+          title: 'I work not with "clients", but with people. I listen, calculate, advise — as for myself',
+          description: 'ROI, income, rental, relocation, residence permit — I calculate, compare, plan with you.',
+          res: 'You understand where to invest and how it will pay off.'
+        },
+        {
+          icon: '🏗',
+          title: 'Direct access to the #1 developer',
+          description: 'No intermediaries or markups — only direct offers from Giovani Homes.',
+          res: 'You get the best price and access to "pre-market" properties.'
+        },
+        {
+          icon: '💬',
+          title: 'Transparency at every step',
+          description: 'I explain all stages, everything is fixed in writing, no hidden conditions.',
+          res: 'You are confident in the process — and dont lose control.'
+        },
+        {
+          icon: '🧠',
+          title: 'Honesty and peace of mind',
+          description: 'I tell it like it is — if it doesnt fit, Ill say so. No pressure, no rush.',
+          res: 'You make decisions easily — knowing you have truth and support behind you.'
+        },
+        {
+          icon: '🌍',
+          title: 'Location — not just a view, but a lifestyle',
+          description: 'Only the best places: walking distance to the beach, infrastructure, liquidity.',
+          res: 'You live, rent or invest with pleasure.'
+        },
+      ]
+    },
+    properties: {
+      title: 'Top properties from the developer',
+      subtitle: 'Giovani Homes',
+      list: [
+        {
+          emoji: '🏡',
+          title: 'Apanema Villas — family villas in a resort area',
+          location: 'Kapparis, Protaras',
+          price: 'from €472,000 + VAT',
+          details: '3 bedrooms | 💎 Secluded residence',
+          features: 'Comfort, privacy and sea view — turnkey',
+          suitability: 'Perfect for relocation, holidays and long-term rental',
+          highlight: 'For living, holidays and rental',
+        },
+        {
+          emoji: '🏢',
+          title: 'Premiere Pearl B — premium villas 300m from the beach',
+          location: 'Pernera, Protaras',
+          price: 'from €595,000 + VAT',
+          details: '3 bedrooms | 🏊 Private pool | 🌴 Gated complex',
+          features: 'Premium class and high rental potential',
+          suitability: 'For living, holidays or investment',
+          highlight: 'Premium, high income',
+        },
+        {
+          emoji: '💼',
+          title: 'Angelico Apartments — income apartments with ROI up to 7%',
+          location: 'Kapparis, Protaras',
+          price: 'from €153,000 + VAT',
+          details: '1–2 bedrooms | 📈 ROI 6–7%',
+          features: 'Low entry, high income. Ready-made turnkey solutions',
+          suitability: 'Ideal for investors: rental + value growth',
+          highlight: 'Investment, income',
+        },
+        {
+          emoji: '🏖',
+          title: 'Blue View Lifestyle — apartments by the sea',
+          location: 'Kapparis, Protaras',
+          price: 'from €255,000 + VAT',
+          details: '2–3 bedrooms | 🌊 700m to the beach',
+          features: 'Affordable, liquid, profitable',
+          suitability: 'Great option for holidays and rental income',
+          highlight: 'Holidays, rental',
+        },
+        {
+          emoji: '🌊',
+          title: 'Sabai Beachfront — first line, premium class',
+          location: 'Direct access to the beach',
+          price: 'from €985,000 + VAT',
+          details: '2–5 bedrooms | 🏡 Unique layouts',
+          features: 'Ideal for residence permit, rental and status living',
+          suitability: 'For wealthy investors and families',
+          highlight: 'Premium, status',
+        },
+        {
+          emoji: '🏠',
+          title: 'Alma Villas — modern villa within walking distance to the sea',
+          location: '350m to the beach',
+          price: 'from €523,000 + VAT',
+          details: '3 bedrooms | 🗓 Delivery: 2025',
+          features: 'Book now — price increase after delivery guaranteed',
+          suitability: 'Suitable for relocation, residence permit and comfortable rental',
+          highlight: 'Relocation, residence permit, rental',
+        },
+        {
+          emoji: '💎',
+          title: 'Euphoria — high-yield apartments',
+          location: 'Kapparis, Protaras',
+          price: 'from €215,000 + VAT',
+          details: '2 bedrooms | 🚶 20 min to the beach',
+          features: 'Comfortable price, promising location, quality finish',
+          suitability: 'Great choice for your first property in Cyprus with minimal costs',
+          highlight: 'First property, income',
+        },
+        {
+          emoji: '💼',
+          title: 'Delear — cozy project for living and leisure',
+          location: 'Kapparis / Protaras',
+          price: 'from €542,000 + VAT',
+          details: '3-4 bedrooms | 📈 Rental income up to 7%',
+          features: 'Purchase without a flight — from selection to rental',
+          suitability: 'Ideal for investment and remote purchase',
+          highlight: 'Investment, remote purchase',
+        },
+        {
+          emoji: '🌅',
+          title: 'Napa Amaris — exclusive in the center of Ayia Napa',
+          location: 'Ayia Napa',
+          price: 'from €630,000 + VAT',
+          details: '4-5 bedrooms | 👣 Walk to the best beaches in Europe Nissi and infrastructure',
+          features: 'Modern style, prestigious area, ready demand',
+          suitability: 'Suitable for holidays, residence permit and short-term rental',
+          highlight: 'Exclusive, prestige',
+        },
+        {
+          emoji: '🏘',
+          title: 'Semeli B — premium residential complex',
+          location: 'Pernera, Protaras',
+          price: 'from €543,000 + VAT',
+          details: '3 bedrooms | 🏊 Pool, barrier, terraces',
+          features: 'Exclusive project from the #1 developer in southeast Cyprus',
+          suitability: 'For family, residence permit and rental income',
+          highlight: 'Premium, family, income',
+        },
+      ]
+    },
+    cta: {
+        title: 'Get a personal property selection',
+        subtitle: 'Fill out the form below and get 3–5 current properties for your request',
+        button: 'Get selection'
+    },
+    testimonials: {
+        title: 'Client testimonials',
+        reviews: [
+            {
+                flag: '🇬🇧',
+                author: 'Vanessa & Kevin Yates',
+                country: 'UK',
+                city: 'London',
+                goal: 'Seaside home + residence permit',
+                text: 'We dreamed of a home with a sea view and the opportunity to obtain a residence permit. Inessa helped make everything fast, clear and without pressure. Panorama turned out to be the perfect choice for living. Reliability and sincerity — thats what we are grateful to her for!',
+                property: 'Panorama Villas',
+                tags: 'For living + residence permit | Sea view | Direct developer',
+            },
+            {
+                flag: '🇮🇱',
+                author: 'Zeev Saban',
+                country: 'Israel',
+                city: 'Tel Aviv',
+                goal: 'Repeat investment + penthouse',
+                text: 'This is my second purchase with Inessa. This time — a penthouse with a private pool. The deal was at the start of construction and with interest-free installments — just what an investor needs. I appreciate the personal approach and transparency in every detail.',
+                property: 'Angelico Penthouse',
+                tags: 'Early stage investment | Interest-free installments | Private pool',
+            },
+            {
+                flag: '🇰🇿',
+                author: 'Dina Zhantelova',
+                country: 'Kazakhstan',
+                city: 'Almaty',
+                goal: 'Residence permit + 2 apartments',
+                text: 'I bought two apartments at the planning stage. My architect and I made an incredible redesign — and now its my real home. Inessa is not just a professional, but a person with whom you feel confident and supported. Already planning my next investment.',
+                property: 'Semeli / individual project',
+                tags: 'Residence permit | Unique design | Long-term plans',
+            },
+            {
+                flag: '🇷🇺',
+                author: 'Olesya Perepelkina',
+                country: 'Russia',
+                city: 'Moscow',
+                goal: 'Family home + relocation',
+                text: 'My husband, children and I bought a cozy house near the beach. We moved to Cyprus for the climate, safety and peace of mind. Inessa took care of everything: from selection to paperwork. With her, you feel that they really want to help you, not just sell.',
+                property: 'Premiere Pearl Villas |  A',
+                tags: 'Residence permit for the whole family | Comfort + safety | Full support',
+            },
+            {
+                flag: '🇫🇷',
+                author: 'Mathieu Greppo',
+                country: 'France / Lebanon',
+                city: 'France / Beirut',
+                goal: 'Investment + family housing',
+                text: 'I have been working with Inessa for the third time. We started with an apartment in Cosmo — it is rented out long-term with a yield of about 6%. Then we bought a property at the construction stage with a direct sea view. Recently I bought a third apartment — a resale near the school where my children will live. Thank you for your professionalism, support and strategic thinking!',
+                property: 'Cosmo, resale apartment, Angelico with rooftop garden',
+                tags: 'ROI 6% | Income + family housing | 3 properties with one specialist',
+            },
+        ]
+    },
+    contactForm: {
+        title: 'Get a personal selection',
+        subtitle: 'Fill out and get 3–5 current properties for your request',
+        nameLabel: 'Full Name',
+        contactLabel: 'Email / WhatsApp',
+        purposeLabel: 'Purpose',
+        purposeOptions: ['Investment', 'Housing', 'Residence permit', 'Rental'],
+        budgetLabel: 'Budget',
+        budgetOptions: ['up to €300K', '€300–500K', '€500K+', 'other'],
+        commentLabel: 'Comment / details',
+        button: 'Get selection'
+    },
+    footer: {
+        contactsTitle: 'Contacts',
+        phone: '+357 999 011 01',
+        email: 'inessa@giovani.com.cy',
+        location: 'I work directly with the largest developer in southeast Cyprus — Giovani Homes',
+        socialTitle: 'Social networks'
+    }
   }
 }; 

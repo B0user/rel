@@ -22,14 +22,31 @@ import { locales } from '../i18n/locales.js';
 import bgHero from '../assets/hero.webp';
 import WhoAmI from '../assets/photos/who_am_i.webp';
 // Property Images
-import apanemaImg from '../assets/properties/apa_1.webp';
-import premiereImg from '../assets/properties/pre_1.webp';
-import angelicoImg from '../assets/properties/ang_1.webp';
-import blueViewImg from '../assets/properties/blu_1.webp';
-import sabaiImg from '../assets/properties/sab_1.webp';
-import almaImg from '../assets/properties/alm_1.webp';
-import semeliImg from '../assets/properties/sem_1.webp';
-import euphoriaImg from '../assets/properties/eup_1.webp';
+import apa_1 from '../assets/properties/apa_1.webp';
+import apa_2 from '../assets/properties/apa_2.webp';
+import apa_3 from '../assets/properties/apa_3.webp';
+import pre_1 from '../assets/properties/pre_1.webp';
+import pre_2 from '../assets/properties/pre_2.webp';
+import pre_3 from '../assets/properties/pre_3.webp';
+import ang_1 from '../assets/properties/ang_1.webp';
+import ang_2 from '../assets/properties/ang_2.webp';
+import ang_3 from '../assets/properties/ang_3.webp';
+import blu_1 from '../assets/properties/blu_1.webp';
+import blu_2 from '../assets/properties/blu_2.webp';
+import blu_3 from '../assets/properties/blu_3.webp';
+import sab_1 from '../assets/properties/sab_1.webp';
+import sab_2 from '../assets/properties/sab_2.webp';
+import sab_3 from '../assets/properties/sab_3.webp';
+import alm_1 from '../assets/properties/alm_1.webp';
+import alm_2 from '../assets/properties/alm_2.webp';
+import alm_3 from '../assets/properties/alm_3.webp';
+import eup_1 from '../assets/properties/eup_1.webp';
+import eup_2 from '../assets/properties/eup_2.webp';
+import sem_1 from '../assets/properties/sem_1.webp';
+import sem_2 from '../assets/properties/sem_2.webp';
+import sem_3 from '../assets/properties/sem_3.webp';
+import sem_4 from '../assets/properties/sem_4.webp';
+import sem_5 from '../assets/properties/sem_5.webp';
 // Testimonial images
 import testimonial1 from '../assets/photos/testimonials/1.webp';
 import testimonial2 from '../assets/photos/testimonials/2.webp';
@@ -149,14 +166,32 @@ const LandingPage = () => {
   });
 
   // Combine locales text with imported images
-  const properties = t.properties.list.map((prop, index) => ({
-    ...prop,
-    photos: [
-      `https://placehold.co/400x240?text=${encodeURIComponent(prop.name)}+Photo+1`,
-      `https://placehold.co/400x240?text=${encodeURIComponent(prop.name)}+Photo+2`,
-      `https://placehold.co/400x240?text=${encodeURIComponent(prop.name)}+Photo+3`,
-    ]
-  }));
+  const properties = t.properties.list.map((prop) => {
+    let photos = [];
+    if (prop.title.startsWith('Apanema')) {
+      photos = [apa_1, apa_2, apa_3];
+    } else if (prop.title.startsWith('Premiere Pearl')) {
+      photos = [pre_1, pre_2, pre_3];
+    } else if (prop.title.startsWith('Angelico')) {
+      photos = [ang_1, ang_2, ang_3];
+    } else if (prop.title.startsWith('Blue View')) {
+      photos = [blu_1, blu_2, blu_3];
+    } else if (prop.title.startsWith('Sabai')) {
+      photos = [sab_1, sab_2, sab_3];
+    } else if (prop.title.startsWith('Alma')) {
+      photos = [alm_1, alm_2, alm_3];
+    } else if (prop.title.startsWith('Euphoria')) {
+      photos = [eup_1, eup_2];
+    } else if (prop.title.startsWith('Semeli B')) {
+      photos = [sem_1, sem_2, sem_3, sem_4, sem_5];
+    } else {
+      photos = [];
+    }
+    return {
+      ...prop,
+      photos,
+    };
+  });
 
   return (
     <>
@@ -185,6 +220,35 @@ const LandingPage = () => {
               <Typography variant="h4" sx={{ color: 'white', fontWeight: 700, letterSpacing: 1, fontFamily: 'Suisse, ui-sans-serif, system-ui, sans-serif' }}>
                 {t.nav.title}
               </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, ml: 2 }}>
+                <Typography
+                  onClick={() => setLanguage('ru')}
+                  sx={{
+                    cursor: 'pointer',
+                    fontWeight: language === 'ru' ? 700 : 400,
+                    color: language === 'ru' ? 'primary.main' : 'white',
+                    textDecoration: language === 'ru' ? 'underline' : 'none',
+                    fontSize: 16,
+                    transition: 'color 0.2s',
+                  }}
+                >
+                  RU
+                </Typography>
+                <Typography sx={{ color: 'white', fontWeight: 400, fontSize: 16 }}>|</Typography>
+                <Typography
+                  onClick={() => setLanguage('en')}
+                  sx={{
+                    cursor: 'pointer',
+                    fontWeight: language === 'en' ? 700 : 400,
+                    color: language === 'en' ? 'primary.main' : 'white',
+                    textDecoration: language === 'en' ? 'underline' : 'none',
+                    fontSize: 16,
+                    transition: 'color 0.2s',
+                  }}
+                >
+                  EN
+                </Typography>
+              </Box>
             </Box>
             <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 3 }}>
               <Button
@@ -362,37 +426,45 @@ const LandingPage = () => {
                   </Box>
                 </Box>
 
-                <Box sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '10px'
-                }}>
-                {t.hero.attention_triggers.map((trigger) => (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: { xs: 'column', sm: 'column', md: 'row' },
+                    flexWrap: { xs: 'nowrap', sm: 'nowrap', md: 'wrap' },
+                    alignItems: 'center',
+                    justifyContent: { xs: 'flex-start', md: 'center' },
+                    gap: { xs: 1.5, sm: 2, md: 3 },
+                    mt: { xs: 1, md: 2 },
+                  }}
+                >
+                  {t.hero.attention_triggers.map((trigger, idx) => (
                     <Box
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: 1,
-                          bgcolor: 'rgba(255,255,255,0.1)',
-                          borderRadius: '50px',
-                          py: 2,
-                          px: 3,
-                          border: '1px solid rgba(255,255,255,0.2)',
-                          backdropFilter: 'blur(2px)',
-                          height: '40px',
-                          width: 'fit-content',
-                          textAlign: 'center',
-                        }}
+                      key={idx}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: 1,
+                        bgcolor: 'rgba(255,255,255,0.1)',
+                        borderRadius: '50px',
+                        py: 2,
+                        px: 3,
+                        border: '1px solid rgba(255,255,255,0.2)',
+                        backdropFilter: 'blur(2px)',
+                        minHeight: 40,
+                        width: { xs: '100%', sm: '100%', md: 'fit-content' },
+                        textAlign: 'center',
+                        mb: { xs: 0, md: 0 },
+                      }}
                     >
-                      <Typography variant="h5" sx={{ lineHeight: 1 }}>
+                      <Typography variant="h5" sx={{ lineHeight: 1.1, fontSize: { xs: 18, sm: 20, md: 22 } }}>
                         {trigger.icon}
                       </Typography>
-                      <Typography variant="body1" sx={{ color: 'white', fontWeight: 500 }}>
+                      <Typography variant="body1" sx={{ color: 'white', fontWeight: 500, fontSize: { xs: 15, sm: 16, md: 18 }, lineHeight: 1.1 }}>
                         {trigger.text}
                       </Typography>
                     </Box>
-                ))}
+                  ))}
                 </Box>
 
               </Container>
@@ -1100,8 +1172,12 @@ const LandingPage = () => {
                       {t.footer.socialTitle}
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 2 }}>
-                      <InstagramIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
-                      <LinkedInIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
+                      <a href="https://www.instagram.com/cyprushouses?igsh=MW1lZHo4Yzg2Y3ozZw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
+                        <InstagramIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
+                      </a>
+                      <a href="https://www.linkedin.com/in/inessa-zheurova-46295017b/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
+                        <LinkedInIcon sx={{ cursor: 'pointer', fontSize: 32 }} />
+                      </a>
                 </Box>
               </Grid>
             </Grid>
