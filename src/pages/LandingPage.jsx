@@ -335,15 +335,15 @@ const LandingPage = () => {
             <Box sx={{
               position: 'relative',
               minHeight: '100vh',
-              height: '100vh',
+              height: '140vh',
               backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%), url(${bgHero})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               alignItems: 'center',
               zIndex: 5
             }}>
-              <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 }, position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 1, md: 6 }, mt: {xs: 10, md: 6}}}>
+              <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 }, position: 'relative', height: 'fit-content', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start' }}>
+                <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 5, sm: 5, md: 5, xl: 5 }, mt: {xs: 5, sm: 5, md: 5}}}>
                   <Typography variant="overline" sx={{
                     mb: {sm: 0, md: 2},
                     opacity: 0.85,
@@ -421,14 +421,15 @@ const LandingPage = () => {
                         startIcon={<DownloadIcon />}
                         sx={{
                           color: 'white',
-                          // borderColor: 'white',
+                          borderColor: 'white',
+                          border: '1px solid',
                           fontWeight: 600,
                           px: 4,
                           py: 1.5,
                           fontSize: { xs: '0.9rem', md: '1.3rem' },
                           borderRadius: 2,
-                          // backdropFilter: 'blur(2px)',
-                          // boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                          backdropFilter: 'blur(2px)',
+                          boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
                           '&:hover': {
                             borderColor: 'white',
                             border: '1px solid'
