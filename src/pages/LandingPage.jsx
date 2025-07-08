@@ -283,8 +283,10 @@ const LandingPage = () => {
             </Box>
             {/* Burger menu for mobile */}
             <MenuIcon sx={{ color: 'white', fontSize: 36, ml: 2, display: { xs: 'block', lg: 'none' }, cursor: 'pointer' }} onClick={handleMenuOpen} />
+            {/* Burger menu for desktop */}
+            <MenuIcon sx={{ color: 'white', fontSize: 28, ml: 2, display: { xs: 'none', lg: 'block' }, cursor: 'pointer' }} onClick={handleMenuOpen} />
           </Box>
-          {/* Mobile Fullscreen Menu Overlay */}
+          {/* Fullscreen Menu Overlay */}
           {mobileMenuOpen && (
             <Box
               sx={{
@@ -295,7 +297,7 @@ const LandingPage = () => {
                 height: '100vh',
                 bgcolor: 'rgba(9, 37, 46, 0.97)',
                 zIndex: 2000,
-                display: { xs: 'flex', lg: 'none' },
+                display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -334,7 +336,7 @@ const LandingPage = () => {
           <section ref={heroRef}>
             <Box sx={{
               position: 'relative',
-              minHeight: '100vh',
+              minHeight: '140vh',
               height: '140vh',
               backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%), url(${bgHero})`,
               backgroundSize: 'cover',
@@ -771,7 +773,7 @@ const LandingPage = () => {
                           <Typography variant="h5" sx={{ lineHeight: 1 }}>
                             {item.icon}
                           </Typography>
-                          <Typography variant="body1" sx={{textAlign: 'left', color: 'white', fontWeight: 800, fontSize: '16px', lineHeight: 1}}>
+                          <Typography variant="body1" sx={{textAlign: 'left', color: 'white', fontWeight: 800, fontSize: '20px', lineHeight: 1}}>
                             {item.title}
                           </Typography>
                           <Typography sx={{textAlign: 'left', color: 'white', fontWeight: 500, lineHeight: 1}}>
@@ -1195,6 +1197,9 @@ const LandingPage = () => {
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <LocationOnIcon />
                       <Typography>{t.footer.location}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography>{t.footer.location2}</Typography>
                 </Box>
               </Grid>
                   <Grid item xs={12} md={6}>

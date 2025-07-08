@@ -335,14 +335,15 @@ export const locales = {
     footer: {
         contactsTitle: 'Контакты',
         phone: '+357 999 011 01',
-        email: 'inessa@giovani.com.cy',
-        location: 'Работаю напрямую с крупнейшим застройщиком юго-восточного Кипра — Giovani Homes',
+        email: 'inessazheurova@gmail.com',
+        location: ' Эксперт в инвестиционной недвижимости на Кипре в городах Протарас и Айя-Напа.',
+        location2: ' Руководитель по развитию крупнейшего застройщика Юго-Восточного Кипра - Giovani Homes',
         socialTitle: 'Социальные сети'
     }
   },
   en: {
     nav: {
-      title: 'Cyprus from the Heart | Inessa',
+      title: 'Inessa | Cyprus Real Estate | Investments | Residence Permit',
       whatsapp: 'WhatsApp',
       phone: '+357 999 011 01',
     },
@@ -357,7 +358,7 @@ export const locales = {
       contact: 'Contact',
     },
     hero: {
-      pretitle: 'Based on 100+ personal deals',
+      pretitle: 'Based on 70+ personal deals',
       title: 'Real estate in Cyprus — ROI up to 7%, residence permit and full turnkey support',
       subtitle1: 'Selection of villas and apartments in Protaras and Ayia Napa.',
       subtitle2: 'No intermediaries, overpayments or stress — from first request to registration.',
@@ -676,8 +677,9 @@ export const locales = {
     footer: {
         contactsTitle: 'Contacts',
         phone: '+357 999 011 01',
-        email: 'inessa@giovani.com.cy',
-        location: 'I work directly with the largest developer in southeast Cyprus — Giovani Homes',
+        email: 'inessazheurova@gmail.com',
+        location: 'Expert in investment real estate in Cyprus in the cities of Protaras and Ayia Napa.',
+        location2: 'Head of Development at the largest developer in Southeast Cyprus - Giovani Homes',
         socialTitle: 'Social networks'
     }
   }
