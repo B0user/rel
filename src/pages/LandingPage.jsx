@@ -47,6 +47,13 @@ import sem_2 from '../assets/properties/sem_2.webp';
 import sem_3 from '../assets/properties/sem_3.webp';
 import sem_4 from '../assets/properties/sem_4.webp';
 import sem_5 from '../assets/properties/sem_5.webp';
+import napa_1 from '../assets/properties/napa_1.webp';
+import napa_2 from '../assets/properties/napa_2.webp';
+import napa_3 from '../assets/properties/napa_3.webp';
+import delear_1 from '../assets/properties/delear_1.webp';
+import delear_2 from '../assets/properties/delear_2.webp';
+import delear_3 from '../assets/properties/delear_3.webp';
+import delear_4 from '../assets/properties/delear_4.webp';
 // Testimonial images
 import testimonial1 from '../assets/photos/testimonials/1.webp';
 import testimonial2 from '../assets/photos/testimonials/2.webp';
@@ -198,6 +205,10 @@ const LandingPage = () => {
       photos = [eup_1, eup_2];
     } else if (prop.title.startsWith('Semeli B')) {
       photos = [sem_1, sem_2, sem_3, sem_4, sem_5];
+    } else if (prop.title.startsWith('Napa Amaris')) {
+      photos = [napa_1, napa_2, napa_3];
+    } else if (prop.title.startsWith('Delear')) {
+      photos = [delear_1, delear_2, delear_3, delear_4];
     } else {
       photos = [];
     }
