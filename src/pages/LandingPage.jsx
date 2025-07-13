@@ -14,6 +14,15 @@ import { useSwipeable } from 'react-swipeable';
 import { motion } from 'framer-motion';
 import Avatar from '@mui/material/Avatar';
 
+// Add CSS keyframes for pulse animation
+const pulseKeyframes = `
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+`;
+
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -67,6 +76,8 @@ import reviewZeev from '../assets/reviews/zeev.webp';
 import reviewDina from '../assets/reviews/dina.webp';
 import reviewOlesya from '../assets/reviews/olesya.webp';
 import reviewGreppo from '../assets/reviews/greppo.webp';
+import guideEn from '../assets/guide_en.pdf';
+import guideRu from '../assets/guide_ru.pdf';
 
 const properties = [
   {
@@ -137,8 +148,17 @@ const LandingPage = () => {
   const [language, setLanguage] = useState('ru');
   const t = locales[language];
 
+  // Add CSS styles for animations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = pulseKeyframes;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentTestimonialSlide, setCurrentTestimonialSlide] = useState(0);
   const theme = useTheme();
   const width = useWindowWidth();
 
@@ -186,6 +206,13 @@ const LandingPage = () => {
     trackMouse: false
   });
 
+  const testimonialSwipeHandlers = useSwipeable({
+    onSwipedLeft: () => setCurrentTestimonialSlide(prev => (prev < t.testimonials.reviews.length - 1 ? prev + 1 : 0)),
+    onSwipedRight: () => setCurrentTestimonialSlide(prev => (prev > 0 ? prev - 1 : t.testimonials.reviews.length - 1)),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: false
+  });
+
   // Combine locales text with imported images
   const properties = t.properties.list.map((prop) => {
     let photos = [];
@@ -220,7 +247,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <Box sx={{}}>
+      <Box sx={{}} dir={language === 'he' ? 'rtl' : 'ltr'}>
         <Box sx={{ position: 'fixed', width: '100%', zIndex: 20 }}>
           <Box sx={{
             position: 'fixed',
@@ -247,33 +274,32 @@ const LandingPage = () => {
                 {t.nav.title}
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, ml: 2 }}>
-                <Typography
-                  onClick={() => setLanguage('ru')}
-                  sx={{
-                    cursor: 'pointer',
-                    fontWeight: language === 'ru' ? 700 : 400,
-                    color: language === 'ru' ? '#f5f7fa' : 'white',
-                    textDecoration: language === 'ru' ? 'underline' : 'none',
-                    fontSize: 16,
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  RU
-                </Typography>
-                <Typography sx={{ color: 'white', fontWeight: 400, fontSize: 16 }}>|</Typography>
-                <Typography
-                  onClick={() => setLanguage('en')}
-                  sx={{
-                    cursor: 'pointer',
-                    fontWeight: language === 'en' ? 700 : 400,
-                    color: language === 'en' ? '#f5f7fa' : 'white',
-                    textDecoration: language === 'en' ? 'underline' : 'none',
-                    fontSize: 16,
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  EN
-                </Typography>
+                {[
+                  { code: 'ru', label: 'RU' },
+                  { code: 'en', label: 'EN' },
+                  { code: 'he', label: 'HE' },
+                  { code: 'pl', label: 'PL' },
+                  { code: 'de', label: 'DE' },
+                ].map((lang, idx, arr) => (
+                  <React.Fragment key={lang.code}>
+                    <Typography
+                      onClick={() => setLanguage(lang.code)}
+                      sx={{
+                        cursor: 'pointer',
+                        fontWeight: language === lang.code ? 700 : 400,
+                        color: language === lang.code ? '#f5f7fa' : 'white',
+                        textDecoration: language === lang.code ? 'underline' : 'none',
+                        fontSize: 16,
+                        transition: 'color 0.2s',
+                      }}
+                    >
+                      {lang.label}
+                    </Typography>
+                    {idx < arr.length - 1 && (
+                      <Typography sx={{ color: 'white', fontWeight: 400, fontSize: 16 }}>|</Typography>
+                    )}
+                  </React.Fragment>
+                ))}
               </Box>
             </Box>
             <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 3 }}>
@@ -356,69 +382,110 @@ const LandingPage = () => {
               zIndex: 5
             }}>
               <Container maxWidth="lg" sx={{ zIndex: 2, px: { xs: 2, md: 6 }, position: 'relative', height: 'fit-content', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start' }}>
-                <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 5, sm: 5, md: 5, xl: 5 }, mt: {xs: 5, sm: 5, md: 5}}}>
+                <Box sx={{ maxWidth: 600, color: 'white', textAlign: 'left', py: { xs: 9, sm: 5, md: 5, xl: 5}, mt: {xs: 5, sm: 5, md: 5}}}>
                   <Typography variant="overline" sx={{
                     mb: {sm: 0, md: 2},
-                    opacity: 0.85,
+                    opacity: 0.5,
                     fontWeight: 600,
-                    fontSize: 15,
+                    fontSize: 10,
                     letterSpacing: 1.2,
                     textTransform: 'none',
-                    lineHeight: 0.5,
+                    lineHeight: 5,
                   }}>
                     {t.hero.pretitle}
                   </Typography>
                   <Typography variant="h1" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: '1.8rem', md: '2.8rem' }, lineHeight: 1.1, color: 'white', letterSpacing: -1 }}>
                     {t.hero.title}
                   </Typography>
-                  <Typography variant="h5" sx={{ mb: 0, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
+                  <Typography variant="h5" sx={{ mb: 0, opacity: 0.92, fontWeight: 400, fontSize: { xs: 14, md: 22 }, color: 'white', lineHeight: 1.3 }}>
                     {t.hero.subtitle1}
                   </Typography>
-                  <Typography variant="h5" sx={{ mb: 3, opacity: 0.92, fontWeight: 400, fontSize: { xs: 18, md: 22 }, color: 'white', lineHeight: 1.3 }}>
+                  <Typography variant="h5" sx={{ mb: 5, opacity: 0.92, fontWeight: 400, fontSize: { xs: 14, md: 22 }, color: 'white', lineHeight: 1.3 }}>
                     {t.hero.subtitle2}
                   </Typography>
-                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column' }, gap: 2, mt: 3 }}>
+                  <Box sx={{ 
+                    display: 'flex', 
+                    flexDirection: { xs: 'column', sm: 'column' }, 
+                    gap: { xs: 2, md: 2.5 }, 
+                    mt: 4,
+                    maxWidth: { xs: '100%', md: '500px' },
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start'
+                  }}>
+                    {/* Primary CTA - Most Prominent */}
                     <Button
-                      variant="outlined"
+                      variant="contained"
                       size="large"
+                      fullWidth
                       sx={{
                         color: 'white',
-                        // borderColor: 'white',
-                        fontWeight: 600,
-                        px: 4,
-                        py: 1.5,
-                        fontSize: { xs: '0.9rem', md: '1.3rem' },
-                        borderRadius: 2,
-                        backdropFilter: 'blur(2px)',
-                        boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
-                        backgroundColor: '#00BCD4',
+                        fontWeight: 700,
+                        px: { xs: 3, md: 5 },
+                        py: { xs: 2, md: 2.5 },
+                        fontSize: { xs: '1rem', md: '1.4rem' },
+                        borderRadius: 3,
+                        background: 'linear-gradient(135deg, #00BCD4 0%, #0097A7 100%)',
+                        boxShadow: '0 8px 32px rgba(0, 188, 212, 0.4)',
+                        textTransform: 'none',
+                        minHeight: { xs: 56, md: 64 },
+                        position: 'relative',
+                        overflow: 'hidden',
+                        width: '100%',
                         '&:hover': {
-                          background: 'rgba(255,255,255,0.4)',
-                          borderColor: 'white',
+                          background: 'linear-gradient(135deg, #0097A7 0%, #006064 100%)',
+                          boxShadow: '0 12px 40px rgba(0, 188, 212, 0.6)',
+                          transform: 'translateY(-2px)',
                         },
+                        '&:active': {
+                          transform: 'translateY(0px)',
+                        },
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                       }}
                       onClick={() => scrollToSection(contactFormRef)}
                     >
-                      {t.hero.button1}
+                      <Box sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: 1,
+                        position: 'relative',
+                        zIndex: 2
+                      }}>
+                        <Box sx={{ 
+                          fontSize: '1.2em',
+                          animation: 'pulse 2s infinite'
+                        }}>
+                          🏠
+                        </Box>
+                        {t.hero.button1}
+                      </Box>
                     </Button>
+
+                    {/* Secondary CTA - WhatsApp */}
                     <Button
                       variant="outlined"
                       size="large"
-                      startIcon={<WhatsAppIcon />}
+                      fullWidth
+                      startIcon={<WhatsAppIcon sx={{ fontSize: { xs: 20, md: 24 } }} />}
                       sx={{
                         color: 'white',
-                        borderColor: 'white',
+                        borderColor: 'rgba(255,255,255,0.8)',
+                        borderWidth: 2,
                         fontWeight: 600,
-                        px: 4,
-                        py: 1.5,
-                        ffontSize: { xs: '0.9rem', md: '1.3rem' },
-                        borderRadius: 2,
-                        backdropFilter: 'blur(2px)',
-                        boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                        px: { xs: 3, md: 4 },
+                        py: { xs: 1.8, md: 2.2 },
+                        fontSize: { xs: '0.95rem', md: '1.2rem' },
+                        borderRadius: 3,
+                        backdropFilter: 'blur(8px)',
+                        background: 'rgba(255,255,255,0.1)',
+                        textTransform: 'none',
+                        minHeight: { xs: 52, md: 60 },
+                        width: '100%',
                         '&:hover': {
-                          background: 'rgba(255,255,255,0.08)',
+                          background: 'rgba(255,255,255,0.2)',
                           borderColor: 'white',
+                          transform: 'translateY(-1px)',
                         },
+                        transition: 'all 0.3s ease',
                       }}
                       component="a"
                       href="https://wa.me/35799901101"
@@ -427,27 +494,41 @@ const LandingPage = () => {
                     >
                       {t.hero.button2}
                     </Button>
-                    <Box sx={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+
+                    {/* Tertiary CTA - Download */}
+                    <Box sx={{
+                      display: 'flex',
+                      justifyContent: 'flex-start',
+                      alignItems: 'flex-start',
+                      mt: { xs: 1, md: 1.5 }
+                    }}>
                       <Button
                         variant="text"
                         size="large"
-                        startIcon={<DownloadIcon />}
+                        fullWidth
+                        startIcon={<DownloadIcon sx={{ fontSize: { xs: 18, md: 20 } }} />}
                         sx={{
-                          color: 'white',
-                          borderColor: 'white',
-                          border: '1px solid',
-                          fontWeight: 600,
-                          px: 4,
-                          py: 1.5,
-                          fontSize: { xs: '0.9rem', md: '1.3rem' },
+                          color: 'rgba(255,255,255,0.9)',
+                          fontWeight: 500,
+                          px: { xs: 2, md: 3 },
+                          py: { xs: 1.5, md: 2 },
+                          fontSize: { xs: '0.9rem', md: '1.1rem' },
                           borderRadius: 2,
-                          backdropFilter: 'blur(2px)',
-                          boxShadow: '0 2px 16px 0 rgba(0,0,0,0.08)',
+                          textTransform: 'none',
+                          textDecoration: 'underline',
+                          textUnderlineOffset: '4px',
+                          width: '100%',
+                          justifyContent: 'flex-start',
                           '&:hover': {
-                            borderColor: 'white',
-                            border: '1px solid'
+                            color: 'white',
+                            background: 'rgba(255,255,255,0.1)',
+                            borderRadius: 2,
                           },
+                          transition: 'all 0.2s ease',
                         }}
+                        component="a"
+                        href={language === 'ru' ? guideRu : guideEn}
+                        download={language === 'ru' ? 'guide_ru.pdf' : 'guide_en.pdf'}
                       >
                         {t.hero.button3}
                       </Button>
@@ -472,7 +553,7 @@ const LandingPage = () => {
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center',
+                        justifyContent: 'flex-start',
                         gap: {xs: 0, md: 1},
                         bgcolor: 'rgba(255,255,255,0.1)',
                         borderRadius: '50px',
@@ -486,10 +567,7 @@ const LandingPage = () => {
                         mb: { xs: 0, md: 0 },
                       }}
                     >
-                      <Typography variant="h5" sx={{ lineHeight: 1.1, fontSize: { xs: 18, sm: 20, md: 22 } }}>
-                        {trigger.icon}
-                      </Typography>
-                      <Typography variant="body1" sx={{ color: 'white', fontWeight: 500, fontSize: { xs: 15, sm: 16, md: 18 }, lineHeight: 1.1 }}>
+                      <Typography variant="body1" sx={{ color: 'white',  fontWeight: 500, fontSize: { xs: 12, sm: 13, md: 15 }, lineHeight: 1.1 }}>
                         {trigger.text}
                       </Typography>
                     </Box>
@@ -1046,49 +1124,161 @@ const LandingPage = () => {
                 <Typography variant="h2" align="center" gutterBottom>
                   {t.testimonials.title}
                 </Typography>
-                <Grid container spacing={4} sx={{ mt: 4 }}>
+                
+                {/* Desktop Grid View */}
+                <Grid container spacing={4} sx={{ 
+                  mt: 4,
+                  display: { xs: 'none', md: 'grid' }
+                }}>
                   {t.testimonials.reviews.map((review, index) => (
                     <Grid item xs={12} md={6} key={index}>
-                      <Paper sx={{
-                        p: { xs: 2, sm: 4 },
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 2,
-                        borderRadius: 4,
-                        boxShadow: 2,
-                        bgcolor: 'white',
-                        minHeight: 260,
-                      }}>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-                          {review.photo && reviewPhotos[review.photo] ? (
-                            <Avatar
-                              src={reviewPhotos[review.photo]}
-                              alt={review.author}
-                              sx={{ width: 56, height: 56, mr: 2 }}
-                              imgProps={{ loading: 'lazy', width: 56, height: 56 }}
-                            />
-                          ) : (
-                            <Avatar sx={{ width: 56, height: 56, mr: 2, fontSize: 32 }}>{review.flag}</Avatar>
-                          )}
-                          <Box>
-                            <Typography variant="h6" sx={{ fontWeight: 700 }}>{review.author}</Typography>
-                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>{review.city}</Typography>
+                      <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.6, delay: index * 0.15 }}
+                      >
+                        <Paper sx={{
+                          p: { xs: 2, sm: 4 },
+                          height: '100%',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 2,
+                          borderRadius: 4,
+                          boxShadow: 2,
+                          bgcolor: 'white',
+                          minHeight: 260,
+                        }}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+                            {review.photo && reviewPhotos[review.photo] ? (
+                              <Avatar
+                                src={reviewPhotos[review.photo]}
+                                alt={review.author}
+                                sx={{ width: 56, height: 56, mr: 2 }}
+                                imgProps={{ loading: 'lazy', width: 56, height: 56 }}
+                              />
+                            ) : (
+                              <Avatar sx={{ width: 56, height: 56, mr: 2, fontSize: 32 }}>{review.flag}</Avatar>
+                            )}
+                            <Box>
+                              <Typography variant="h6" sx={{ fontWeight: 700 }}>{review.author}</Typography>
+                              <Typography variant="body2" sx={{ color: 'text.secondary' }}>{review.city}</Typography>
+                            </Box>
                           </Box>
-                        </Box>
-                        <Typography variant="subtitle2" sx={{ color: 'primary.main', fontWeight: 600, mb: 1 }}>{review.goal}</Typography>
-                        <Typography variant="body1" sx={{ mb: 2, fontStyle: 'italic', color: 'text.primary' }}>
-                          “{review.text}”
-                        </Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', mb: 1 }}>
-                          <LocationOnIcon fontSize="small" sx={{ color: 'primary.main' }} />
-                          <Typography variant="body2" sx={{ fontWeight: 600 }}>{review.property}</Typography>
-                        </Box>
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 14 }}>{review.tags}</Typography>
-                      </Paper>
+                          <Typography variant="subtitle2" sx={{ color: 'primary.main', fontWeight: 600, mb: 1 }}>{review.goal}</Typography>
+                          <Typography variant="body1" sx={{ mb: 2, fontStyle: 'italic', color: 'text.primary' }}>
+                            “{review.text}”
+                          </Typography>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', mb: 1 }}>
+                            <LocationOnIcon fontSize="small" sx={{ color: 'primary.main' }} />
+                            <Typography variant="body2" sx={{ fontWeight: 600 }}>{review.property}</Typography>
+                          </Box>
+                          <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 14 }}>{review.tags}</Typography>
+                        </Paper>
+                      </motion.div>
                     </Grid>
                   ))}
                 </Grid>
+
+                {/* Mobile Carousel View */}
+                <Box sx={{ 
+                  position: 'relative', 
+                  mt: 4, 
+                  display: { xs: 'block', md: 'none' },
+                  maxWidth: '100%',
+                  overflow: 'hidden'
+                }}>
+                  <Box {...testimonialSwipeHandlers} sx={{ overflow: 'hidden', position: 'relative' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        transition: 'transform 0.3s ease-in-out',
+                        transform: `translateX(-${currentTestimonialSlide * 100}%)`,
+                        width: '100%'
+                      }}
+                    >
+                      {t.testimonials.reviews.map((review, index) => (
+                        <Box
+                          key={index}
+                          sx={{
+                            width: 'calc(100% - 32px)',
+                            flexShrink: 0,
+                            mx: 2,
+                            my: 2
+                          }}
+                        >
+                          <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.6, delay: index * 0.15 }}
+                          >
+                            <Paper sx={{
+                              p: { xs: 2, sm: 4 },
+                              height: '100%',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: 2,
+                              borderRadius: 4,
+                              boxShadow: 2,
+                              bgcolor: 'white',
+                              minHeight: 260,
+                            }}>
+                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+                                {review.photo && reviewPhotos[review.photo] ? (
+                                  <Avatar
+                                    src={reviewPhotos[review.photo]}
+                                    alt={review.author}
+                                    sx={{ width: 56, height: 56, mr: 2 }}
+                                    imgProps={{ loading: 'lazy', width: 56, height: 56 }}
+                                  />
+                                ) : (
+                                  <Avatar sx={{ width: 56, height: 56, mr: 2, fontSize: 32 }}>{review.flag}</Avatar>
+                                )}
+                                <Box>
+                                  <Typography variant="h6" sx={{ fontWeight: 700 }}>{review.author}</Typography>
+                                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>{review.city}</Typography>
+                                </Box>
+                              </Box>
+                              <Typography variant="subtitle2" sx={{ color: 'primary.main', fontWeight: 600, mb: 1 }}>{review.goal}</Typography>
+                              <Typography variant="body1" sx={{ mb: 2, fontStyle: 'italic', color: 'text.primary' }}>
+                                “{review.text}”
+                              </Typography>
+                              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', mb: 1 }}>
+                                <LocationOnIcon fontSize="small" sx={{ color: 'primary.main' }} />
+                                <Typography variant="body2" sx={{ fontWeight: 600 }}>{review.property}</Typography>
+                              </Box>
+                              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 14 }}>{review.tags}</Typography>
+                            </Paper>
+                          </motion.div>
+                        </Box>
+                      ))}
+                    </Box>
+                  </Box>
+                  
+                  {/* Dots indicator for mobile */}
+                  <Box sx={{ 
+                    display: { xs: 'flex', md: 'none' }, 
+                    justifyContent: 'center', 
+                    gap: 1, 
+                    mt: 4 
+                  }}>
+                    {t.testimonials.reviews.map((_, index) => (
+                      <Box
+                        key={index}
+                        onClick={() => setCurrentTestimonialSlide(index)}
+                        sx={{
+                          width: 10,
+                          height: 10,
+                          borderRadius: '50%',
+                          bgcolor: currentTestimonialSlide === index ? 'primary.main' : 'grey.300',
+                          cursor: 'pointer',
+                          transition: 'background-color 0.3s'
+                        }}
+                      />
+                    ))}
+                  </Box>
+                </Box>
               </Container>
             </Box>
           </section>
