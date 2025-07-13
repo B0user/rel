@@ -13,6 +13,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useSwipeable } from 'react-swipeable';
 import { motion } from 'framer-motion';
 import Avatar from '@mui/material/Avatar';
+import axios from 'axios';
 
 // Add CSS keyframes for pulse animation
 const pulseKeyframes = `
@@ -184,9 +185,51 @@ const LandingPage = () => {
     }
   };
 
-  const handleFormSubmit = (e) => {
+  const [form, setForm] = useState({
+    fullName: '',
+    contact: '',
+    purpose: '',
+    budget: '',
+    comment: ''
+  });
+  const [formStatus, setFormStatus] = useState(null);
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    alert('вы отправили форму');
+    setFormStatus(null);
+    // Prepare data for backend
+    const backendData = {
+      fullname: form.fullName,
+      contact: form.contact,
+      goal: form.purpose,
+      budget: form.budget,
+      comment: form.comment
+    };
+    // Prepare data for bot
+    const botData = {
+      text: `Новая заявка с сайта:\nИмя: ${form.fullName}\nКонтакт: ${form.contact}\nЦель: ${form.purpose}\nБюджет: ${form.budget}\nКомментарий: ${form.comment}`,
+      success: 'Message sent successfully!',
+      error: 'Failed to send message.'
+    };
+    try {
+      const [backendRes, botRes] = await Promise.all([
+        axios.post('http://localhost:5001/api/applications', backendData),
+        axios.post('http://localhost:4477/api/sendadmin', botData)
+      ]);
+      if (backendRes.status === 201 && botRes.status === 200) {
+        setFormStatus('success');
+        setForm({ fullName: '', contact: '', purpose: '', budget: '', comment: '' });
+      } else {
+        setFormStatus('error');
+      }
+    } catch (err) {
+      setFormStatus('error');
+    }
   };
 
   const handleMenuOpen = () => setMobileMenuOpen(true);
@@ -1309,6 +1352,8 @@ const LandingPage = () => {
                       name="fullName"
                       label={t.contactForm.nameLabel}
                       variant="outlined"
+                      value={form.fullName}
+                      onChange={handleFormChange}
                     />
                     <TextField
                       fullWidth
@@ -1316,6 +1361,8 @@ const LandingPage = () => {
                       name="contact"
                       label={t.contactForm.contactLabel}
                       variant="outlined"
+                      value={form.contact}
+                      onChange={handleFormChange}
                     />
                     <Box sx={{ display: 'flex', gap: 3, flexDirection: { xs: 'column', sm: 'row' } }}>
                       <FormControl fullWidth>
@@ -1324,7 +1371,8 @@ const LandingPage = () => {
                           labelId="purpose-label"
                           name="purpose"
                           label={t.contactForm.purposeLabel}
-                          defaultValue=""
+                          value={form.purpose}
+                          onChange={handleFormChange}
                         >
                           {t.contactForm.purposeOptions.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -1339,7 +1387,8 @@ const LandingPage = () => {
                           labelId="budget-label"
                           name="budget"
                           label={t.contactForm.budgetLabel}
-                          defaultValue=""
+                          value={form.budget}
+                          onChange={handleFormChange}
                         >
                           {t.contactForm.budgetOptions.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -1356,6 +1405,8 @@ const LandingPage = () => {
                       name="comment"
                       label={t.contactForm.commentLabel}
                       variant="outlined"
+                      value={form.comment}
+                      onChange={handleFormChange}
                     />
                     <Button
                       fullWidth
@@ -1372,6 +1423,12 @@ const LandingPage = () => {
                     >
                       {t.contactForm.button}
                     </Button>
+                    {formStatus === 'success' && (
+                      <Typography color="success.main" sx={{ mt: 2 }}>{t.contactForm.successMsg || 'Ваша заявка отправлена!'}</Typography>
+                    )}
+                    {formStatus === 'error' && (
+                      <Typography color="error.main" sx={{ mt: 2 }}>{t.contactForm.errorMsg || 'Ошибка отправки. Попробуйте позже.'}</Typography>
+                    )}
                   </FormControl>
                 </Paper>
               </Container>
