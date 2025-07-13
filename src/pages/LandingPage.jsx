@@ -213,13 +213,11 @@ const LandingPage = () => {
     // Prepare data for bot
     const botData = {
       text: `Новая заявка с сайта:\nИмя: ${form.fullName}\nКонтакт: ${form.contact}\nЦель: ${form.purpose}\nБюджет: ${form.budget}\nКомментарий: ${form.comment}`,
-      success: 'Message sent successfully!',
-      error: 'Failed to send message.'
     };
     try {
       const [backendRes, botRes] = await Promise.all([
-        axios.post('http://localhost:5001/api/applications', backendData),
-        axios.post('http://localhost:4477/api/sendadmin', botData)
+        axios.post('https://backend.inessazheurova.com/api/applications', backendData),
+        axios.post('https://bot.inessazheurova.com/api/sendadmin', botData)
       ]);
       if (backendRes.status === 201 && botRes.status === 200) {
         setFormStatus('success');
